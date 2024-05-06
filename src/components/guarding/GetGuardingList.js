@@ -20,6 +20,7 @@ import PositionData from "./CreatListFormComps/PositionData";
     const [glistData, setGlistData] = useState('');
 
     const glistValues = { 
+      numOfLists:numOfLists,
       date:date,
       day:day,
       glistData: glistData

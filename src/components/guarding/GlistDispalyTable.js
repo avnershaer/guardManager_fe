@@ -7,11 +7,11 @@ function GlistDispalyTable ({apiResponse})  {
     return(
         <div style={{ display: 'flex', justifyContent: 'right', alignItems: 'center',  direction: 'rtl' }}>
 
-        <div>
-            <div><h3>רשימת שמירה ל{apiResponse.Details.list_day}&nbsp;ה-{apiResponse.Details.list_date}&nbsp;</h3></div>
-            <div>עמדה:&nbsp;{apiResponse.Details.position_id.position_name}</div>
+        <div style={{marginTop: '50px'}}>
+            <div><h3>רשימת שמירה ל{apiResponse.list_day}&nbsp;ה-{apiResponse.list_date}&nbsp;</h3></div>
+            <div>עמדה:&nbsp;{apiResponse.position_id.position_name}</div>
             <div><br/>
-            {Object.values(apiResponse.Details.shifts).map((shift, index) => (
+            {Object.values(apiResponse.shifts).map((shift, index) => (
                     <table key={index} style={{border: '1px solid', backgroundColor: '#fcfcde'  }}>
                         <tbody>
                             <tr>
