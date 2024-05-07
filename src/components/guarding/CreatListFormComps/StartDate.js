@@ -4,7 +4,9 @@ import React, { useState } from "react";
 function StartDate(props){
 
     const [selectedDay, setSelectedDay] = useState('');
-
+    
+    const today = new Date().toISOString().split('T')[0];// today's date in the format yyyy-mm-dd
+    
     const handleDateChange = (event) => {
         const date = event.target.value;
         const dateObject = new Date(date);
@@ -23,6 +25,7 @@ function StartDate(props){
               type="date"
               name="date"
               onChange={handleDateChange}
+              min={today}
             />
             <label className="input-label">
             <input
