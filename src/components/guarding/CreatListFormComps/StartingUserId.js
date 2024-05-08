@@ -8,23 +8,26 @@ function StartingUserId({getStartingUserId}){
     const [guardList, setGuardsList] = useState('');
     const [error, setError] = useState('');
     const [lastUserId, setLastUserId] = useState('');
+    const [selectedGuardid, setSelctedGuradId] = useState('');
 
 
     const HandleOnChange = (event) => {
       const { name, value } = event.target;
-  
-      if (name === "first_user_id") {
-          setStartingUserId(value);
-          getStartingUserId(value);
-      } else if (name === "last_user_id") {
-          setStartingUserId(value);
-          getStartingUserId(value);
-      } else if (name === "last_user_id") {
-          setStartingUserId(value);
-          getStartingUserId(value);
+    
+      if (name === "user_id_option") {
+        setStartingUserId(value);
+        getStartingUserId(value);
       }
-  }
-
+    }
+    
+    const HandleSelectChange = (event) => {
+      const selectedValue = event.target.value;
+      setSelctedGuradId(selectedValue);
+      getStartingUserId(selectedValue);
+      console.log('setSelctedGuradId:', selectedValue )
+    }   
+    
+    
     useEffect(() => {
         axios.get("/families_list")
         .then(result =>{
@@ -53,10 +56,10 @@ function StartingUserId({getStartingUserId}){
     return(
         <div className="input-cell">
             <label className="input-label">
-              מספר מזהה של השומר להתחלת הרשימה<br />
+              מספר מזהה של השומר להתחלת הרשימה<br/>
               <input
                 type="radio"
-                name="first_user_id"
+                name="user_id_option"
                 onChange={HandleOnChange}
                 value={1}
                 style={{ marginRight: '5px' }}
@@ -64,7 +67,7 @@ function StartingUserId({getStartingUserId}){
               <br />
               <input
                 type="radio"
-                name="last_user_id"
+                name="user_id_option"
                 onChange={HandleOnChange}
                 value={lastUserId}
                 style={{ marginRight: '5px' }}
@@ -72,25 +75,27 @@ function StartingUserId({getStartingUserId}){
               <br />
               <input
                 type="radio"
-                name="name_id"
+                name="user_id_option"
                 onChange={HandleOnChange}
-                value={startingUserId}
+                value={selectedGuardid}
                 style={{ marginRight: '5px' }}
               />בחר מספר מזהה ע"פ שם&nbsp;&nbsp;&nbsp;
               <select 
-              onChange={HandleOnChange}
-              value={startingUserId} 
-              name="name_id_select">
+              onChange={HandleSelectChange}
+              name="name_id_select"
+              value={selectedGuardid}
+              >
                 <option value="">בחר </option>
                 {guardList && guardList.length > 0 && guardList.map((guard) => (
                   <option key={guard.family_id} value={guard.family_id}>
                     {guard.family_name}&nbsp;{guard.name1}&nbsp;{guard.name2}&nbsp;{guard.family_id}
                   </option>
+                  
                 ))}
               </select>
             </label>
         </div>
-
+        
     );
 };
 

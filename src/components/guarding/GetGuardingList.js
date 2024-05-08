@@ -87,12 +87,13 @@ import PositionData from "./CreatListFormComps/PositionData";
           <StartDate getStartDate={getStartDate}/>
           <PositionData getGlistData={getGlistData}/>
           <div>
-            <Button1 type="submit" width="100px" fontSize='10px' height="15px"
-             textColor="white" onMouseOverTextColor="blue" onMouseOutTextColor="white"
-              color="blue" onMouseOverColor="white" onMouseOutColor="blue"
-              borderColor="white" mouseborderColor="blue" outBorderColor="white"
+            <br/>
+            <Button1 type="submit" width="180px" fontSize='15px' height="20px"
+             textColor="#183670" onMouseOverTextColor="white" onMouseOutTextColor="#183670"
+              color="#d4dceb" onMouseOverColor="#183670" onMouseOutColor="#d4dceb"
+              borderColor="#183670" mouseborderColor="#d4dceb" outBorderColor="#183670"
               bottunClickColor="#06e806" value='צור רשימת שמירה' />
-          </div>
+          </div>  
         </form>
         {displayGuardingList && <DisplaySetGuardingList apiResponse={apiResponse} displayGuardingList={displayGuardingList} numOfLists={numOfLists} />}
       </div>

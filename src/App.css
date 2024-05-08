@@ -203,3 +203,12 @@ table {
   padding-left: 7px;
 
 }
+
+.pos-details {
+  background-color: #183670;
+  color: white;
+  width: 25%;
+  height: 20px;
+  padding-top: 3px;
+  font-weight: normal;
+}

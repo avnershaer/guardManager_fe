@@ -18,8 +18,9 @@ function StartDate(props){
 
     return(
         <div>
-            <div className="input-cell" style={{ marginTop: "-5px" }}>
+            <div className="input-cell" style={{ marginRight: "-5px", marginTop: "5px"}}>
             &nbsp;
+            <label className="input-label" >
             החל מתאריך&nbsp;
             <input
               type="date"
@@ -27,7 +28,7 @@ function StartDate(props){
               onChange={handleDateChange}
               min={today}
             />
-            <label className="input-label">
+            
             <input
               style={{ width: '55px' }}
               type="text"

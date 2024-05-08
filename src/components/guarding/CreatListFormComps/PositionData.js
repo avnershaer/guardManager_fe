@@ -98,7 +98,8 @@ function PositionData({getGlistData}){
         <div className="input-cell" >
             <label className="input-label">עמדה:<br />
               {positions.length > 0 && positions.map((position) => (
-                <div key={position.position_id} className="guard-parm" >
+                <div key={position.position_id} >
+                 <div className="pos-details">{position.position_name}</div>
                   <input
                     type="checkbox"
                     onChange={() => {
@@ -109,7 +110,6 @@ function PositionData({getGlistData}){
                     value={position.position_id}
                     checked={positionStates[position.position_id] || false} // check positionStates for each checkbox
                   />
-                 {position.position_name}
                   {positionStates[position.position_id] &&  (
                     
                   <>
@@ -119,7 +119,9 @@ function PositionData({getGlistData}){
                   <StartGuardHour getStartGuardHour={getStartGuardHour}/>
                   <HoursPerShift getHoursPerDhift={getHoursPerDhift}/>
                   <StartingUserId getStartingUserId={getStartingUserId}/>
+                  
                   </>)}
+                  <br/>
                   </div>
               ))}
             </label>
