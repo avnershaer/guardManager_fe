@@ -99,7 +99,8 @@ function PositionData({getGlistData}){
             <label className="input-label">עמדה:<br />
               {positions.length > 0 && positions.map((position) => (
                 <div key={position.position_id} >
-                 <div className="pos-details">{position.position_name}</div>
+                 <div className="pos-details">
+                 <span className="checkbox-label">
                   <input
                     type="checkbox"
                     onChange={() => {
@@ -109,7 +110,8 @@ function PositionData({getGlistData}){
                     name={'position_id'} 
                     value={position.position_id}
                     checked={positionStates[position.position_id] || false} // check positionStates for each checkbox
-                  />
+                  />&nbsp;</span>
+                  <span className="checkboxtext-label">{position.position_name}</span></div>
                   {positionStates[position.position_id] &&  (
                     
                   <>
@@ -121,7 +123,6 @@ function PositionData({getGlistData}){
                   <StartingUserId getStartingUserId={getStartingUserId}/>
                   
                   </>)}
-                  <br/>
                   </div>
               ))}
             </label>
