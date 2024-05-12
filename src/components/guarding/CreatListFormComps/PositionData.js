@@ -115,12 +115,12 @@ function PositionData({getGlistData}){
                   {positionStates[position.position_id] &&  (
                     
                   <>
-                  <GuardListModel/>
-                  <NumOfGuards getNumOfGuards={getNumOfGuards}/>
-                  <DailyGuardHours getDailyGuardHours={getDailyGuardHours}/>
-                  <StartGuardHour getStartGuardHour={getStartGuardHour}/>
-                  <HoursPerShift getHoursPerDhift={getHoursPerDhift}/>
-                  <StartingUserId getStartingUserId={getStartingUserId}/>
+                  <GuardListModel style={{ marginTop: '3px' }}/>
+                  <NumOfGuards getNumOfGuards={getNumOfGuards} style={{ marginTop: '3px' }}/>
+                  <DailyGuardHours getDailyGuardHours={getDailyGuardHours} style={{ marginTop: '3px' }}/>
+                  <StartGuardHour getStartGuardHour={getStartGuardHour} style={{ marginTop: '30px' }}/>
+                  <HoursPerShift getHoursPerDhift={getHoursPerDhift} style={{ marginTop: '3px' }}/>
+                  <StartingUserId getStartingUserId={getStartingUserId} style={{ marginTop: '3px' }}/>
                   
                   </>)}
                   </div>

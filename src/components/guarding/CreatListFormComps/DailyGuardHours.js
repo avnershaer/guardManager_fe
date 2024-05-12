@@ -11,7 +11,7 @@ function DailyGuardHours({getDailyGuardHours}){
     };
 
     return(
-    <div>
+    <div className="input-label">
         <label className="input-label">
             שעות שמירה ליום&nbsp;
             <input

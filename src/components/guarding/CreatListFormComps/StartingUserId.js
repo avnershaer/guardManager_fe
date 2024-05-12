@@ -7,7 +7,6 @@ function StartingUserId({getStartingUserId}){
     const [startingUserId, setStartingUserId] = useState('');
     const [guardList, setGuardsList] = useState('');
     const [error, setError] = useState('');
-    const [lastUserId, setLastUserId] = useState('');
     const [selectedGuardid, setSelctedGuradId] = useState('');
 
 
@@ -41,21 +40,14 @@ function StartingUserId({getStartingUserId}){
         })
       },[])
     
-      useEffect(() => {
-        axios.get("/get_last_id")
-        .then(result => {
-          console.log('LAST ID:', result.data.Details)
-          setLastUserId(result.data.Details)
-        })
-        .catch(error =>{
-          console.log('error:', error)
-          setError(error) 
-        })
-      },[])
+  
+      if (error) {
+        return <div className="error">Error: {error.message}</div>;
+      }
 
     return(
-        <div className="input-cell">
-            <label className="input-label">
+      <div className="input-label">
+          <label className="input-label">
               מספר מזהה של השומר להתחלת הרשימה<br/>
               <input
                 type="radio"
@@ -69,7 +61,7 @@ function StartingUserId({getStartingUserId}){
                 type="radio"
                 name="user_id_option"
                 onChange={HandleOnChange}
-                value={lastUserId}
+                value="lastId"
                 style={{ marginRight: '5px' }}
               /> רשומה אחרונה&nbsp;&nbsp;&nbsp;
               <br />

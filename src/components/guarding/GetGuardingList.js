@@ -69,11 +69,11 @@ import PositionData from "./CreatListFormComps/PositionData";
           });
       }
 
-    
-    
 
-
-
+    if (error) {
+      // Render error details
+      return <div className="error">Error: {error.message}</div>;
+    }
     
     if (displayGuardingList) {
       return <DisplaySetGuardingList apiResponse={apiResponse} displayGuardingList={displayGuardingList}  numOfLists={numOfLists} />;

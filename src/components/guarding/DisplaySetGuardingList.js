@@ -78,20 +78,20 @@ function DisplaySetGuardingList(props) {
           {tableVisibility[index] && (
             <div>
               <GlistDispalyTable apiResponse={detail} displayGuardingList={props.displayGuardingList}/>
-              <div style={{ textAlign: 'right' }}>
+              <div className="table-buttons" style={{ textAlign: 'right' }}>
+                <Button1 type="submit" width="100px" fontSize='10px' height="15p  x" 
+                            textColor="red" onMouseOverTextColor="yellow" onMouseOutTextColor="red"
+                            color="yellow" onMouseOverColor="red" onMouseOutColor="yellow"
+                            borderColor="red" mouseborderColor="yellow" outBorderColor="red"    
+                            bottunClickColor="#06e806" value='בטל'/>
                 <Button1 onClick={() => handleSaveClick(detail, index)} name="save" type="submit" 
-                          width="150px" fontSize='10px' height="15px" 
+                          width="100px" fontSize='10px' height="15px" 
                           textColor="white" onMouseOverTextColor="green" onMouseOutTextColor="white"
                           color="green" onMouseOverColor="yellow" onMouseOutColor="green"
                           borderColor="yellow" mouseborderColor="green" outBorderColor="yellow"    
                           bottunClickColor="#06e806" value='שמור' />
-              </div>
-              <div style={{ textAlign: 'right' }}>
-                <Button1 type="submit" width="150px" fontSize='10px' height="15p  x" 
-                          textColor="red" onMouseOverTextColor="yellow" onMouseOutTextColor="red"
-                          color="yellow" onMouseOverColor="red" onMouseOutColor="yellow"
-                          borderColor="red" mouseborderColor="yellow" outBorderColor="red"    
-                          bottunClickColor="#06e806" value='בטל'/>
+              
+                
               </div>
             </div>
           )}

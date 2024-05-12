@@ -4,7 +4,7 @@ function GuardListModel(){
         
    
     return(
-        <div>
+        <div className="input-label">
             <label className="input-label">
               מודל לרשימת שומרים&nbsp;
               <input

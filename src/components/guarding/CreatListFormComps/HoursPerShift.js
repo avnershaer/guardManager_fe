@@ -11,7 +11,7 @@ function HoursPerShift({getHoursPerDhift}){
     }
 
     return(
-        <div className="input-cell">
+      <div className="input-label">
             <label className="input-label">
               מספר שעות למשמרת&nbsp;
               <select 

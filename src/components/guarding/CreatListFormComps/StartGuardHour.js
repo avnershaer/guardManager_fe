@@ -11,7 +11,7 @@ function StartGuardHour({getStartGuardHour}){
     };
 
     return(
-        <div>
+        <div className="input-label">
            <label className="input-label">
                 שעת התחלת השמירה&nbsp;
                 <input

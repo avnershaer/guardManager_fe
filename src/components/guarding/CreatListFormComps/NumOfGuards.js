@@ -9,8 +9,8 @@ function NumOfGuards({getNumOfGuards}){
     }
   
     return(
-        <div className="input-cell">
-            <label className="input-label">
+      <div className="input-label">
+      <label className="input-label">
               מספר שומרים במשמרת&nbsp;
               <select name="num_of_guards" onChange={HandleOnChange}>
                 <option value="1">1</option>

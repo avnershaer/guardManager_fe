@@ -5,9 +5,9 @@ function GlistDispalyTable ({apiResponse})  {
     console.log('api-response:', apiResponse)
 
     return(
-        <div style={{ display: 'flex', justifyContent: 'right', alignItems: 'center',  direction: 'rtl' }}>
+        <div className="glist_table" style={{ display: 'flex', justifyContent: 'right', alignItems: 'center',  direction: 'rtl' }}>
 
-        <div style={{marginTop: '50px'}}>
+        <div >
             <div><h3>רשימת שמירה ל{apiResponse.list_day}&nbsp;ה-{apiResponse.list_date}&nbsp;</h3></div>
             <div>עמדה:&nbsp;{apiResponse.position_id.position_name}</div>
             <div><br/>
