@@ -107,19 +107,20 @@ table {
 
 .save_message {
   background-color: #183670;
-  color: white;
+  color: rgba(255, 255, 255, 0.866);
   font-weight: bold;
   font-size: 13px;
-  width: 30%;
-  text-align: center;
+  width: 35%;
   position: absolute;
   right: 0;
-  margin-right: 90px;
+  text-align: right;
   margin-bottom: 5px;
   margin-top: 10px;
+  margin-right: 20px;
   padding-top: 1px;
   padding-bottom: 3px;
-  padding-left: 7px;
+  padding-right: 280px;
+
 
 } 
 

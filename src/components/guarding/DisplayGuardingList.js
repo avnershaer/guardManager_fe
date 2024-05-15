@@ -1,7 +1,7 @@
-import React, { useState, useEffect, prevValue } from "react";
-import Button1 from "../buttons/button1";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import GuardListTable from "./GuardListTable";
+import BlueWiteButton from "../buttons/BlueWiteButton";
 
 
 function DisplayGuardingList() {
@@ -12,6 +12,8 @@ function DisplayGuardingList() {
   const [apiResponse, setApiResponse] = useState('');
   const [err, setErr] = useState('');
   const [displayGlist, setDisplayGlist] = useState(false);
+  const [fromlistDate, setFromlistDate] = useState('');
+  const [toListDate, setToListDate] = useState('');
 
 
   const handleOnChange = (event) => {
@@ -22,7 +24,12 @@ function DisplayGuardingList() {
       console.log('listDate:', value);
       console.log('parmForApiCall:', value); 
       return value; //parmForApiCall to the new value
-      
+    } else if (name === 'FromlistDate') {
+      setFromlistDate(value);
+      console.log('fromlistDate:', value);
+    } else if (name === 'TolistDate') {
+      setToListDate(value);
+      console.log('TolistDate:', value)
     } else if (name === 'listChoise') {
       setListChoice(value);
       setParmForApiCall(value)
@@ -64,64 +71,113 @@ function DisplayGuardingList() {
       ) : (
     <div className="display_choices">
       <div>
+      <div style={{backgroundColor:"#e8e8e8f7", height:"30px", width:"600px"}}>
         <label className="display_choices_input-label">
-          <input
-            type="radio"
-            name="display_mode"
-            value="date"
-            style={{ marginRight: "5px" }}
-          />
+          <div style={{display: "inline-flex" , marginTop:"6px", marginRight:"10px" }}>
+          הצג רשימות שמירה מתאריך
+        &nbsp;
+        &nbsp;
+        <input 
+          type="date"
+          name="FromlistDate"
+          value={fromlistDate}
+          onChange={handleOnChange}
+         
+        /> &nbsp; &nbsp;
+        עד לתאריך
+        &nbsp;  
+        &nbsp;
+        <input 
+          type="date"
+          name="TolistDate"
+          value={toListDate}
+          onChange={handleOnChange}
+         
+        /> &nbsp; &nbsp;
+        <BlueWiteButton
+          width="50px"
+          fontSize="10px"
+          height="20px"
+          value="הצג"
+          onClick={HandleDisplayClick}
+          fontWeight="normal"
+        />
+        </div>
+        </label>
+      </div>
+      <br/>
+      <div style={{backgroundColor:"#e8e8e8f7", height:"30px", width:"600px"}}>
+        <label className="display_choices_input-label">
+          <div style={{display: "inline-flex", marginTop:"6px", marginRight:"10px" }}>
           הצג רשימה על פי תאריך
-        </label>&nbsp;
-        <input
+       &nbsp;
+        <input 
           type="date"
           name="listDate"
           value={listDate}
           onChange={handleOnChange}
-          style={{ marginTop: "10px" }}
+         
+        /> &nbsp; &nbsp;
+          <BlueWiteButton
+          width="50px"
+          fontSize="10px"
+          height="20px"
+          value="הצג"
+          onClick={HandleDisplayClick}
+          fontWeight="normal"
+        />
+        </div>
+         </label>
+      </div>
+      </div>
+      <br/>
+      <div style={{backgroundColor:"#e8e8e8f7", height:"30px", width:"600px"}}>
+      <label className="display_choices_input-label">
+      <div style={{display: "inline-flex", marginTop:"6px", marginRight:"10px" }}>
+        הצג את רשימות השמירה העתידיות
+        &nbsp; &nbsp;
+        <BlueWiteButton
+          width="50px"
+          fontSize="10px"
+          height="20px"
+          value="הצג"
+          onClick={HandleDisplayClick}
+          fontWeight="normal"
         />
       </div>
+      </label>
+      </div>
       <div>
+      <br/>
+      <div style={{backgroundColor:"#e8e8e8f7", height:"30px", width:"600px"}}>
         <label className="display_choices_input-label">
-          <input
-            type="radio"
-            name="display_mode"
-            value="rolling"
-            style={{ marginRight: "5px" }}
-          />
+        <div style={{display: "inline-flex", marginTop:"6px", marginRight:"10px" }}>
           בחר רשימה להצגה
-        </label>&nbsp;
+        &nbsp;
         <select
           value={listChoise}
           name="listChoise"
           onChange={handleOnChange}
-          style={{ marginTop: "10px" }}
         >
           <option value="one">One</option>
           <option value="two">Two</option>
           <option value="three">Three</option>
-        </select>
-      </div>
-      <div className="display_bottun">
-        <Button1
+        </select>&nbsp;&nbsp;
+        <BlueWiteButton
           width="50px"
           fontSize="10px"
-          height="15px"
+          height="20px"
           value="הצג"
           onClick={HandleDisplayClick}
-          textColor="white"
-          onMouseOverTextColor="#183670"
-          onMouseOutTextColor="white"
-          color="#183670"
-          onMouseOverColor="white"
-          onMouseOutColor="#183670"
-          borderColor="white"
-          mouseborderColor="#183670"
-          outBorderColor="white"
-          bottunClickColor="white"
           fontWeight="normal"
         />
+        </div>
+        </label>
+        </div>
       </div>
+      <br/>
+      
+      <br/>
       
     </div>
       )}

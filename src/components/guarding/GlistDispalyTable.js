@@ -6,11 +6,10 @@ function GlistDispalyTable ({apiResponse})  {
 
     return(
         <div className="glist_table" style={{ display: 'flex', justifyContent: 'right', alignItems: 'center',  direction: 'rtl' }}>
-
-        <div >
-            <div><h3>רשימת שמירה ל{apiResponse.list_day}&nbsp;ה-{apiResponse.list_date}&nbsp;</h3></div>
-            <div>עמדה:&nbsp;{apiResponse.position_id.position_name}</div>
-            <div><br/>
+        <div>
+            <div style={{marginTop:"40px"}}><h3>רשימת שמירה ל{apiResponse.list_day}&nbsp;ה-{apiResponse.list_date}&nbsp;</h3></div>
+            <div style={{marginTop:"-20px"}}>עמדה:&nbsp;{apiResponse.position_id.position_name}</div>
+            <div>
             {Object.values(apiResponse.shifts).map((shift, index) => (
                     <table key={index} style={{border: '1px solid', backgroundColor: '#fcfcde'  }}>
                         <tbody>
@@ -29,9 +28,7 @@ function GlistDispalyTable ({apiResponse})  {
                                             </td>
                                             <td className="input-label" style={{ width: '80px'}}>{guard.phone1}</td>
                                             <td className={guard.armed1 ? "armed" : "not-armed"} style={{ width: '30px'}}>{guard.armed1 ? "חמוש" : "לא חמוש"}&nbsp;&nbsp;</td>
-                                            
                                         </React.Fragment>
-                                        
                                 ))}
                             </tr>   
                         </tbody>

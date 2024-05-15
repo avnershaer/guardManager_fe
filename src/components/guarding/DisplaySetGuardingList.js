@@ -41,10 +41,6 @@ function DisplaySetGuardingList(props) {
     });
   };
 
-  if (props.numOfLists > "7") {
-    return null; 
-  }
-
   if (loading) {
     // Display "Please wait" message while loading
     return <div className="loading">...אנא המתן</div>;
@@ -78,7 +74,7 @@ function DisplaySetGuardingList(props) {
           {tableVisibility[index] && (
             <div>
               <GlistDispalyTable apiResponse={detail} displayGuardingList={props.displayGuardingList}/>
-              <div className="table-buttons" style={{ textAlign: 'right' }}>
+              <div className="table-buttons" style={{ textAlign: 'right'}}>
                 <Button1 type="submit" width="100px" fontSize='10px' height="15p  x" 
                             textColor="red" onMouseOverTextColor="yellow" onMouseOutTextColor="red"
                             color="yellow" onMouseOverColor="red" onMouseOutColor="yellow"
@@ -90,9 +86,8 @@ function DisplaySetGuardingList(props) {
                           color="green" onMouseOverColor="yellow" onMouseOutColor="green"
                           borderColor="yellow" mouseborderColor="green" outBorderColor="yellow"    
                           bottunClickColor="#06e806" value='שמור' />
-              
-                
               </div>
+              <br/>
             </div>
           )}
         </div>

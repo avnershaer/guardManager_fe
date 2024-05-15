@@ -14,6 +14,7 @@ import GListPanel from "./components/panels/gListPanel";
 import ShiftsPanel from "./components/panels/ShiftsPanel";
 import GuardProcedures from "./components/temps/GuardProcedures";
 import GateManual from "./components/temps/GateManual";
+import DisplayGuardingList from "./components/guarding/DisplayGuardingList";
 
 function App() {
   return (
@@ -35,6 +36,7 @@ function App() {
             <Route path="GetFamiliesList" element={<GetFamiliesList/>}/>
             <Route path="DisplaySetGuardingList" element={<DisplaySetGuardingList/>}/>
             <Route path="GetGuardingList" element={<GetGuardingList/>}/>
+            <Route path="DisplayGuardingList" element={<DisplayGuardingList/>}/>
             <Route path="DisplayFutuShifts" element={<DisplayFutuShifts/>}/>
             <Route path="GateManual" element={<GateManual/>}/>
             <Route path="GuardProcedures" element={<GuardProcedures/>}/>
