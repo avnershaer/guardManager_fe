@@ -1,5 +1,5 @@
 import React from "react";
-import {useNavigate } from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 import Button1 from "../buttons/button1";
 
 function GListPanel(){

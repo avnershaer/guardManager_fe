@@ -38,7 +38,7 @@ function BlueWiteButton(props) {
           width: props.width, 
           height: props.height,
           fontSize: props.fontSize,
-          fontWeight: props.fontWeight
+          fontWeight: props.fontWeight,
           //*borderRadius: props.buttonShape === "rounded" ? "15%" : "50"/*
         }}
       >

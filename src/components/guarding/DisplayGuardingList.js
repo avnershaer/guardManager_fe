@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import GuardListTable from "./GuardListTable";
 import BlueWiteButton from "../buttons/BlueWiteButton";
+import ListBetweenDates from "../displayListComps/ListBetweenDates";
 
 
 function DisplayGuardingList() {
@@ -17,7 +18,7 @@ function DisplayGuardingList() {
 
 
   const handleOnChange = (event) => {
-    const { name, value } = event.target;
+    const {name, value} = event.target;
     if (name === 'listDate') {
       setListDate(value);
       setParmForApiCall(value); 
@@ -71,42 +72,9 @@ function DisplayGuardingList() {
       ) : (
     <div className="display_choices">
       <div>
-      <div style={{backgroundColor:"#e8e8e8f7", height:"30px", width:"600px"}}>
-        <label className="display_choices_input-label">
-          <div style={{display: "inline-flex" , marginTop:"6px", marginRight:"10px" }}>
-          הצג רשימות שמירה מתאריך
-        &nbsp;
-        &nbsp;
-        <input 
-          type="date"
-          name="FromlistDate"
-          value={fromlistDate}
-          onChange={handleOnChange}
-         
-        /> &nbsp; &nbsp;
-        עד לתאריך
-        &nbsp;  
-        &nbsp;
-        <input 
-          type="date"
-          name="TolistDate"
-          value={toListDate}
-          onChange={handleOnChange}
-         
-        /> &nbsp; &nbsp;
-        <BlueWiteButton
-          width="50px"
-          fontSize="10px"
-          height="20px"
-          value="הצג"
-          onClick={HandleDisplayClick}
-          fontWeight="normal"
-        />
-        </div>
-        </label>
-      </div>
-      <br/>
-      <div style={{backgroundColor:"#e8e8e8f7", height:"30px", width:"600px"}}>
+      <ListBetweenDates/>
+      
+      <div style={{backgroundColor:"#e8e8e8f7", height:"30px", marginBottom:"6px", width:"600px"}}>
         <label className="display_choices_input-label">
           <div style={{display: "inline-flex", marginTop:"6px", marginRight:"10px" }}>
           הצג רשימה על פי תאריך

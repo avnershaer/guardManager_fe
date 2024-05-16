@@ -27,7 +27,6 @@ function App() {
         <Routes>
           <Route path='gListPanel' element={<GListPanel/>}></Route>
           <Route path='ShiftsPanel' element={<ShiftsPanel/>}></Route>
-          
         </Routes>
       </div>
       <div className="content-wrapper">
@@ -40,11 +39,9 @@ function App() {
             <Route path="DisplayFutuShifts" element={<DisplayFutuShifts/>}/>
             <Route path="GateManual" element={<GateManual/>}/>
             <Route path="GuardProcedures" element={<GuardProcedures/>}/>
-
           </Routes>
         </div>
         <div className="content-bar">
-         
           <ContentBar/>
         </div>
       </div>
