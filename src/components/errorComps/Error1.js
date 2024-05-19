@@ -10,7 +10,7 @@ function Error1(props){
 
     return (
         <div className="error">
-            Error: {props.error}&nbsp;&nbsp;&nbsp;&nbsp;
+             {props.error}&nbsp;&nbsp;&nbsp;&nbsp;
             <BlueWiteButton
                 width="150px"
                 fontSize="10px"

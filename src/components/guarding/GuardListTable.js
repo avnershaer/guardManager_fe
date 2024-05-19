@@ -14,7 +14,7 @@ function GuardListTable({ apiResponse }) {
         {apiResponse.Details.map((detail, index) => (
           <div key={index}>
             <div className="table-title" style={{textAlign: 'right', marginRight: "120px"}}>
-              <h3>רשימת שמירה ל&nbsp;ה-{detail.glist_date}&nbsp;</h3>
+              <h3>רשימת שמירה ל{detail.glist_day}&nbsp;ה-{detail.glist_date}&nbsp;</h3>
             </div>
             <div style={{textAlign: 'right'}}>
               עמדה:&nbsp;{detail.glist_position_id.position_name}
@@ -56,6 +56,6 @@ function GuardListTable({ apiResponse }) {
       </div>
     </div>
   );
-}
+};
 
 export default GuardListTable;

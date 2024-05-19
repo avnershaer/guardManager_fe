@@ -15,6 +15,7 @@ function DisplayGuardingList() {
   const [displayGlist, setDisplayGlist] = useState(false);
   const [fromlistDate, setFromlistDate] = useState('');
   const [toListDate, setToListDate] = useState('');
+  const [displayChoices, setdisplayChoices] = useState(true);
 
 
   const handleOnChange = (event) => {
@@ -70,6 +71,7 @@ function DisplayGuardingList() {
       {displayGlist ? (
       <GuardListTable apiResponse={apiResponse}/>
       ) : (
+      displayChoices && (
     <div className="display_choices">
       <div>
       <ListBetweenDates/>
@@ -148,7 +150,7 @@ function DisplayGuardingList() {
       <br/>
       
     </div>
-      )}
+      ))}
       </div>
   );
 }

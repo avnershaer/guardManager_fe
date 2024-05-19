@@ -2,7 +2,8 @@ import React, {useState,useEffect} from "react";
 import BlueWiteButton from "../buttons/BlueWiteButton";
 import axios from "axios";
 import Error1 from "../errorComps/Error1";
-import DisplaySetGuardingList from "../guarding/DisplaySetGuardingList";
+import GlistDispalyTable from "../guarding/GlistDispalyTable";
+import GuardListTable from "../guarding/GuardListTable";
 
 function ListBetweenDates() {
 
@@ -12,7 +13,8 @@ function ListBetweenDates() {
     const [error, setError] = useState('');
     const [displayChoice, setDisplayListChoice] = useState(true);
     const [displayError, setDisplayError] = useState(false);
-
+    const [responseErrDetails, setResponnseErrDetails] = useState(false)
+    const [displayTables, setDisplayTables] = useState(false)
 
     const HandleOnChange = (event) => {
         const {name, value} = event.target;
@@ -27,14 +29,21 @@ function ListBetweenDates() {
 
     const HandleOnClick = () => {
         if (date1 && date2) {
-            axios.post('/get_lists_by_dates', { date1, date2 })
+            axios.get(`/get_lists_by_dates/${date1}/${date2}`)
                 .then(result => {
                     console.log('LISTS BY DATES:', result.data);
-                    setApiResponse(result.data);   
+                    setApiResponse(result.data);  
+                    setDisplayTables(true)
                 })
                 .catch(err => {
                     console.log('ERROR:', err);
                     setError(err);
+                    if (err.response && err.response.data && err.response.data.status === 'none') {
+                        setResponnseErrDetails(true);
+                    } else {
+                        setResponnseErrDetails(false);
+                    }
+
                 });
         }
     };
@@ -48,6 +57,8 @@ function ListBetweenDates() {
         if (error) {
             setDisplayError(true);
             setDisplayListChoice(false);
+            setDate1('')
+            setDate2('')
         }
     }, [error]);
 
@@ -83,8 +94,23 @@ function ListBetweenDates() {
             </label>
         </div>
         )}
-        {!displayChoice && error && (
-            <div><Error1 error={error.message} displayInput={displayInput}/></div> 
+        {displayTables && (
+            <div>
+                <GuardListTable apiResponse={apiResponse} displayGuardingList={true}/>
+            </div>
+        )}
+        {!displayChoice && error && !responseErrDetails && (
+          <div>
+            <Error1 error={error.message} displayInput={displayInput} />
+          </div>
+        )}
+        {!displayChoice && error && responseErrDetails && (
+          <div>
+            <Error1
+            error={error.response.data.details}
+            displayInput={displayInput}
+            />
+          </div>
         )}
       </div>
   ) 
