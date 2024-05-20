@@ -2,10 +2,9 @@ import React, {useState,useEffect} from "react";
 import BlueWiteButton from "../buttons/BlueWiteButton";
 import axios from "axios";
 import Error1 from "../errorComps/Error1";
-import GlistDispalyTable from "../guarding/GlistDispalyTable";
 import GuardListTable from "../guarding/GuardListTable";
 
-function ListBetweenDates() {
+function ListBetweenDates({hideListByDate}) {
 
     const [date1, setDate1] = useState('');
     const [date2, setDate2] = useState('');
@@ -33,7 +32,9 @@ function ListBetweenDates() {
                 .then(result => {
                     console.log('LISTS BY DATES:', result.data);
                     setApiResponse(result.data);  
-                    setDisplayTables(true)
+                    setDisplayTables(true);
+                    setDisplayListChoice(false);
+                    hideListByDate();
                 })
                 .catch(err => {
                     console.log('ERROR:', err);
@@ -43,7 +44,6 @@ function ListBetweenDates() {
                     } else {
                         setResponnseErrDetails(false);
                     }
-
                 });
         }
     };
