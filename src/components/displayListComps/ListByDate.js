@@ -5,7 +5,7 @@ import GuardListTable from "../guarding/GuardListTable";
 import Error1 from "../errorComps/Error1";
 
 
-function ListByDate ({hideListBetweenDates}){
+function ListByDate (props){
 
     const [listDate, setListDate] = useState("");
     const [apiResponse, setApiResponse] = useState('');
@@ -33,7 +33,10 @@ function ListByDate ({hideListBetweenDates}){
                     setApiResponse(result.data);  
                     setDisplayTables(true);
                     setDisplayListChoice(false);
-                    hideListBetweenDates();
+                    props.hideListBetweenDates();
+                    props.hidePosDateListCallback();
+                    props.hideChooseListCallback();
+                    props.hideDisplayFutuLists();
                     setError('');
                 })
                 .catch(err => {
@@ -53,7 +56,6 @@ function ListByDate ({hideListBetweenDates}){
         setDisplayListChoice(inputState);
     };
 
-
     useEffect(() => {
         if (error) {
             setDisplayError(true);
@@ -62,53 +64,43 @@ function ListByDate ({hideListBetweenDates}){
         }
     }, [error]);
 
-
     return (
         <div>
-           {displayChoice && (
-        <div style={{backgroundColor:"#e8e8e8f7", height:"30px", marginBottom:"6px", width:"600px"}}>
-        <label className="display_choices_input-label">
-          <div style={{display: "inline-flex", marginTop:"6px", marginRight:"10px" }}>
-        הצג רשימות שמירה לתאריך&nbsp;
-        <input 
-          type="date"
-          name="listDate"
-          value={listDate}
-          onChange={HandleOnChange}
-         
-        /> &nbsp; &nbsp;
-          <BlueWiteButton
-          width="50px"
-          fontSize="10px"
-          height="20px"
-          value="הצג"
-          onClick={HandleOnClick}
-          fontWeight="normal"
-        />
-        </div>
-         </label>
-      </div>
+          {displayChoice && (
+            <div className="display_choice_container">
+              <label className="display_choices_input-label">
+                <div className="display_choice_inline">
+                  הצג רשימות שמירה לתאריך&nbsp;   
+                  <input 
+                    type="date"
+                    name="listDate"
+                    value={listDate}
+                    onChange={HandleOnChange}
+
+                  /> &nbsp; &nbsp;
+                    <BlueWiteButton
+                    width="50px"
+                    fontSize="10px"
+                    height="20px"
+                    value="הצג"
+                    onClick={HandleOnClick}
+                    fontWeight="normal"
+                  />
+                </div>
+              </label>
+            </div>
            )}
-      {displayTables && (
-          <div>
-              <GuardListTable apiResponse={apiResponse} displayGuardingList={true} />
-        </div>
+          {displayTables && (
+          <div><GuardListTable apiResponse={apiResponse} displayGuardingList={true}/></div>
       )}
-      {displayError && error && !responseErrDetails && (  // <-- Marked change: use displayError instead of !displayChoice
-        <div>
-          <Error1 error={error.message} displayInput={displayInput} />
-        </div>
+      {displayError && error && !responseErrDetails && ( // use displayError instead of !displayChoice
+        <div><Error1 error={error.message} displayInput={displayInput}/></div>
       )}
-      {displayError && error && responseErrDetails && (  // <-- Marked change: use displayError instead of !displayChoice
-        <div>
-          <Error1
-            error={error.response.data.details}
-            displayInput={displayInput}
-          />
-        </div>
+      {displayError && error && responseErrDetails && ( // use displayError instead of !displayChoice
+        <div><Error1 error={error.response.data.details} displayInput={displayInput}/></div>
       )}
-    </div>
-  );
+      </div>
+    );
 };
 
 export default ListByDate;

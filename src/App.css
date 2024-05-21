@@ -39,8 +39,11 @@
   margin-top: -0px;
   display: flex;
   justify-content: flex-end;
+  flex-direction: column;
+  align-items: flex-end;
   
 }
+
 .content {
   align-items: 'flex-start';
   flex-direction: column;
@@ -240,3 +243,18 @@ table {
   margin-right: 120px; 
   overflow: initial;
 }
+
+.display_choice_container {
+  background-color: #e8e8e8f7;
+  height: 30px;
+  width: 600px;
+  margin-bottom: 5px;
+
+}
+
+.display_choice_inline {
+  display: inline-flex;
+  margin-top: 6px;
+  margin-right: 10px;
+}
+

@@ -15,6 +15,9 @@ import ShiftsPanel from "./components/panels/ShiftsPanel";
 import GuardProcedures from "./components/temps/GuardProcedures";
 import GateManual from "./components/temps/GateManual";
 import DisplayGuardingList from "./components/guarding/DisplayGuardingList";
+import ManagePanel from "./components/panels/ManagePanel";
+import ExchangesPanel from "./components/panels/ExchangesPanel";
+import RegularExchanges from "./components/Exchanges/RegularExchanges";
 
 function App() {
   return (
@@ -39,6 +42,9 @@ function App() {
             <Route path="DisplayFutuShifts" element={<DisplayFutuShifts/>}/>
             <Route path="GateManual" element={<GateManual/>}/>
             <Route path="GuardProcedures" element={<GuardProcedures/>}/>
+            <Route path="ManagePanel" element={<ManagePanel/>}/>
+            <Route path="ExchangesPanel" element={<ExchangesPanel/>}/>
+            <Route path="RegularExchanges" element={<RegularExchanges/>}/>
           </Routes>
         </div>
         <div className="content-bar">

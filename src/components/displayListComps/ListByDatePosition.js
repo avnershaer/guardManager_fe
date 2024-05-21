@@ -12,9 +12,9 @@ function ListByDatePosition(props){
     const [positionId, setPositionId] = useState('');
     const [apiResponse, setApiResponse] = useState('');
     const [displayTable, setDisplayTable] = useState(false)
-    const [displayChoice, setDisplayListChoice] = useState(true);
+    const [displayListChoice, setDisplayListChoice] = useState(true);
     const [responseErrDetails, setResponnseErrDetails] = useState(false)
-    const [displayError, setDisplayError] = useState(false);
+    //const [displayError, setDisplayError] = useState(false);
 
 
     const HandleOnChange = (event) => {
@@ -38,8 +38,10 @@ function ListByDatePosition(props){
                     setApiResponse(result.data);  
                     setDisplayTable(true);
                     setDisplayListChoice(false);
-                    props.hideListByDate();
-                    props.hideListBetweenDates();
+                    if (props.hideListByDate) props.hideListByDate();
+                    if (props.hideListBetweenDates) props.hideListBetweenDates();
+                    if (props.hideChooseListCallback) props.hideChooseListCallback();
+                    if (props.hideDisplayFutuLists) props.hideDisplayFutuLists();
                 })
                 .catch(err => {
                     console.log('ERROR:', err);
@@ -54,7 +56,7 @@ function ListByDatePosition(props){
     };
     
     function displayInput(errState ,inputState){
-        setDisplayError(errState);
+        //setDisplayError(errState);
         setDisplayListChoice(inputState);
     };
     
@@ -81,10 +83,10 @@ function ListByDatePosition(props){
 
     return(
         <div>
-            {displayChoice && (
-            <div style={{backgroundColor:"#e8e8e8f7", height:"30px", marginBottom:"6px", width:"600px"}}>
+            {displayListChoice && (
+            <div className="display_choice_container">
                 <label className="display_choices_input-label">
-                    <div style={{display: "inline-flex", marginTop:"6px", marginRight:"10px" }}>
+                    <div className="display_choice_inline">
                         הצג רשימה על פי תאריך&nbsp;&nbsp;
                         <input 
                           type="date"
@@ -122,12 +124,12 @@ function ListByDatePosition(props){
                 <GuardListTable apiResponse={apiResponse} displayGuardingList={true}/>
             </div>
         )}
-        {!displayChoice && error && !responseErrDetails && (
+        {!displayListChoice && error && !responseErrDetails && (
           <div>
             <Error1 error={error.message} displayInput={displayInput} />
           </div>
         )}
-        {!displayChoice && error && responseErrDetails && (
+        {!displayListChoice && error && responseErrDetails && (
           <div>
             <Error1
             error={error.response.data.details}

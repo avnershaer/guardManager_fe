@@ -34,7 +34,8 @@ function ChooseList(props){
                     setDisplayListChoice(false);
                     props.hideListByDate();
                     props.hideListBetweenDates();
-                    props.hideChooseList();
+                    props.hidePosDateListCallback();
+                    props.hideDisplayFutuLists();
                 })
                 .catch(err => {
                     console.log('ERROR:', err);
@@ -76,9 +77,9 @@ function ChooseList(props){
         
         <div>
             {displayChoice && (
-            <div style={{backgroundColor:"#e8e8e8f7", height:"30px", width:"600px"}}>
+            <div className="display_choice_container">
                 <label className="display_choices_input-label">
-                    <div style={{display: "inline-flex", marginTop:"6px", marginRight:"10px" }}>
+                    <div className="display_choice_inline">
                     בחר רשימה להצגה&nbsp;
                     <select
                       value={listId}

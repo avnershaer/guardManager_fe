@@ -4,7 +4,7 @@ import axios from "axios";
 import Error1 from "../errorComps/Error1";
 import GuardListTable from "../guarding/GuardListTable";
 
-function ListBetweenDates({hideListByDate}) {
+function ListBetweenDates(props) {
 
     const [date1, setDate1] = useState('');
     const [date2, setDate2] = useState('');
@@ -34,7 +34,10 @@ function ListBetweenDates({hideListByDate}) {
                     setApiResponse(result.data);  
                     setDisplayTables(true);
                     setDisplayListChoice(false);
-                    hideListByDate();
+                    props.hidePosDateListCallback();
+                    props.hideListByDate();
+                    props.hideChooseListCallback();
+                    props.hideDisplayFutuLists();
                 })
                 .catch(err => {
                     console.log('ERROR:', err);
@@ -65,9 +68,9 @@ function ListBetweenDates({hideListByDate}) {
     return (
         <div>
         {displayChoice && (
-        <div style={{backgroundColor:"#e8e8e8f7", height:"30px", width:"600px", marginBottom:"5px"}}>
+        <div className="display_choice_container">
             <label className="display_choices_input-label">
-                <div style={{display: "inline-flex" , marginTop:"6px", marginRight:"10px" }}>
+                <div className="display_choice_inline">
                     הצג רשימות שמירה מתאריך&nbsp;&nbsp;
                     <input 
                     type="date"
