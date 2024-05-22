@@ -5,8 +5,17 @@ function RegularExchanges(props){
 
     return (
 
-        <div>
-            <ListByDatePosition/>
+        <div style={{textAlign:"center"}}>
+            להחלפת שומר הצג את רשימת השמירה ע"פ תאריך ועמדה ובחר שומר להחלפה:
+            <div 
+        style={{
+          display: "flex", 
+          justifyContent: "flex-end", 
+          alignItems: "center", 
+          flexDirection: "column", 
+          direction: "rtl"
+        }}><ListByDatePosition/></div>
+           
         </div>
 
     )
