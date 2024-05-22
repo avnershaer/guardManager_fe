@@ -33,6 +33,7 @@ function BlueWiteButton(props) {
         onMouseOut={handleMouseOut}
         style={{
           backgroundColor: color,
+          borderRadius: "10px",
           border: `1px solid ${borderColor}`,
           color: textColor,
           width: props.width, 

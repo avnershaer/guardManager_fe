@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, {useState, useEffect} from "react";
-
+import OkExchangeMessage from "./OkExchangeMessage";
 
 
 function DisplayExchangeGuardList(props){
@@ -8,6 +8,7 @@ function DisplayExchangeGuardList(props){
     const [guardsList, setGuardsList] = useState('');
     const [error, setError] = useState('');
     const [substituteGuardId, setSubstituteGuardId] = useState('');
+    const [displayOkExchangeMessage, setDisplayOkExchangeMessage] = useState(false);
 
     const dataForExchang = {
         substituteGuardId:substituteGuardId,
@@ -29,6 +30,7 @@ function DisplayExchangeGuardList(props){
     const HandleOnChange = (event) => {
         const selectedguard = event.target.value;
         setSubstituteGuardId(selectedguard);
+        setDisplayOkExchangeMessage(true);
         console.log('selectedguard:', selectedguard);
 
     };
@@ -48,9 +50,9 @@ function DisplayExchangeGuardList(props){
                     padding: "5px",
                     borderRadius: "5px",
                     border: "1px solid #ccc",
-                    backgroundColor: "rgb(97, 229, 238)",
+                    backgroundColor: "#d4dceb",
                     color: "#183670",
-                    fontSize: "16px",
+                    fontSize: "14px",
                     fontWeight: "bold",
                   }}
                   >
@@ -62,16 +64,18 @@ function DisplayExchangeGuardList(props){
                 style={{
                 backgroundColor: "#183670", // Adjust option background color
                 color: "white", // Adjust option text color
-                fontSize: "18px",
+                fontSize: "14px",
                 fontWeight: "normal",
               }}>
                     {guard.family_name}&nbsp;{guard.name1}&nbsp;{guard.name2}&nbsp;{guard.family_id}
                 </option>
                 ))}
               </select>
+             
             </div>
+            <br/>
             <div>
-
+               {displayOkExchangeMessage && <OkExchangeMessage selectedRow={props.selectedRow}/>}
             </div>
         </div>
     );

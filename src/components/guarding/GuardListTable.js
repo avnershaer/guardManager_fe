@@ -38,9 +38,9 @@ function GuardListTable({ apiResponse }) {
             <div style={{ display: 'flex', justifyContent: 'center', flexDirection: 'column', alignItems: 'center' }}>
                  
               {detail.shifts.map((shift, shiftIndex) => (
-                <table key={shiftIndex} style={{ border: '1px solid', borderColor:"white", backgroundColor:'rgb(225,225,225)',  direction: 'rtl' }}>
+                <table key={shiftIndex} style={{borderRadius:'10px',  border: '1px solid', borderColor:"white", backgroundColor:'rgb(225,225,225)',  direction: 'rtl' }}>
                   <tbody>
-                  <tr >
+                  <tr>
                       <td style={{width:"40px"}}>&nbsp;{shift.shift_hour}&nbsp;</td>
                       
                       {shift.family_id.map((guard, guardIndex) => (
@@ -58,7 +58,8 @@ function GuardListTable({ apiResponse }) {
                         height="20px"
                         value="החלף"
                         onClick={() => handleRowClick({
-                          rowIndex:shiftIndex, 
+                          rowIndex:shiftIndex,
+                          guardIndex: guardIndex, 
                           glistDay:detail.glist_day, 
                           glistDate:detail.glist_date, 
                           posName:detail.glist_position_id.position_name,
@@ -68,11 +69,11 @@ function GuardListTable({ apiResponse }) {
                         })}
                         fontWeight="normal"
                         /></td>
-                          <td style={selectedRow && selectedRow.rowIndex === shiftIndex ? { backgroundColor: 'rgb(97, 229, 238)',  width: '120px', textAlign:"center"  }:{ width: '120px', textAlign:"center" }}>{guard.family_name}&nbsp;&nbsp;{guard.name1} &nbsp;&nbsp;
+                          <td style={selectedRow && selectedRow.rowIndex === shiftIndex && selectedRow.guardIndex === guardIndex ? { backgroundColor: 'rgb(97, 229, 238)',  width: '120px', textAlign:"center"  }:{ width: '120px', textAlign:"center" }}>{guard.family_name}&nbsp;&nbsp;{guard.name1} &nbsp;&nbsp;
                      
                         </td>
                        
-                          <td className="input-label" style={selectedRow && selectedRow.rowIndex === shiftIndex ? { backgroundColor: 'rgb(97, 229, 238)',   width: '80px', paddingLeft:"10px"  }:{ width: '80px', paddingLeft:"10px" }}>{guard.phone1}</td>
+                          <td className="input-label" style={selectedRow && selectedRow.rowIndex === shiftIndex && selectedRow.guardIndex === guardIndex ? { backgroundColor: 'rgb(97, 229, 238)',   width: '80px', paddingLeft:"10px"  }:{ width: '80px', paddingLeft:"10px" }}>{guard.phone1}</td>
                           <td className={guard.armed1 ? "armed" : "not-armed"} style={{ width: '30px', paddingLeft:"50px" }}>{guard.armed1 ? "חמוש" : "לא חמוש"}&nbsp;&nbsp;</td>
                         </React.Fragment>
                       ))}
@@ -82,7 +83,7 @@ function GuardListTable({ apiResponse }) {
                
               ))}
                <br/>
-               {displayGuardsList && (<DisplayExchangeGuardList/>)} 
+               {displayGuardsList && (<DisplayExchangeGuardList selectedRow={selectedRow}/>)} 
 
             </div>
           </div>
