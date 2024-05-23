@@ -24,8 +24,6 @@ function GuardListTable({ apiResponse }) {
 
   return (
     <div style={{ direction: 'rtl'}} >
-
-
       <div className="glist-table" style={{ direction: 'ltr', maxHeight: '70vh', overflowY: 'auto',  marginRight:"5px"}}>
         {apiResponse.Details.map((detail, index) => (
           <div key={index}>
@@ -55,7 +53,7 @@ function GuardListTable({ apiResponse }) {
                           <td><BlueWiteButton
                         width="50px"
                         fontSize="10px"
-                        height="20px"
+                        heigh t="20px"
                         value="החלף"
                         onClick={() => handleRowClick({
                           rowIndex:shiftIndex,
@@ -65,7 +63,7 @@ function GuardListTable({ apiResponse }) {
                           posName:detail.glist_position_id.position_name,
                           shiftHour:shift.shift_hour,
                           guardLastName:guard.family_name,
-                          guardFirstName:guard.armed1
+                          guardFirstName:guard.name1
                         })}
                         fontWeight="normal"
                         /></td>

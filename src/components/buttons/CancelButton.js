@@ -1,25 +1,25 @@
 import React, { useState } from "react";
 
-function BlueWiteButton(props) {
-  const [color, setColor] = useState('#183670');
+function CancelButton(props) {
+  const [color, setColor] = useState('red');
   const [borderColor, setBorderColor] = useState('white');
   const [textColor, setTextColor] = useState('white');
 
 
   function handleMouseOver() {
-    setColor('white');
-    setBorderColor('#183670');
-    setTextColor('#183670');
+    setColor('pink');
+    setBorderColor('red');
+    setTextColor('red');
   }
 
   function handleMouseOut() {
-    setColor('#183670');
+    setColor('red');
     setBorderColor('white');
     setTextColor('white');
   }
 
   function handleButtonClick() {
-    setColor('white');
+    setColor('pink');
     console.log("Button clicked");
     if (props.onClick) {
       props.onClick();
@@ -48,4 +48,4 @@ function BlueWiteButton(props) {
   );
 }
 
-export default BlueWiteButton; 
+export default CancelButton; 

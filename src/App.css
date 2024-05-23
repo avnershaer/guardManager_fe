@@ -170,7 +170,7 @@ table {
 .get-guarding-list-input {
   margin-right: 30px;
   margin-top:-20px;
-  background-color:white;
+  background-color:rgb(70, 250, 30);
   text-align: right; 
   justify-content: right;
   direction: rtl;
@@ -260,3 +260,41 @@ table {
   margin-right: 10px;
 }
 
+.custom-small-button {
+  width: 5px;
+  height: 40px;
+}
+
+.custom-extra-small-button {
+  width: 60px;
+  height: 30px;
+}
+
+.custom-small-button {
+  background-color: #183670 !important;
+  color: white !important;
+  width: 100px !important;
+  height: 20px !important;
+}
+
+.awssld__content--secondary {
+  background-color: blue !important; /* Background color */
+  color: white !important; /* Text color */
+  border-color: darkblue !important; /* Border color */
+}
+
+
+.custom-medium-button {
+  width: 120px;
+  height: 60px;
+}
+
+.custom-large-button {
+  width: 160px;
+  height: 80px;
+}
+
+.custom-extra-large-button {
+  width: 200px;
+  height: 100px;
+}
