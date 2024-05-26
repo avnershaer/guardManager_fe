@@ -1,16 +1,20 @@
 import React from "react";
 import BlueWiteButton from "../buttons/BlueWiteButton";
+import { useNavigate } from "react-router-dom";
 
-
-function Error1(props){
-
+function Error1(props) {
+    const navigate = useNavigate();
     const HandleOnClick = () => {
-        props.displayInput(false, true)
-    }
+        if (props.displayInput) {
+            props.displayInput(false, true);
+        } else {
+            navigate(`/${props.navigateTo}`);
+        }
+    };
 
     return (
         <div className="error">
-             {props.error}&nbsp;&nbsp;&nbsp;&nbsp;
+            {props.error}&nbsp;&nbsp;&nbsp;&nbsp;
             <BlueWiteButton
                 width="150px"
                 fontSize="10px"

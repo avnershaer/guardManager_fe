@@ -3,8 +3,15 @@ import ListByDatePosition from "../displayListComps/ListByDatePosition";
 
 function RegularExchanges(props){
 
-    return (
+    const [displayRegularExchanges, setDisplayRegularExchanges] = useState(true);
 
+    function displayRegularExchangesCallBack(){
+        setDisplayRegularExchanges(false);
+    };
+
+    return (
+        <div>
+        {displayRegularExchanges && (
         <div style={{textAlign:"center"}}>
             להחלפת שומר הצג את רשימת השמירה ע"פ תאריך ועמדה ובחר שומר להחלפה:
             <div 
@@ -14,10 +21,11 @@ function RegularExchanges(props){
           alignItems: "center", 
           flexDirection: "column", 
           direction: "rtl"
-        }}><ListByDatePosition/></div>
+        }}><ListByDatePosition displayRegularExchangesCallBack={displayRegularExchangesCallBack}/></div>
            
         </div>
-
+    )}
+    </div>
     )
 };
 

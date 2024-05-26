@@ -18,6 +18,7 @@ import DisplayGuardingList from "./components/guarding/DisplayGuardingList";
 import ManagePanel from "./components/panels/ManagePanel";
 import ExchangesPanel from "./components/panels/ExchangesPanel";
 import RegularExchanges from "./components/Exchanges/RegularExchanges";
+import ResponseApiExchangeMessage from "./components/Exchanges/ResponseApiExchangeMessage";
 
 function App() {
   return (
@@ -45,6 +46,7 @@ function App() {
             <Route path="ManagePanel" element={<ManagePanel/>}/>
             <Route path="ExchangesPanel" element={<ExchangesPanel/>}/>
             <Route path="RegularExchanges" element={<RegularExchanges/>}/>
+            <Route path="ResponseApiExchangeMessage" element={<ResponseApiExchangeMessage/>}/>
           </Routes>
         </div>
         <div className="content-bar">

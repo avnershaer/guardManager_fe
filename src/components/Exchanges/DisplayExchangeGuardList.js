@@ -7,13 +7,10 @@ function DisplayExchangeGuardList(props) {
   const [error, setError] = useState('');
   const [substituteGuard, setSubstituteGuard] = useState(null);
   const [displayOkExchangeMessage, setDisplayOkExchangeMessage] = useState(false);
-  const [displayRoll, setDisplayRoll] = useState(true);
-
 
   useEffect(() => {
     axios.get("/families_list")
       .then(result => {
-        console.log('families_data:', result.data);
         setGuardsList(result.data.Details);
       })
       .catch(err => {
@@ -26,18 +23,20 @@ function DisplayExchangeGuardList(props) {
     const selectedFamilyId = parseInt(event.target.value, 10);
     const selectedGuard = guardsList.find(guard => guard.family_id === selectedFamilyId);
     setSubstituteGuard(selectedGuard);
+    displayOkExchangeMessageCallBack();
+  };
+
+
+
+  function displayOkExchangeMessageCallBack(){
     setDisplayOkExchangeMessage(true);
   };
 
-  function dispalyRollCallBack(){
-    setDisplayRoll(false);
-  }
 
   return (
     
     <div style={{ direction: "rtl", textAlign:"center"}}>
-      <div>{displayOkExchangeMessage && <OkExchangeMessage dispalyRollCallBack={dispalyRollCallBack} substituteGuard={substituteGuard} selectedRow={props.selectedRow} />}<br/></div>
-      {displayRoll && (
+      <div>{displayOkExchangeMessage && <OkExchangeMessage displayRegularExchangesCallBack={props.displayRegularExchangesCallBack} substituteGuard={substituteGuard} selectedRow={props.selectedRow} />}<br/></div>
         <div className="rollList">
           <div>בחר שומר מחליף מתוך הרשימה הנגללת:</div>
             <div>
@@ -74,8 +73,8 @@ function DisplayExchangeGuardList(props) {
               </select>
             </div><br/>
         </div>
-      )}
     </div>
+    
   );
 };
 

@@ -3,12 +3,13 @@ import baseURL from "../../config";
 import BlueWiteButton from "../buttons/BlueWiteButton";
 import DisplayExchangeGuardList from "../Exchanges/DisplayExchangeGuardList";
 
-function GuardListTable({ apiResponse }) {
+function GuardListTable( { displayRegularExchangesCallBack, apiResponse }) {
   console.log('GuardListTable api-response:', apiResponse);
   const [displayExchangeButton, setDisplayExchangeButton] = useState(false)
   const [gurdsList, setGuardList] = useState('');
   const [selectedRow, setSelectedRow] = useState(null);
-  const [displayGuardsList, setDisplayGuardList] = useState(false);
+  const [displayExchangeGuardsList, setDisplayExchangeGuardList] = useState(false);
+  const [displayGuardsTable, setDisplayGuarTable] = useState(true);
 
   // Check if apiResponse, apiResponse.Details, and apiResponse.Details.length are valid
   if (!apiResponse || !apiResponse.Details || !Array.isArray(apiResponse.Details) || apiResponse.Details.length === 0) {
@@ -17,13 +18,13 @@ function GuardListTable({ apiResponse }) {
 
   const handleRowClick = (rowData) => {
     setSelectedRow(rowData);
-    setDisplayGuardList(true);
+    setDisplayExchangeGuardList(true);
     console.log('ROW DATA:', rowData)
   };
 
-
   return (
     <div style={{ direction: 'rtl'}} >
+      {displayGuardsTable && (
       <div className="glist-table" style={{ direction: 'ltr', maxHeight: '70vh', overflowY: 'auto',  marginRight:"5px"}}>
         {apiResponse.Details.map((detail, index) => (
           <div key={index}>
@@ -63,7 +64,8 @@ function GuardListTable({ apiResponse }) {
                           posName:detail.glist_position_id.position_name,
                           shiftHour:shift.shift_hour,
                           guardLastName:guard.family_name,
-                          guardFirstName:guard.name1
+                          guardFirstName:guard.name1,
+                          shiftId:shift.shift_id,
                         })}
                         fontWeight="normal"
                         /></td>
@@ -81,12 +83,17 @@ function GuardListTable({ apiResponse }) {
                
               ))}
                <br/>
-               {displayGuardsList && (<DisplayExchangeGuardList selectedRow={selectedRow}/>)} 
-
+              
+              
             </div>
+
           </div>
         ))}
       </div>
+      
+      )}
+      {displayExchangeGuardsList && (<DisplayExchangeGuardList displayRegularExchangesCallBack={displayRegularExchangesCallBack} selectedRow={selectedRow}/>)} 
+
     </div>
   );
 };

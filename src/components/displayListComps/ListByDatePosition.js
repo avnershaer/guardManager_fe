@@ -121,7 +121,7 @@ function ListByDatePosition(props){
             )}
             {displayTable && (
             <div>
-                <GuardListTable apiResponse={apiResponse} displayGuardingList={true}/>
+                <GuardListTable displayRegularExchangesCallBack={props.displayRegularExchangesCallBack} apiResponse={apiResponse} displayGuardingList={true}/>
             </div>
         )}
         {!displayListChoice && error && !responseErrDetails && (

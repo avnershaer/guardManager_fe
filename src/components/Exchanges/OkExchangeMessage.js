@@ -1,13 +1,33 @@
 import React, {useState, useEffect} from "react";
 import OkButton from "../buttons/OkButton";
 import CancelButton from "../buttons/CancelButton";
+import axios from "axios";
+import ResponseApiExchangeMessage from "./ResponseApiExchangeMessage";
+import {useNavigate} from "react-router-dom";
+
+
 
 function OkExchangeMessage(props){
 
-    function handleOnClick(){
-        props.dispalyRollCallBack();
+    const [error, setError] = useState('');
+    const navigate = useNavigate();
+
+    function handleOkClick(){
+        navigate('/ResponseApiExchangeMessage', {
+            state: {
+                selectedRow:props.selectedRow,
+                substituteGuard:props.substituteGuard
+            }
+        });
+    }
+    
+    function handleCancelClick(){
+        navigate('/ExchangesPanel');
     }
 
+    
+    
+ 
     return (
 
         <div>
@@ -38,20 +58,22 @@ function OkExchangeMessage(props){
                             fontSize="10px"
                             height="20px"
                             value="אישור"
-                            onClick={handleOnClick}
+                            onClick={handleOkClick}
                         />&nbsp;&nbsp;&nbsp;
                         <CancelButton 
                             width="50px"
                             fontSize="10px"
                             height="20px"
                             value="ביטול"
+                            onClick={handleCancelClick}
                         />
                     </div>
 
-
+                    {error && <div className="error">Error: {error}</div>}
                     
 
             </div>
+
         </div>
     );
 };

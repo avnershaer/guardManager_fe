@@ -170,7 +170,7 @@ table {
 .get-guarding-list-input {
   margin-right: 30px;
   margin-top:-20px;
-  background-color:rgb(70, 250, 30);
+  background-color: white;
   text-align: right; 
   justify-content: right;
   direction: rtl;
@@ -222,6 +222,7 @@ table {
   height: 20px;
   font-weight: normal;
   border: 1px solid white; 
+  border-radius: 5px;
   
 }
 

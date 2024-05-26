@@ -42,7 +42,8 @@ function Button1(props) {
           width: props.width, 
           height: props.height,
           fontSize: props.fontSize,
-          fontWeight: props.fontWeight
+          fontWeight: props.fontWeight,
+          borderRadius:"5px" 
           //*borderRadius: props.buttonShape === "rounded" ? "15%" : "50"/*
         }}
       >
