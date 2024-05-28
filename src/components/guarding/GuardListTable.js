@@ -61,6 +61,7 @@ function GuardListTable( { displayRegularExchangesCallBack, apiResponse }) {
                           guardIndex: guardIndex, 
                           glistDay:detail.glist_day, 
                           glistDate:detail.glist_date, 
+                          posId: detail.glist_position_id.position_id,
                           posName:detail.glist_position_id.position_name,
                           shiftHour:shift.shift_hour,
                           guardId:guard.family_id,
