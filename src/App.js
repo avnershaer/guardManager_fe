@@ -19,6 +19,7 @@ import ManagePanel from "./components/panels/ManagePanel";
 import ExchangesPanel from "./components/panels/ExchangesPanel";
 import RegularExchanges from "./components/Exchanges/RegularExchanges";
 import ResponseApiExchangeMessage from "./components/Exchanges/ResponseApiExchangeMessage";
+import CrossExchange from "./components/Exchanges/CrossExchange";
 
 function App() {
   return (
@@ -47,6 +48,7 @@ function App() {
             <Route path="ExchangesPanel" element={<ExchangesPanel/>}/>
             <Route path="RegularExchanges" element={<RegularExchanges/>}/>
             <Route path="ResponseApiExchangeMessage" element={<ResponseApiExchangeMessage/>}/>
+            <Route path="CrossExchange" element={<CrossExchange/>}/>
           </Routes>
         </div>
         <div className="content-bar">

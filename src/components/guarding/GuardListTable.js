@@ -2,14 +2,18 @@ import React, {useState} from "react";
 import baseURL from "../../config";
 import BlueWiteButton from "../buttons/BlueWiteButton";
 import DisplayExchangeGuardList from "../Exchanges/DisplayExchangeGuardList";
+import ListByDatePosition from "../displayListComps/ListByDatePosition";
+import OkExchangeMessage from "../Exchanges/OkExchangeMessage";
 
-function GuardListTable( { displayRegularExchangesCallBack, apiResponse }) {
+function GuardListTable( {selectedRow1, typeOf, displayRegularExchangesCallBack, apiResponse }) {
   console.log('GuardListTable api-response:', apiResponse);
   const [displayExchangeButton, setDisplayExchangeButton] = useState(false)
-  const [gurdsList, setGuardList] = useState('');
+  const [CrossGuardList, setCrossGuardList] = useState(false);
   const [selectedRow, setSelectedRow] = useState(null);
   const [displayExchangeGuardsList, setDisplayExchangeGuardList] = useState(false);
   const [displayGuardsTable, setDisplayGuarTable] = useState(true);
+  const [displayApproveMessage, setDisplayApproveMessage] = useState(false);
+
 
   // Check if apiResponse, apiResponse.Details, and apiResponse.Details.length are valid
   if (!apiResponse || !apiResponse.Details || !Array.isArray(apiResponse.Details) || apiResponse.Details.length === 0) {
@@ -19,11 +23,25 @@ function GuardListTable( { displayRegularExchangesCallBack, apiResponse }) {
   const handleRowClick = (rowData) => {
     setSelectedRow(rowData);
     setDisplayExchangeGuardList(true);
+    
+    if (typeOf === 'cross') {
+      setCrossGuardList(true);
+      setDisplayExchangeGuardList(false);
+    }else if (typeOf === 'secCross') {
+      setCrossGuardList(true);
+      setDisplayExchangeGuardList(false);
+      setDisplayApproveMessage(true);
+      setSelectedRow({selectedRow1:selectedRow1, selectedRow2:rowData});
+    }
+
     console.log('ROW DATA:', rowData)
   };
 
   return (
     <div style={{ direction: 'rtl'}} >
+       {displayApproveMessage && (
+        <OkExchangeMessage selectedRow={selectedRow} />
+      )}
       {displayGuardsTable && (
       <div className="glist-table" style={{ direction: 'ltr', maxHeight: '70vh', overflowY: 'auto',  marginRight:"5px"}}>
         {apiResponse.Details.map((detail, index) => (
@@ -92,10 +110,22 @@ function GuardListTable( { displayRegularExchangesCallBack, apiResponse }) {
           </div>
         ))}
       </div>
-      
       )}
-      {displayExchangeGuardsList && (<DisplayExchangeGuardList displayRegularExchangesCallBack={displayRegularExchangesCallBack} selectedRow={selectedRow}/>)} 
-
+     
+      {displayExchangeGuardsList && (
+        <DisplayExchangeGuardList 
+        displayRegularExchangesCallBack={displayRegularExchangesCallBack} 
+        selectedRow={selectedRow}/>
+        )} 
+      {CrossGuardList && (
+        <div>בחר רשימת שמירה על פי תאריך ועמדה <br/>
+        ואז בחר שומר להחלפה בהצלבה עם השומר מעל:<br/>
+        <ListByDatePosition 
+        selectedRow={selectedRow}
+        typeOf='secCross'
+        />
+        </div>
+      )}
     </div>
   );
 };

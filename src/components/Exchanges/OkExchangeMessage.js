@@ -27,7 +27,7 @@ function OkExchangeMessage(props){
 
     
     
- 
+    console.log('PROPS:', props)
     return (
 
         <div>
@@ -48,9 +48,33 @@ function OkExchangeMessage(props){
                     <span style={{color:"#46fa1e"}}>{props.selectedRow.glistDate}</span>&nbsp;
                     <br/>
                     את&nbsp;- &nbsp;
-                    <span style={{backgroundColor:"#183670", color:"rgb(97, 229, 238)"}}>&nbsp;{props.selectedRow.guardLastName}&nbsp;{props.selectedRow.guardFirstName}&nbsp;</span>&nbsp;
+                    {props.selectedRow.selectedRow1 ? (
+                        <span style={{backgroundColor:"#183670", color:"rgb(97, 229, 238)"}}>&nbsp;
+                        {props.selectedRow.selectedRow1.guardLastName}&nbsp;
+                        {props.selectedRow.selectedRow1.guardFirstName}&nbsp;
+                        &nbsp;
+                        </span>
+                    ) : (
+                        <span style={{backgroundColor:"#183670", color:"rgb(97, 229, 238)"}}>&nbsp;
+                        {props.selectedRow.guardLastName}&nbsp;
+                        {props.selectedRow.guardFirstName}&nbsp;
+                        &nbsp;
+                        </span>
+                    )}
                     ב&nbsp;- &nbsp;
-                    <span style={{backgroundColor:"#183670", color:"yellow"}}>&nbsp;{props.substituteGuard.family_name}&nbsp;{props.substituteGuard.name1}&nbsp;{props.substituteGuard.name2}</span>&nbsp;
+                    {props.selectedRow.selectedRow2 ? (
+                      <span style={{backgroundColor:"#183670", color:"yellow"}}>&nbsp;
+                        {props.selectedRow.selectedRow2.guardLastName}&nbsp;
+                        {props.selectedRow.selectedRow2.guardFirstName}&nbsp;
+                        &nbsp;
+                      </span>
+                    ) : (
+                      <span style={{backgroundColor:"#183670", color:"yellow"}}>&nbsp;
+                        {props.substituteGuard.family_name}&nbsp;
+                        {props.substituteGuard.name1}&nbsp;
+                        {props.substituteGuard.name2}
+                      </span>
+                    )}
                     <span style={{color:"red", fontSize:"16px", fontWeight:"bolder"}}>?</span><br/>
                     <div style={{display:"inline-flex", marginTop:"3px"}}>
                         <OkButton 

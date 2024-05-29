@@ -4,6 +4,7 @@ import ListByDatePosition from "../displayListComps/ListByDatePosition";
 function RegularExchanges(props){
 
     const [displayRegularExchanges, setDisplayRegularExchanges] = useState(true);
+    const typeOf = 'rgular';
 
     function displayRegularExchangesCallBack(){
         setDisplayRegularExchanges(false);
@@ -21,7 +22,7 @@ function RegularExchanges(props){
           alignItems: "center", 
           flexDirection: "column", 
           direction: "rtl"
-        }}><ListByDatePosition displayRegularExchangesCallBack={displayRegularExchangesCallBack}/></div>
+        }}><ListByDatePosition typeOf={typeOf} displayRegularExchangesCallBack={displayRegularExchangesCallBack}/></div>
            
         </div>
     )}
