@@ -6,7 +6,7 @@ import {useNavigate} from "react-router-dom";
 
 
 
-function OkExchangeMessage(props){
+function OkCrossExchangeMessage(props){
 
     const [error, setError] = useState('');
     const navigate = useNavigate();
@@ -67,4 +67,4 @@ function OkExchangeMessage(props){
     );
 };
 
-export default OkExchangeMessage;
+export default OkCrossExchangeMessage;

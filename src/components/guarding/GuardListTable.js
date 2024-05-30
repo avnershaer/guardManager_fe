@@ -1,20 +1,23 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import baseURL from "../../config";
 import BlueWiteButton from "../buttons/BlueWiteButton";
 import DisplayExchangeGuardList from "../Exchanges/DisplayExchangeGuardList";
 import ListByDatePosition from "../displayListComps/ListByDatePosition";
 import OkExchangeMessage from "../Exchanges/OkExchangeMessage";
+import SecondGuardTableDisplay from "../Exchanges/SecondGuardTableDisplay";
 
-function GuardListTable( {selectedRow1, typeOf, displayRegularExchangesCallBack, apiResponse }) {
+function GuardListTable( {selectedRow1, typeOf, displaySecChooseGuardMsgCallBack,  displayRegularExchangesCallBack, apiResponse }) {
   console.log('GuardListTable api-response:', apiResponse);
   const [displayExchangeButton, setDisplayExchangeButton] = useState(false)
-  const [CrossGuardList, setCrossGuardList] = useState(false);
+  const [secondCrossGuardList, setSecondCrossGuardList] = useState(false);
   const [selectedRow, setSelectedRow] = useState(null);
   const [displayExchangeGuardsList, setDisplayExchangeGuardList] = useState(false);
   const [displayGuardsTable, setDisplayGuarTable] = useState(true);
   const [displayApproveMessage, setDisplayApproveMessage] = useState(false);
+  const [displayApproveCrossMessage, setDisplayApproveCrossMessage] = useState(false);
 
 
+  
   // Check if apiResponse, apiResponse.Details, and apiResponse.Details.length are valid
   if (!apiResponse || !apiResponse.Details || !Array.isArray(apiResponse.Details) || apiResponse.Details.length === 0) {
     return <div>No data available</div>;
@@ -24,18 +27,24 @@ function GuardListTable( {selectedRow1, typeOf, displayRegularExchangesCallBack,
     setSelectedRow(rowData);
     setDisplayExchangeGuardList(true);
     
+    
     if (typeOf === 'cross') {
-      setCrossGuardList(true);
       setDisplayExchangeGuardList(false);
+      setSecondCrossGuardList(true);
+
     }else if (typeOf === 'secCross') {
-      setCrossGuardList(true);
-      setDisplayExchangeGuardList(false);
-      setDisplayApproveMessage(true);
       setSelectedRow({selectedRow1:selectedRow1, selectedRow2:rowData});
+      setDisplayExchangeGuardList(false);
+      setDisplayApproveCrossMessage(true);
+      //displaySecChooseGuardMsgCallBack();
+      
+      console.log('selectedRow2:',selectedRow)
     }
 
     console.log('ROW DATA:', rowData)
   };
+
+
 
   return (
     <div style={{ direction: 'rtl'}} >
@@ -89,11 +98,40 @@ function GuardListTable( {selectedRow1, typeOf, displayRegularExchangesCallBack,
                         })}
                         fontWeight="normal"
                         /></td>
-                          <td style={selectedRow && selectedRow.rowIndex === shiftIndex && selectedRow.guardIndex === guardIndex ? { backgroundColor: 'rgb(97, 229, 238)',  width: '120px', textAlign:"center"  }:{ width: '120px', textAlign:"center" }}>{guard.family_name}&nbsp;&nbsp;{guard.name1} &nbsp;&nbsp;
-                     
-                        </td>
-                       
-                          <td className="input-label" style={selectedRow && selectedRow.rowIndex === shiftIndex && selectedRow.guardIndex === guardIndex ? { backgroundColor: 'rgb(97, 229, 238)',   width: '80px', paddingLeft:"10px"  }:{ width: '80px', paddingLeft:"10px" }}>{guard.phone1}</td>
+                          <td
+                              style={
+                                (typeOf === 'secCross' &&
+                                  selectedRow &&
+                                  selectedRow.selectedRow2 &&
+                                  selectedRow.selectedRow2.rowIndex === shiftIndex &&
+                                  selectedRow.selectedRow2.guardIndex === guardIndex) ||
+                                (selectedRow &&
+                                  selectedRow.rowIndex === shiftIndex &&
+                                  selectedRow.guardIndex === guardIndex)
+                                  ? { backgroundColor: 'rgb(97, 229, 238)', width: '120px', textAlign: 'center' }
+                                  : { width: '120px', textAlign: 'center' }
+                              }
+                            >
+                              {guard.family_name}&nbsp;&nbsp;{guard.name1} &nbsp;&nbsp;
+                            </td>
+
+                            <td
+                              className="input-label"
+                              style={
+                                (typeOf === 'secCross' &&
+                                  selectedRow &&
+                                  selectedRow.selectedRow2 &&
+                                  selectedRow.selectedRow2.rowIndex === shiftIndex &&
+                                  selectedRow.selectedRow2.guardIndex === guardIndex) ||
+                                (selectedRow &&
+                                  selectedRow.rowIndex === shiftIndex &&
+                                  selectedRow.guardIndex === guardIndex)
+                                  ? { backgroundColor: 'rgb(97, 229, 238)', width: '80px', paddingLeft: '10px' }
+                                  : { width: '80px', paddingLeft: '10px' }
+                              }
+                            >
+                              {guard.phone1}
+                            </td>
                           <td className={guard.armed1 ? "armed" : "not-armed"} style={{ width: '30px', paddingLeft:"50px" }}>{guard.armed1 ? "חמוש" : "לא חמוש"}&nbsp;&nbsp;</td>
                         </React.Fragment>
                       ))}
@@ -117,13 +155,8 @@ function GuardListTable( {selectedRow1, typeOf, displayRegularExchangesCallBack,
         displayRegularExchangesCallBack={displayRegularExchangesCallBack} 
         selectedRow={selectedRow}/>
         )} 
-      {CrossGuardList && (
-        <div>בחר רשימת שמירה על פי תאריך ועמדה <br/>
-        ואז בחר שומר להחלפה בהצלבה עם השומר מעל:<br/>
-        <ListByDatePosition 
-        selectedRow={selectedRow}
-        typeOf='secCross'
-        />
+      {secondCrossGuardList && (
+        <div><SecondGuardTableDisplay selectedRow={selectedRow}/>
         </div>
       )}
     </div>

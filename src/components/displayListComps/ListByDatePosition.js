@@ -3,6 +3,8 @@ import axios from "axios";
 import BlueWiteButton from "../buttons/BlueWiteButton";
 import GuardListTable from "../guarding/GuardListTable";
 import Error1 from "../errorComps/Error1";
+import SecondGuardListTable from "../Exchanges/SecondGuardListTable";
+import FirstGuardListTable from "./FirstGuardListTable";
 
 function ListByDatePosition(props){
 
@@ -14,7 +16,8 @@ function ListByDatePosition(props){
     const [displayTable, setDisplayTable] = useState(false)
     const [displayListChoice, setDisplayListChoice] = useState(true);
     const [responseErrDetails, setResponnseErrDetails] = useState(false)
-    //const [displayError, setDisplayError] = useState(false);
+    const [firstTable, setFirstTable] = useState(false);
+    const [secondTable, setSecondTable] = useState(false);
 
 
     const HandleOnChange = (event) => {
@@ -42,6 +45,16 @@ function ListByDatePosition(props){
                     if (props.hideListBetweenDates) props.hideListBetweenDates();
                     if (props.hideChooseListCallback) props.hideChooseListCallback();
                     if (props.hideDisplayFutuLists) props.hideDisplayFutuLists();
+                    if (props.typeOf === 'secCross') {
+                      setSecondTable(true); 
+                      setDisplayTable(false) ;
+                      props.displaySecChooseListMsgCallBack();
+                    }
+                    if (props.typeOf === 'cross') {
+                      setFirstTable(true); 
+                      setDisplayTable(false) ;
+                      props.displayGrdDateMsgCallBack();
+                    }
                 })
                 .catch(err => {
                     console.log('ERROR:', err);
@@ -118,6 +131,25 @@ function ListByDatePosition(props){
                     </div>
                 </label>
             </div>
+            )}
+            {firstTable && (
+              <div>
+                <FirstGuardListTable 
+                typeOf='cross'
+                apiResponse={apiResponse}
+                />
+              </div>
+            )}
+            {secondTable && (
+              <div>
+                <SecondGuardListTable 
+                selectedRow1={props.selectedRow} 
+                typeOf={props.typeOf} 
+                apiResponse={apiResponse}
+                displaySecChooseListMsgCallBack={props.displaySecChooseListMsgCallBack}
+                displaySecChooseGuardMsgCallBack={props.displaySecChooseGuardMsgCallBack}
+                />
+              </div> 
             )}
             {displayTable && (
             <div>
