@@ -5,6 +5,7 @@ import DisplayExchangeGuardList from "../Exchanges/DisplayExchangeGuardList";
 import ListByDatePosition from "../displayListComps/ListByDatePosition";
 import OkExchangeMessage from "../Exchanges/OkExchangeMessage";
 import SecondGuardTableDisplay from "../Exchanges/SecondGuardTableDisplay";
+import OkCrossExchangeMessage from "../Exchanges/OkCrossExchangeMessage";
 
 function GuardListTable( {selectedRow1, typeOf, displaySecChooseGuardMsgCallBack,  displayRegularExchangesCallBack, apiResponse }) {
   console.log('GuardListTable api-response:', apiResponse);
@@ -29,11 +30,12 @@ function GuardListTable( {selectedRow1, typeOf, displaySecChooseGuardMsgCallBack
     
     
     if (typeOf === 'cross') {
+      setSelectedRow({selectedRow1:rowData});
       setDisplayExchangeGuardList(false);
       setSecondCrossGuardList(true);
 
     }else if (typeOf === 'secCross') {
-      setSelectedRow({selectedRow1:selectedRow1, selectedRow2:rowData});
+      setSelectedRow({selectedRow2:rowData});
       setDisplayExchangeGuardList(false);
       setDisplayApproveCrossMessage(true);
       //displaySecChooseGuardMsgCallBack();
@@ -48,6 +50,9 @@ function GuardListTable( {selectedRow1, typeOf, displaySecChooseGuardMsgCallBack
 
   return (
     <div style={{ direction: 'rtl'}} >
+       {displayApproveCrossMessage && (
+        <OkCrossExchangeMessage selectedRow1={selectedRow1} selectedRow2={selectedRow.selectedRow2} />
+      )}
        {displayApproveMessage && (
         <OkExchangeMessage selectedRow={selectedRow} />
       )}

@@ -7,7 +7,7 @@ function SecondGuardListTable(props){
         <div>
             <GuardListTable 
                 apiResponse={props.apiResponse} 
-                selectedRow1={props.selectedRow} 
+                selectedRow1={props.selectedRow1} 
                 typeOf={props.typeOf}
                 displaySecChooseListMsgCallBack={props.displaySecChooseListMsgCallBack}
                 displaySecChooseGuardMsgCallBack={props.displaySecChooseGuardMsgCallBack}

@@ -24,9 +24,6 @@ function OkExchangeMessage(props){
         navigate('/ExchangesPanel');
     }
 
-    
-    
-    console.log('PROPS:', props)
     return (
         <div>
             <div className="exchange-message">

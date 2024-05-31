@@ -23,24 +23,22 @@ function OkCrossExchangeMessage(props){
     function handleCancelClick(){
         navigate('/ExchangesPanel');
     }
-
-    
-    
-    console.log('PROPS:', props)
+    console.log('PROPS:',props)
     return (
         <div>
             <div className="exchange-message">
                 &nbsp; האם להחליף ברשימת השמירה<br /> ל-&nbsp;
-                <span style={{ color: "#46fa1e" }}>{props.selectedRow.glistDay}</span>&nbsp;ה-&nbsp;
-                <span style={{ color: "#46fa1e" }}>{props.selectedRow.glistDate}</span>&nbsp;
+                <span style={{ color: "#46fa1e" }}>{props.selectedRow1.glistDay}</span>&nbsp;ה-&nbsp;
+                <span style={{ color: "#46fa1e" }}>{props.selectedRow1.glistDate}</span>&nbsp;
                 <br />
                 את&nbsp;- &nbsp;
                 <span style={{ backgroundColor: "#183670", color: "rgb(97, 229, 238)" }}>
-                    &nbsp;{props.selectedRow.guardLastName}&nbsp;{props.selectedRow.guardFirstName}&nbsp;&nbsp;
+                    &nbsp;{props.selectedRow1.guardLastName}&nbsp;{props.selectedRow1.guardFirstName}&nbsp;&nbsp;
                 </span>
-                ב&nbsp;- &nbsp;
+                ב&nbsp;- &nbsp; 
                 <span style={{ backgroundColor: "#183670", color: "yellow" }}>
-                    &nbsp;{props.substituteGuard.family_name}&nbsp;{props.substituteGuard.name1}&nbsp;{props.substituteGuard.name2}
+                    &nbsp;  {props.selectedRow2.guardLastName}&nbsp;
+                            {props.selectedRow2.guardFirstName}&nbsp;
                 </span>
                 <span style={{ color: "red", fontSize: "16px", fontWeight: "bolder" }}>?</span>
                 <br />
