@@ -22,6 +22,7 @@ import ResponseApiExchangeMessage from "./components/Exchanges/ResponseApiExchan
 import CrossExchange from "./components/Exchanges/CrossExchange";
 import SecondGuardTableDisplay from "./components/Exchanges/SecondGuardTableDisplay";
 import FirstGuardListTable from "./components/displayListComps/FirstGuardListTable";
+import ResponseApiCrossExchangeMessage from "./components/Exchanges/ResponseApiCrossExchangeMessage";
 
 function App() {
   return (
@@ -50,6 +51,7 @@ function App() {
             <Route path="ExchangesPanel" element={<ExchangesPanel/>}/>
             <Route path="RegularExchanges" element={<RegularExchanges/>}/>
             <Route path="ResponseApiExchangeMessage" element={<ResponseApiExchangeMessage/>}/>
+            <Route path="ResponseCrossApiExchangeMessage" element={<ResponseApiCrossExchangeMessage/>}/>
             <Route path="CrossExchange" element={<CrossExchange/>}/>
             <Route path="SecondGuardTableDisplay" element={<SecondGuardTableDisplay/>}/>
             <Route path="FirstGuardListTable" element={<FirstGuardListTable/>}/>

@@ -104,39 +104,48 @@ function GuardListTable( {selectedRow1, typeOf, displaySecChooseGuardMsgCallBack
                         fontWeight="normal"
                         /></td>
                           <td
-                              style={
-                                (typeOf === 'secCross' &&
-                                  selectedRow &&
-                                  selectedRow.selectedRow2 &&
-                                  selectedRow.selectedRow2.rowIndex === shiftIndex &&
-                                  selectedRow.selectedRow2.guardIndex === guardIndex) ||
-                                (selectedRow &&
-                                  selectedRow.rowIndex === shiftIndex &&
-                                  selectedRow.guardIndex === guardIndex)
-                                  ? { backgroundColor: 'rgb(97, 229, 238)', width: '120px', textAlign: 'center' }
-                                  : { width: '120px', textAlign: 'center' }
-                              }
-                            >
-                              {guard.family_name}&nbsp;&nbsp;{guard.name1} &nbsp;&nbsp;
-                            </td>
-
-                            <td
-                              className="input-label"
-                              style={
-                                (typeOf === 'secCross' &&
-                                  selectedRow &&
-                                  selectedRow.selectedRow2 &&
-                                  selectedRow.selectedRow2.rowIndex === shiftIndex &&
-                                  selectedRow.selectedRow2.guardIndex === guardIndex) ||
-                                (selectedRow &&
-                                  selectedRow.rowIndex === shiftIndex &&
-                                  selectedRow.guardIndex === guardIndex)
-                                  ? { backgroundColor: 'rgb(97, 229, 238)', width: '80px', paddingLeft: '10px' }
-                                  : { width: '80px', paddingLeft: '10px' }
-                              }
-                            >
-                              {guard.phone1}
-                            </td>
+                            style={
+                              (typeOf === 'secCross' &&
+                                selectedRow &&
+                                selectedRow.selectedRow2 &&
+                                selectedRow.selectedRow2.rowIndex === shiftIndex &&
+                                selectedRow.selectedRow2.guardIndex === guardIndex) ||
+                              (typeOf === 'cross' &&
+                                selectedRow &&
+                                selectedRow.selectedRow1 &&
+                                selectedRow.selectedRow1.rowIndex === shiftIndex &&
+                                selectedRow.selectedRow1.guardIndex === guardIndex) ||
+                              (selectedRow &&
+                                selectedRow.rowIndex === shiftIndex &&
+                                selectedRow.guardIndex === guardIndex)
+                                ? { backgroundColor: 'rgb(97, 229, 238)', width: '120px', textAlign: 'center' }
+                                : { width: '120px', textAlign: 'center' }
+                            }
+                          >
+                            {guard.family_name}&nbsp;&nbsp;{guard.name1} &nbsp;&nbsp;
+                          </td>
+                          <td
+                            className="input-label"
+                            style={
+                              (typeOf === 'secCross' &&
+                                selectedRow &&
+                                selectedRow.selectedRow2 &&
+                                selectedRow.selectedRow2.rowIndex === shiftIndex &&
+                                selectedRow.selectedRow2.guardIndex === guardIndex) ||
+                              (typeOf === 'cross' &&
+                                selectedRow &&
+                                selectedRow.selectedRow1 &&
+                                selectedRow.selectedRow1.rowIndex === shiftIndex &&
+                                selectedRow.selectedRow1.guardIndex === guardIndex) ||
+                              (selectedRow &&
+                                selectedRow.rowIndex === shiftIndex &&
+                                selectedRow.guardIndex === guardIndex)
+                                ? { backgroundColor: 'rgb(97, 229, 238)', width: '80px', paddingLeft: '10px' }
+                                : { width: '80px', paddingLeft: '10px' }
+                            }
+                          >
+                            {guard.phone1}
+                          </td>
                           <td className={guard.armed1 ? "armed" : "not-armed"} style={{ width: '30px', paddingLeft:"50px" }}>{guard.armed1 ? "חמוש" : "לא חמוש"}&nbsp;&nbsp;</td>
                         </React.Fragment>
                       ))}

@@ -3,6 +3,7 @@ import OkButton from "../buttons/OkButton";
 import CancelButton from "../buttons/CancelButton";
 import axios from "axios";
 import {useNavigate} from "react-router-dom";
+import Error1 from "../errorComps/Error1";
 
 
 
@@ -23,6 +24,14 @@ function OkExchangeMessage(props){
     function handleCancelClick(){
         navigate('/ExchangesPanel');
     }
+
+    if (error){
+        return (
+            <div>
+                <Error1 error={error} navigateTo={'/ExchangesPanel'}/>
+            </div>
+        );
+    };
 
     return (
         <div>

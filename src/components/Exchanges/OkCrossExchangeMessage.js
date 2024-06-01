@@ -3,6 +3,7 @@ import OkButton from "../buttons/OkButton";
 import CancelButton from "../buttons/CancelButton";
 import axios from "axios";
 import {useNavigate} from "react-router-dom";
+import Error1 from "../errorComps/Error1";
 
 
 
@@ -12,10 +13,10 @@ function OkCrossExchangeMessage(props){
     const navigate = useNavigate();
 
     function handleOkClick(){
-        navigate('/ResponseApiExchangeMessage', {
+        navigate('/ResponseCrossApiExchangeMessage', {
             state: {
-                selectedRow:props.selectedRow,
-                substituteGuard:props.substituteGuard
+                selectedRow1:props.selectedRow1.selectedRow1,
+                selectedRow2:props.selectedRow2
             }
         });
     }
@@ -23,26 +24,37 @@ function OkCrossExchangeMessage(props){
     function handleCancelClick(){
         navigate('/ExchangesPanel');
     }
-    console.log('PROPS:',props)
+
+    if (error){
+        return (
+            <div>
+                <Error1 error={error} navigateTo={'/ExchangesPanel'}/>
+            </div>
+        );
+    };
+
     return (
         <div>
-            <div className="exchange-message">
-                &nbsp; האם להחליף ברשימת השמירה<br /> ל-&nbsp;
-                <span style={{ color: "#46fa1e" }}>{props.selectedRow1.glistDay}</span>&nbsp;ה-&nbsp;
-                <span style={{ color: "#46fa1e" }}>{props.selectedRow1.glistDate}</span>&nbsp;
-                <br />
+            <div className="exchange-message" style={{ height: "128px" }} >
+               
+                &nbsp;האם להחליף בהצלבה ברשימת השמירה<br/>ל-&nbsp;
+                <span style={{ color: "#46fa1e" }}>{props.selectedRow1.selectedRow1.glistDay}</span>&nbsp;ה-&nbsp;
+                <span style={{ color: "#46fa1e" }}>{props.selectedRow1.selectedRow1.glistDate}</span>&nbsp;
+                <br/>
                 את&nbsp;- &nbsp;
                 <span style={{ backgroundColor: "#183670", color: "rgb(97, 229, 238)" }}>
-                    &nbsp;{props.selectedRow1.guardLastName}&nbsp;{props.selectedRow1.guardFirstName}&nbsp;&nbsp;
+                    &nbsp;{props.selectedRow1.selectedRow1.guardLastName}&nbsp;{props.selectedRow1.selectedRow1.guardFirstName}&nbsp;&nbsp;<br/>
                 </span>
-                ב&nbsp;- &nbsp; 
+                ב&nbsp;-  
                 <span style={{ backgroundColor: "#183670", color: "yellow" }}>
                     &nbsp;  {props.selectedRow2.guardLastName}&nbsp;
-                            {props.selectedRow2.guardFirstName}&nbsp;
-                </span>
-                <span style={{ color: "red", fontSize: "16px", fontWeight: "bolder" }}>?</span>
-                <br />
-                <div style={{ display: "inline-flex", marginTop: "3px" }}>
+                            {props.selectedRow2.guardFirstName}&nbsp;</span><br/>
+                            מרשימת השמירה <br/>ל - &nbsp;
+                            <span style={{ color: "#46fa1e" }}>{props.selectedRow2.glistDay}</span>&nbsp;ה- &nbsp; 
+                            <span style={{ color: "#46fa1e" }}>{props.selectedRow2.glistDate}</span> 
+                            <span style={{ color: "red", fontSize: "12px", fontWeight: "bolder" }}>&nbsp;?</span>
+                            <br/>
+                <div style={{ display: "inline-flex", marginTop: "8px" }}>
                     <OkButton
                         width="50px"
                         fontSize="10px"
