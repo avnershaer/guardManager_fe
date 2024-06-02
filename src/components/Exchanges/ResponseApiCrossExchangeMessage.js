@@ -17,7 +17,7 @@ function ResponseApiCrossExchangeMessage(){
 
 
     useEffect(() => { 
-        axios.put('/cross_exchange_guard', {selectedRow, substituteGuard})
+        axios.put('/cross_exchange_guards', {selectedRow, substituteGuard})
         .then(result =>{
             setApiResponse(result.data);
             setError('');
@@ -41,8 +41,17 @@ function ResponseApiCrossExchangeMessage(){
     };
 
     if (!apiResponse) {
-        return <div className="loading">...אנא המתן</div>
-    };
+        return  (
+            <div className="loading-container">
+            <div className="loading">
+                אנא המתן
+                <div className="marquee">
+                    <span>&lt;&lt;</span>
+                </div>
+            </div>
+        </div>
+        )
+    };  
 
     return (
         <div style={{ fontSize:"12px", display: 'flex', justifyContent: 'center', paddingRight: '20px' }}>

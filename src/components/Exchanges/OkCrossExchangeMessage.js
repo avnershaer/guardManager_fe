@@ -15,8 +15,8 @@ function OkCrossExchangeMessage(props){
     function handleOkClick(){
         navigate('/ResponseCrossApiExchangeMessage', {
             state: {
-                selectedRow1:props.selectedRow1.selectedRow1,
-                selectedRow2:props.selectedRow2
+                selectedRow:props.selectedRow1.selectedRow1,
+                substituteGuard:props.selectedRow2
             }
         });
     }

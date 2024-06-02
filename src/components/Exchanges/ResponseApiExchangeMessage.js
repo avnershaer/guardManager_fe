@@ -41,7 +41,16 @@ function ResponseApiExchangeMessage(){
     };
 
     if (!apiResponse) {
-        return <div className="loading">...אנא המתן</div>
+        return  (
+            <div className="loading-container">
+            <div className="loading">
+                אנא המתן
+                <div className="marquee">
+                    <span>&lt;&lt;</span>
+                </div>
+            </div>
+        </div>
+        )
     };
 
     return (
