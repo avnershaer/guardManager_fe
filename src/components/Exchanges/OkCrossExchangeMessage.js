@@ -13,7 +13,7 @@ function OkCrossExchangeMessage(props){
     const navigate = useNavigate();
 
     function handleOkClick(){
-        navigate('/ResponseCrossApiExchangeMessage', {
+        navigate('/ResponseApiCrossExchangeMessage', {
             state: {
                 selectedRow:props.selectedRow1.selectedRow1,
                 substituteGuard:props.selectedRow2

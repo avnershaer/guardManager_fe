@@ -9,7 +9,7 @@ function Panel1() {
     };
 
     return (    
-        <div style={{fontSize:"14px", textAlign: "right", marginRight: "35px", marginTop: "-4px"}}>
+        <div style={{fontSize:"14px", textAlign: "right", marginRight: "35px", marginTop: "-3px"}}>
             <Link to='ManagePanel' style={linkStyle}>&nbsp;&nbsp;ניהול&nbsp;&nbsp;</Link>|
             <Link to='DisplayGuardingList' style={linkStyle}>&nbsp;&nbsp;הצג רשימות שמירה&nbsp;&nbsp;</Link>|
             <Link to='ShiftsPanel' style={linkStyle}>&nbsp;&nbsp;משתמשים&nbsp;&nbsp;</Link>| 

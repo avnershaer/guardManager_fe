@@ -21,6 +21,7 @@ function ResponseApiCrossExchangeMessage(){
         .then(result =>{
             setApiResponse(result.data);
             setError('');
+            console.log('API RESPONSE:', result.data);
         })
         .catch(err =>{
             setError(err.message);
@@ -53,21 +54,38 @@ function ResponseApiCrossExchangeMessage(){
         )
     };  
 
+    const first = apiResponse?.Details?.first;
+    const second = apiResponse?.Details?.second;
+
     return (
-        <div style={{ fontSize:"12px", display: 'flex', justifyContent: 'center', paddingRight: '20px' }}>
+        <div style={{ fontSize: "12px", display: 'flex', justifyContent: 'center', paddingRight: '20px' }}>
             <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-                <div className="dasa" style={{  width: "450px", backgroundColor: "#183670",  margin: "20px", padding: "5px", borderRadius: "35px", direction: "rtl" }}>
+                <div className="dasa" style={{ width: "450px", backgroundColor: "#183670", margin: "20px", padding: "5px", borderRadius: "35px", direction: "rtl" }}>
+                    <div style={{ direction: "rtl" }}>
+                        <span style={{ color: "white" }}>ההחלפה בוצעה בהצלחה.<br /></span>
+                        <span style={{ color: "rgb(97, 229, 238)" }}>{first?.origin_guard_id?.family_name}&nbsp;{first?.origin_guard_id?.name1}</span>
+                        <span style={{ color: "white" }}>&nbsp;הוחלף עם&nbsp;</span>
+                        <span style={{ color: "yellow" }}>{first?.substitute_guard_id?.family_name}&nbsp;{first?.substitute_guard_id?.name1}</span>
+                        <br /><span style={{ color: "white" }}>&nbsp;ב&nbsp;</span>
+                        <span style={{ color: "#46fa1e" }}>{first?.exchange_day}</span>
+                        <span style={{ color: "white" }}>&nbsp;ה-&nbsp;</span>
+                        <span style={{ color: "#46fa1e" }}>{first?.exchange_date}</span>
+                        <span style={{ color: "white" }}>&nbsp;בשעה&nbsp;</span>
+                        <span style={{ color: "#46fa1e" }}>{first?.exchange_hour}</span>
+                    </div>
+                </div>
+                <div className="dasa" style={{ width: "450px", backgroundColor: "#183670", margin: "20px", padding: "5px", borderRadius: "35px", direction: "rtl" }}>
                     <div style={{ direction: "rtl" }}>
                         <span style={{ color: "#0dff00" }}>ההחלפה בוצעה בהצלחה.<br /></span>
-                        <span style={{ color: "rgb(97, 229, 238)" }}>{apiResponse?.Details?.origin_guard_id?.family_name}&nbsp;{apiResponse?.Details?.origin_guard_id?.name1}</span>
+                        <span style={{ color: "rgb(97, 229, 238)" }}>{second?.origin_guard_id?.family_name}&nbsp;{second?.origin_guard_id?.name1}</span>
                         <span style={{ color: "white" }}>&nbsp;הוחלף עם&nbsp;</span>
-                        <span style={{ color: "yellow" }}>{apiResponse?.Details?.substitute_guard_id?.family_name}&nbsp;{apiResponse?.Details?.substitute_guard_id?.name1}</span>
+                        <span style={{ color: "yellow" }}>{second?.substitute_guard_id?.family_name}&nbsp;{second?.substitute_guard_id?.name1}</span>
                         <br /><span style={{ color: "white" }}>&nbsp;ב&nbsp;</span>
-                        <span style={{ color: "#46fa1e" }}>{apiResponse?.Details?.exchange_day}</span>
+                        <span style={{ color: "#46fa1e" }}>{second?.exchange_day}</span>
                         <span style={{ color: "white" }}>&nbsp;ה-&nbsp;</span>
-                        <span style={{ color: "#46fa1e" }}>{apiResponse?.Details?.exchange_date}</span>
+                        <span style={{ color: "#46fa1e" }}>{second?.exchange_date}</span>
                         <span style={{ color: "white" }}>&nbsp;בשעה&nbsp;</span>
-                        <span style={{ color: "#46fa1e" }}>{apiResponse?.Details?.exchange_hour}</span>
+                        <span style={{ color: "#46fa1e" }}>{second?.exchange_hour}</span>
                     </div>
                 </div>
                 <div style={{ marginTop: "-10px" }}>
@@ -77,7 +95,7 @@ function ResponseApiCrossExchangeMessage(){
                         height="20px"
                         value="חזור"
                         onClick={handleonClick}
-                        />
+                    />
                 </div>
             </div>
         </div>

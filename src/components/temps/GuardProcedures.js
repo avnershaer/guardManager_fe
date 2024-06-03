@@ -2,7 +2,7 @@ import React from "react";
 
 function GuardProcedures() {
   return (
-    <div className="gate_manual">
+    <div className=" guard_procedures">
       <h2 className="centered-header">דגשי אבטחה כלליים - אשחר</h2>
       <h3>מטרות השמירה:</h3>
       <ul>

@@ -344,6 +344,59 @@ table {
   text-align: center;
 }
 
+.guard_procedures {
+  direction: rtl; /* This sets the text direction to RTL */
+  unicode-bidi: plaintext; /* This ensures the scrollbar remains on the right side */
+  font-size: 14px;
+  line-height: 1.6;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  max-width: 800px;
+  margin: auto;
+  color: #333;
+  text-align: right; /* Align all text to the right */
+  height: 400px; /* Set a fixed height */
+  overflow-y: auto; /* Enable vertical scrollbar if content exceeds height */
+}
+
+/* Customize scrollbar */
+.guard_procedures::-webkit-scrollbar {
+  width: 8px; /* Change width for vertical scrollbar */
+}
+
+.guard_procedures::-webkit-scrollbar-track {
+  background: #f1f1f1; /* Color of the scrollbar track */
+}
+
+.guard_procedures::-webkit-scrollbar-thumb {
+  background: #183670; /* Color of the scrollbar handle */
+  border-radius: 4px; /* Round corners of the scrollbar handle */
+}
+
+.guard_procedures::-webkit-scrollbar-thumb:hover {
+  background: #3f5e9b; /* Color of the scrollbar handle on hover */
+}
+
+.guard_procedures h2 {
+  color: #183670;
+  text-align: center; /* Center the header */
+}
+
+.guard_procedures h3 {
+  color: #183670;
+}
+
+.guard_procedures ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.guard_procedures ul li {
+  margin-bottom: 10px;
+}
+
 .gate_manual {
   direction: rtl;
   font-size: 14px;
@@ -360,7 +413,11 @@ table {
   overflow-y: auto; /* Enable vertical scrollbar if content exceeds height */
 }
 
-/* Customize scrollbar */
+/* Ensure scrollbar is on the right side */
+.gate_manual {
+  direction: rtl; /* This makes the content RTL */
+}
+
 .gate_manual::-webkit-scrollbar {
   width: 8px; /* Change width for vertical scrollbar */
 }
@@ -378,20 +435,12 @@ table {
   background: #3f5e9b; /* Color of the scrollbar handle on hover */
 }
 
-.gate_manual h2 {
-  color: #183670;
-  text-align: center; /* Center the header */
-}
-
-.gate_manual h3 {
+.gate_manual h4 {
   color: #183670;
 }
 
-.gate_manual ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-.gate_manual ul li {
-  margin-bottom: 10px;
+.gate_manual .gate-image {
+  width: 70%; /* 30% smaller than original size */
+  display: block;
+  margin: 10px auto; /* Center the images */
 }

@@ -42,9 +42,17 @@ function DisplaySetGuardingList(props) {
   };
 
   if (loading) {
-    // Display "Please wait" message while loading
-    return <div className="loading">...אנא המתן</div>;
-  }
+    return  (
+        <div className="loading-container">
+        <div className="loading">
+            אנא המתן
+            <div className="marquee">
+                <span>&lt;&lt;</span>
+            </div>
+        </div>
+    </div>
+    )
+};  
 
   if (saveResponse.status === 'error') {
     return <div className="error">Error: {saveResponse.Details}</div>;
