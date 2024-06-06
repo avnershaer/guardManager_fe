@@ -1,21 +1,21 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
+import baseURL from "../../config";
+import BlueWiteButton from "../buttons/BlueWiteButton";
 import DisplayExchangeGuardList from "../Exchanges/DisplayExchangeGuardList";
+import ListByDatePosition from "../displayListComps/ListByDatePosition";
 import OkExchangeMessage from "../Exchanges/OkExchangeMessage";
 import SecondGuardTableDisplay from "../Exchanges/SecondGuardTableDisplay";
 import OkCrossExchangeMessage from "../Exchanges/OkCrossExchangeMessage";
-import ListTable from "./ListTable";
 
-function GuardListTable( {apiResponse, selectedRow1, typeOf, displayRegularExchangesCallBack}) {
+function ListTable( {apiResponse, selectedRow1, typeOf, displayRegularExchangesCallBack}) {
   // displaySecChooseGuardMsgCallBack,  displayRegularExchangesCallBack, 
   console.log('GuardListTable api-response:', apiResponse);
   const [secondCrossGuardList, setSecondCrossGuardList] = useState(false);
   const [selectedRow, setSelectedRow] = useState(null);
-  const [selectedRow2, setSelectedRow2] = useState(null);
   const [displayExchangeGuardsList, setDisplayExchangeGuardList] = useState(false);
   const [displayGuardsTable, setDisplayGuarTable] = useState(true);
   const [displayApproveMessage, setDisplayApproveMessage] = useState(false);
   const [displayApproveCrossMessage, setDisplayApproveCrossMessage] = useState(false);
-
 
 
   
@@ -30,28 +30,14 @@ function GuardListTable( {apiResponse, selectedRow1, typeOf, displayRegularExcha
   function displayApproveMessageCallBack(){
     setDisplayApproveMessage(true);
   };
-  
-  function displayApproveCrossMessageCallBack(){
-    setDisplayApproveCrossMessage(true);
-  };
-  
-  function selectedRowCallBack(listSelectedRow){
-    setSelectedRow(listSelectedRow);
-  };
-  
-  function selectedRow2CallBack(listSelectedRow2){
-    setSelectedRow2(listSelectedRow2);
-  };
 
-  console.log('selectedRow1:', selectedRow1)
-  console.log('selectedRow2:', selectedRow2)
-  
+
 
   return (
     <div style={{ direction: 'rtl'}} >
        {displayApproveCrossMessage && (
         <OkCrossExchangeMessage 
-        selectedRow1={selectedRow1} selectedRow2={selectedRow2} />
+        selectedRow1={selectedRow1} selectedRow2={selectedRow.selectedRow2} />
       )}
        {displayApproveMessage && (
         <OkExchangeMessage selectedRow={selectedRow} />
@@ -62,9 +48,6 @@ function GuardListTable( {apiResponse, selectedRow1, typeOf, displayRegularExcha
         displayExchangeGuardListCallBack = {displayExchangeGuardListCallBack}
         secondCrossGuardListCallBack ={secondCrossGuardListCallBack}
         displayApproveMessageCallBack = {displayApproveMessageCallBack}
-        selectedRowCallBack = {selectedRowCallBack}
-        selectedRow2CallBack = {selectedRow2CallBack}
-        displayApproveCrossMessageCallBack = {displayApproveCrossMessageCallBack}
         apiResponse = {apiResponse}
         selectedRow1 = {selectedRow1}
         typeOf = {typeOf}
@@ -85,4 +68,4 @@ function GuardListTable( {apiResponse, selectedRow1, typeOf, displayRegularExcha
   );
 };
 
-export default GuardListTable;
+export default ListTable;

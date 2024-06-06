@@ -441,3 +441,8 @@ table {
   display: block;
   margin: 10px auto; /* Center the images */
 }
+
+.container {
+  display: flex;
+  align-items: center;
+}

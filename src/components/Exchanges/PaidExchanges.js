@@ -3,16 +3,16 @@ import ListByDatePosition from "../displayListComps/ListByDatePosition";
 
 function PaidExchanges(props){
 
-    const [displayRegularExchanges, setDisplayRegularExchanges] = useState(true);
-    const typeOf = 'rgular';
+    const [displayPaidExchanges, setDisplayPaidExchanges] = useState(true);
+    const typeOf = 'paid';
 
-    function displayRegularExchangesCallBack(){
-        setDisplayRegularExchanges(false);
+    function displayPaidExchangesCallBack(){
+        setDisplayPaidExchanges(false);
     };
 
     return (
         <div>
-        {displayRegularExchanges && (
+        {displayPaidExchanges && (
         <div style={{textAlign:"center"}}>
             להחלפת שומר בשכר הצג את רשימת השמירה ע"פ תאריך ועמדה ובחר את השומר להחלפה:
             <div 
@@ -22,7 +22,7 @@ function PaidExchanges(props){
           alignItems: "center", 
           flexDirection: "column", 
           direction: "rtl"
-        }}><ListByDatePosition typeOf={typeOf} displayRegularExchangesCallBack={displayRegularExchangesCallBack}/></div>
+        }}><ListByDatePosition typeOf={typeOf} displayPaidExchangesCallBack={displayPaidExchangesCallBack}/></div>
            
         </div>
     )}
