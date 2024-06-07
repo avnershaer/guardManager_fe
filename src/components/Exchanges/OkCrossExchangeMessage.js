@@ -17,7 +17,7 @@ function OkCrossExchangeMessage(props){
         navigate('/ResponseApiCrossExchangeMessage', {
             state: {
                 selectedRow:props.selectedRow1.selectedRow1,
-                substituteGuard:props.selectedRow2
+                substituteGuard:props.selectedRow2.selectedRow2,
             }
         });
     }
@@ -48,11 +48,11 @@ function OkCrossExchangeMessage(props){
                 </span>
                 ב&nbsp;-  
                 <span style={{ backgroundColor: "#183670", color: "yellow" }}>
-                    &nbsp;  {props.selectedRow2.guardLastName}&nbsp;
-                            {props.selectedRow2.guardFirstName}&nbsp;</span><br/>
+                    &nbsp;  {props.selectedRow2.selectedRow2.guardLastName}&nbsp;
+                            {props.selectedRow2.selectedRow2.guardFirstName}&nbsp;</span><br/>
                             מרשימת השמירה <br/>ל - &nbsp;
-                            <span style={{ color: "#46fa1e" }}>{props.selectedRow2.glistDay}</span>&nbsp;ה- &nbsp; 
-                            <span style={{ color: "#46fa1e" }}>{props.selectedRow2.glistDate}</span> 
+                            <span style={{ color: "#46fa1e" }}>{props.selectedRow2.selectedRow2.glistDay}</span>&nbsp;ה- &nbsp; 
+                            <span style={{ color: "#46fa1e" }}>{props.selectedRow2.selectedRow2.glistDate}</span> 
                             <span style={{ color: "red", fontSize: "12px", fontWeight: "bolder" }}>&nbsp;?</span>
                             <br/>
                 <div style={{ display: "inline-flex", marginTop: "8px" }}>

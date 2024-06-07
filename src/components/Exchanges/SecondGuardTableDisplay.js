@@ -13,6 +13,10 @@ function SecondGuardTableDisplay(props){
     function displaySecChooseGuardMsgCallBack(){
         setDisplaySecChooseGuardMsg(false);
     };
+    
+    function displaySecChooseGuardMsgCallBack(){
+        setDisplaySecChooseGuardMsg(false);
+    };
 
     return (
         <div>

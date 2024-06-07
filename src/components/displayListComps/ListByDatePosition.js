@@ -46,6 +46,11 @@ function ListByDatePosition(props) {
                         setDisplayTable(false);
                         props.displayGrdDateMsgCallBack();
                     }
+                    if (props.typeOf === 'paid') {
+                        setFirstTable(false);
+                        setDisplayTable(true);
+                        //props.displayGrdDateMsgCallBack();
+                    }
                 })
                 .catch(err => {
                     console.log('ERROR:', err);

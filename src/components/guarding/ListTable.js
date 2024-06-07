@@ -16,18 +16,27 @@ function ListTable(props) {
   const handleRowClick = (rowData) => {
     setSelectedRow(rowData);
     props.selectedRowCallBack(rowData);
-    props.displayExchangeGuardListCallBack();
+    props.displayExchangeGuardListCallBack(true);
     
     
     if (props.typeOf === 'cross') {
       props.selectedRowCallBack({selectedRow1:rowData});
-      props.displayExchangeGuardListCallBack();
+      props.displayExchangeGuardListCallBack(false);
       props.secondCrossGuardListCallBack();
 
     }else if (props.typeOf === 'secCross') {
       props.selectedRow2CallBack({selectedRow2:rowData});
-      props.displayExchangeGuardListCallBack();
+      props.displayExchangeGuardListCallBack(false);
       props.displayApproveCrossMessageCallBack();
+      //displaySecChooseGuardMsgCallBack();
+      
+    }else if (props.typeOf === 'paid') {
+      setSelectedRow(rowData);
+      props.selectedRowCallBack(rowData);
+      props.displayPaidExchangeGuardListCallBack(true);
+      props.displayExchangeGuardListCallBack(false);
+      
+      //props.displayApproveCrossMessageCallBack();
       //displaySecChooseGuardMsgCallBack();
       
     }

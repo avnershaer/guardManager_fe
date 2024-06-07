@@ -4,6 +4,7 @@ import OkExchangeMessage from "../Exchanges/OkExchangeMessage";
 import SecondGuardTableDisplay from "../Exchanges/SecondGuardTableDisplay";
 import OkCrossExchangeMessage from "../Exchanges/OkCrossExchangeMessage";
 import ListTable from "./ListTable";
+import DisplayPaidExchangeGuards from "../Exchanges/DisplayPaidExchangeGuards";
 
 function GuardListTable( {apiResponse, selectedRow1, typeOf, displayRegularExchangesCallBack}) {
   // displaySecChooseGuardMsgCallBack,  displayRegularExchangesCallBack, 
@@ -15,12 +16,17 @@ function GuardListTable( {apiResponse, selectedRow1, typeOf, displayRegularExcha
   const [displayGuardsTable, setDisplayGuarTable] = useState(true);
   const [displayApproveMessage, setDisplayApproveMessage] = useState(false);
   const [displayApproveCrossMessage, setDisplayApproveCrossMessage] = useState(false);
+  const [displayPaidExchangeGuards, setDisplayPaidExchangeGuards] = useState(false);
 
 
 
   
-  function displayExchangeGuardListCallBack(){
-    setDisplayExchangeGuardList(true);
+  function displayExchangeGuardListCallBack(value){
+    setDisplayExchangeGuardList(value);
+  };
+  
+  function displayPaidExchangeGuardListCallBack(value){
+    setDisplayPaidExchangeGuards(value);
   };
   
   function secondCrossGuardListCallBack(){
@@ -43,8 +49,6 @@ function GuardListTable( {apiResponse, selectedRow1, typeOf, displayRegularExcha
     setSelectedRow2(listSelectedRow2);
   };
 
-  console.log('selectedRow1:', selectedRow1)
-  console.log('selectedRow2:', selectedRow2)
   
 
   return (
@@ -59,6 +63,7 @@ function GuardListTable( {apiResponse, selectedRow1, typeOf, displayRegularExcha
       {displayGuardsTable && (
       <div>
         <ListTable 
+        displayPaidExchangeGuardListCallBack = {displayPaidExchangeGuardListCallBack}
         displayExchangeGuardListCallBack = {displayExchangeGuardListCallBack}
         secondCrossGuardListCallBack ={secondCrossGuardListCallBack}
         displayApproveMessageCallBack = {displayApproveMessageCallBack}
@@ -77,8 +82,17 @@ function GuardListTable( {apiResponse, selectedRow1, typeOf, displayRegularExcha
         displayRegularExchangesCallBack={displayRegularExchangesCallBack} 
         selectedRow={selectedRow}/>
         )} 
+      {displayPaidExchangeGuards && (
+        <DisplayPaidExchangeGuards
+      //displayRegularExchangesCallBack={displayRegularExchangesCallBack} 
+        selectedRow={selectedRow}/>
+        )} 
       {secondCrossGuardList && (
-        <div><SecondGuardTableDisplay selectedRow={selectedRow}/>
+        <div>
+          <SecondGuardTableDisplay 
+          selectedRow={selectedRow}
+
+          />
         </div>
       )}
     </div>
