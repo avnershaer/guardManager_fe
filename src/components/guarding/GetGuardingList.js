@@ -18,7 +18,7 @@ import PositionData from "./CreatListFormComps/PositionData";
     const [numOfLists, setNumOfLists] = useState("1");
     const [guardsList, setGuardsList] = useState([]);
     const [glistData, setGlistData] = useState('');
-
+    const [loading, setLoading] = useState(false);
     const glistValues = { 
       numOfLists:numOfLists,
       date:date,
@@ -55,30 +55,45 @@ import PositionData from "./CreatListFormComps/PositionData";
 
     
     const HandleSubmit = (e) => {
+      setLoading(true);
       e.preventDefault();
-      
       axios.post('/create_guard_list', glistValues)
           .then(result => {
               console.log("guard list data:", result.data);
               setApiResponse(result.data);
+              setLoading(false);
               setDispalyGuardingList(true)
+
           })
           .catch(err => {
               console.log('error:', err);
               setError(err);
           });
-      }
-
+      };
+    
 
     if (error) {
       // Render error details
       return <div className="error">Error: {error.message}</div>;
-    }
+    };
     
     if (displayGuardingList) {
       return <DisplaySetGuardingList apiResponse={apiResponse} displayGuardingList={displayGuardingList}  numOfLists={numOfLists} />;
-    }
+    };
     
+    if (loading) {
+      return  (
+          <div className="loading-container">
+          <div className="loading">
+              אנא המתן
+              <div className="marquee">
+                  <span>&lt;&lt;</span>
+              </div>
+          </div>
+      </div>
+      )
+    };  
+     
     return (
       <div className="get-guarding-list-input">
         <h3>הכנס פרטים ליצירת רשימת שמירה</h3>

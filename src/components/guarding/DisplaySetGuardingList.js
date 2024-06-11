@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
-import Button1 from "../buttons/button1";
 import axios from "../AxiosPath";
 import GlistDispalyTable from "./GlistDispalyTable";
+import CancelButton from "../buttons/CancelButton";
+import BlueWiteButton from "../buttons/BlueWiteButton";
 
 function DisplaySetGuardingList(props) {
   console.log('apiResponse:', props.apiResponse)
@@ -42,17 +43,17 @@ function DisplaySetGuardingList(props) {
   };
 
   if (loading) {
-    return  (
-        <div className="loading-container">
+    return (
+      <div className="loading-container">
         <div className="loading">
-            אנא המתן
-            <div className="marquee">
-                <span>&lt;&lt;</span>
-            </div>
+          אנא המתן
+          <div className="marquee">
+            <span>&lt;&lt;</span>
+          </div>
         </div>
-    </div>
-    )
-};  
+      </div>
+    );
+  }
 
   if (saveResponse.status === 'error') {
     return <div className="error">Error: {saveResponse.Details}</div>;
@@ -64,38 +65,31 @@ function DisplaySetGuardingList(props) {
   }
 
   return (
-    <div>
+    <div className="display_set_list_container">
       {saveResponse.status === 'success' && (
         <div className="save_message">
           <div>
-            <span style={{fontWeight:"normal"}}>{saveResponse.Details}</span>&nbsp;&nbsp;
-            <span style={{color:"yellow", fontWeight:"normal"}}>עמדה:</span>&nbsp;
-            <span style={{fontSize:"15px", color:"rgb(0, 255, 47)", fontWeight:"normal"}}>{saveResponse.position}</span>&nbsp;&nbsp;
-            <span style={{color:"yellow", fontWeight:"normal"}}>תאריך:</span>&nbsp;
-            <span style={{color:"rgb(0, 255, 47)", fontWeight:"normal"}}>{saveResponse.date}</span>
+            <span style={{ fontWeight: "normal" }}>{saveResponse.Details}</span>&nbsp;&nbsp;
+            <span style={{ color: "yellow", fontWeight: "normal" }}>עמדה:</span>&nbsp;
+            <span style={{ fontSize: "15px", color: "rgb(0, 255, 47)", fontWeight: "normal" }}>{saveResponse.position}</span>&nbsp;&nbsp;
+            <span style={{ color: "yellow", fontWeight: "normal" }}>תאריך:</span>&nbsp;
+            <span style={{ color: "rgb(0, 255, 47)", fontWeight: "normal" }}>{saveResponse.date}</span>
           </div>
         </div>
       )}
 
       {props.apiResponse.Details.map((detail, index) => (
-        <div key={index}>
+        <div key={index} className="table_wrapper">
           {tableVisibility[index] && (
             <div>
-              <GlistDispalyTable apiResponse={detail} displayGuardingList={props.displayGuardingList}/>
-              <div className="table-buttons" style={{ textAlign: 'right'}}>
-                <Button1 type="submit" width="100px" fontSize='10px' height="15p  x" 
-                            textColor="red" onMouseOverTextColor="yellow" onMouseOutTextColor="red"
-                            color="yellow" onMouseOverColor="red" onMouseOutColor="yellow"
-                            borderColor="red" mouseborderColor="yellow" outBorderColor="red"    
-                            bottunClickColor="#06e806" value='בטל'/>
-                <Button1 onClick={() => handleSaveClick(detail, index)} name="save" type="submit" 
-                          width="100px" fontSize='10px' height="15px" 
-                          textColor="white" onMouseOverTextColor="green" onMouseOutTextColor="white"
-                          color="green" onMouseOverColor="yellow" onMouseOutColor="green"
-                          borderColor="yellow" mouseborderColor="green" outBorderColor="yellow"    
-                          bottunClickColor="#06e806" value='שמור' />
+              <GlistDispalyTable apiResponse={detail} displayGuardingList={props.displayGuardingList} />
+              <div className="table-buttons">
+                <CancelButton value='בטל' width="100px" fontSize='10px' height="15px" />
+                <BlueWiteButton width="100px" fontSize='10px' height="15px" value='שמור'
+                  onClick={() => handleSaveClick(detail, index)} name="save" type="submit"
+                />
               </div>
-              <br/>
+              <br />
             </div>
           )}
         </div>

@@ -310,6 +310,7 @@ table {
   background-color: blue !important; /* Background color */
   color: white !important; /* Text color */
   border-color: darkblue !important; /* Border color */
+  overflow:-moz-hidden-unscrollable;
 }
 
 
@@ -364,7 +365,7 @@ table {
 }
 
 .guard_procedures::-webkit-scrollbar-track {
-  background: #f1f1f1; /* Color of the scrollbar track */
+  background: rgb(255, 255, 240); /* Color of the scrollbar track */
 }
 
 .guard_procedures::-webkit-scrollbar-thumb {
@@ -446,3 +447,26 @@ table {
   display: flex;
   align-items: center;
 }
+
+.display_set_list_container {
+  max-height: 70vh; /* Set the maximum height for the container */
+  overflow-y: auto; /* Enable vertical scrolling */
+  padding: 20px;
+  box-sizing: border-box;
+  direction: rtl;
+}
+
+.table_wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.table-buttons {
+  margin-right: 0px;
+  display: flex;
+  justify-content: right;
+  align-items: right;
+}
+
+
