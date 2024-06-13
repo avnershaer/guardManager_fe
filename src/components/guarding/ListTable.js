@@ -65,11 +65,11 @@ function ListTable(props) {
                   <tr>
                       <td style={{width:"40px"}}>&nbsp;{shift.shift_hour}&nbsp;</td>
                       
-                      {shift.family_id.map((guard, guardIndex) => (
+                      {shift.fguard_id.map((guard, guardIndex) => (
                         <React.Fragment key={guardIndex}>
                           <td style={{ width: '25px', height: '25px', borderRadius: '80%', border: '1.5px solid black', overflow: 'hidden', display: 'inline-block', marginTop: '2.5px'}}>
                             <img
-                              src={`${baseURL}${guard.family_pic}`}
+                              src={`${baseURL}${guard.fguard_pic}`}
                               alt="family_picture"
                               style={{ maxWidth: "25px", maxHeight: "25px" }}
                             />
@@ -113,7 +113,7 @@ function ListTable(props) {
                                 : { width: '120px', textAlign: 'center' }
                             }
                           >
-                            {guard.family_name}&nbsp;&nbsp;{guard.name1} &nbsp;&nbsp;
+                            {guard.family_id.family_name}&nbsp;&nbsp;{guard.fguard_name} &nbsp;&nbsp;
                           </td>
                           <td
                             className="input-label"
@@ -135,9 +135,9 @@ function ListTable(props) {
                                 : { width: '80px', paddingLeft: '10px' }
                             }
                           >
-                            {guard.phone1}
+                            {guard.fguard_phone}
                           </td>
-                          <td className={guard.armed1 ? "armed" : "not-armed"} style={{ width: '30px', paddingLeft:"50px" }}>{guard.armed1 ? "חמוש" : "לא חמוש"}&nbsp;&nbsp;</td>
+                          <td className={guard.armed1 ? "armed" : "not-armed"} style={{ width: '30px', paddingLeft:"50px" }}>{guard.armed ? "חמוש" : "לא חמוש"}&nbsp;&nbsp;</td>
                         </React.Fragment>
                       ))}
                     </tr>

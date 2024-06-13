@@ -3,6 +3,8 @@ import axios from "../AxiosPath";
 import GlistDispalyTable from "./GlistDispalyTable";
 import CancelButton from "../buttons/CancelButton";
 import BlueWiteButton from "../buttons/BlueWiteButton";
+import {useNavigate} from "react-router-dom";
+
 
 function DisplaySetGuardingList(props) {
   console.log('apiResponse:', props.apiResponse)
@@ -14,6 +16,8 @@ function DisplaySetGuardingList(props) {
   const [saveData, setSaveData] = useState('');
   const [loading, setLoading] = useState(false);
   const [tableVisibility, setTableVisibility] = useState(props.apiResponse.Details.map(() => true)); // Initially all tables are visible
+  const navigate = useNavigate();
+
 
   useEffect(() => {
     if (saveData) {
@@ -40,6 +44,10 @@ function DisplaySetGuardingList(props) {
       newState[index] = false; // Set visibility of the clicked table to false
       return newState;
     });
+  };
+  
+  function handleCancelClick(){
+    navigate('/ManagePanel');
   };
 
   if (loading) {
@@ -84,9 +92,21 @@ function DisplaySetGuardingList(props) {
             <div>
               <GlistDispalyTable apiResponse={detail} displayGuardingList={props.displayGuardingList} />
               <div className="table-buttons">
-                <CancelButton value='בטל' width="100px" fontSize='10px' height="15px" />
-                <BlueWiteButton width="100px" fontSize='10px' height="15px" value='שמור'
-                  onClick={() => handleSaveClick(detail, index)} name="save" type="submit"
+                <CancelButton 
+                value='בטל' 
+                height="15px"
+                width="100px" 
+                fontSize='10px' 
+                onClick={handleCancelClick}
+                />
+                <BlueWiteButton 
+                name="save" 
+                type="submit"
+                value='שמור'
+                width="100px" 
+                height="15px" 
+                fontSize='10px'
+                onClick={() => handleSaveClick(detail, index)} 
                 />
               </div>
               <br />
