@@ -5,7 +5,7 @@ import Error1 from "../errorComps/Error1";
 import BlueWiteButton from "../buttons/BlueWiteButton";
 import { useNavigate } from "react-router-dom";
 
-function ResponseApiExchangeMessage() {
+function ResponseApiPaidExchangeMessage() {
     const [apiResponse, setApiResponse] = useState('');
     const [error, setError] = useState('');
     const location = useLocation();
@@ -17,10 +17,10 @@ function ResponseApiExchangeMessage() {
     useEffect(() => {
         if (!requestSent.current) {
             requestSent.current = true; // Set requestSent to true to prevent further requests
-            axios.put('/exchange_guard', { selectedRow, substituteGuard })
+            axios.put('/paid_exchange_guard', { selectedRow, substituteGuard })
                 .then(result => {
                     setApiResponse(result.data);
-                    console.log('/exchange_guard response', result.data)
+                    console.log('/paid_exchange_guard response', result.data)
                     setError('');
                 })
                 .catch(err => {
@@ -101,4 +101,4 @@ function ResponseApiExchangeMessage() {
     );
 };
 
-export default ResponseApiExchangeMessage;
+export default ResponseApiPaidExchangeMessage;

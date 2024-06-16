@@ -42,7 +42,7 @@ function DisplayGuardingList() {
   return (
     <div>
       {displayGlist ? (
-      <GuardListTable apiResponse={apiResponse}/>
+        <GuardListTable apiResponse={apiResponse}/>
       ) : (
       displayChoices && (
         <div className="display_choices">

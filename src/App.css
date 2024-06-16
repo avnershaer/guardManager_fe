@@ -114,18 +114,11 @@ table {
   font-weight: bold;
   font-size: 13px;
   width: 35%;
-  position: absolute;
-  right: 0;
-  text-align: right;
-  margin-bottom: 5px;
-  margin-top: 10px;
-  margin-right: 20px;
+  margin: 10px auto; /* Center the div horizontally */
+  text-align: center;
   padding-top: 1px;
   padding-bottom: 3px;
-  padding-right: 280px;
-
-
-} 
+}
 
 .display_choices {
   position: absolute;
@@ -260,10 +253,17 @@ table {
 
 }
 
-.glist_table {
-  margin-top: 5px;
-  margin-right: 120px;
+.glist-table {
+  margin-top: -10px;
+  margin-right: 220px;
 
+}
+
+.glist-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
 }
 
 .table-buttons {

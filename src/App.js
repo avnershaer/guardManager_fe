@@ -24,6 +24,7 @@ import SecondGuardTableDisplay from "./components/Exchanges/SecondGuardTableDisp
 import FirstGuardListTable from "./components/displayListComps/FirstGuardListTable";
 import ResponseApiCrossExchangeMessage from "./components/Exchanges/ResponseApiCrossExchangeMessage";
 import PaidExchanges from "./components/Exchanges/PaidExchanges";
+import ResponseApiPaidExchangeMessage from "./components/Exchanges/ResponseApiPaidExchangeMessage";
 
 function App() {
   return (
@@ -53,6 +54,7 @@ function App() {
             <Route path="RegularExchanges" element={<RegularExchanges/>}/>
             <Route path="ResponseApiExchangeMessage" element={<ResponseApiExchangeMessage/>}/>
             <Route path="ResponseApiCrossExchangeMessage" element={<ResponseApiCrossExchangeMessage/>}/>
+            <Route path="ResponseApiPaidExchangeMessage" element={<ResponseApiPaidExchangeMessage/>}/>
             <Route path="CrossExchange" element={<CrossExchange/>}/>
             <Route path="SecondGuardTableDisplay" element={<SecondGuardTableDisplay/>}/>
             <Route path="FirstGuardListTable" element={<FirstGuardListTable/>}/>

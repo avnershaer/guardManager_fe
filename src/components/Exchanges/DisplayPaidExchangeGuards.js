@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
-import OkExchangeMessage from "./OkExchangeMessage";
+import OkPaidExchangeMessage from "./OkPaidExchangeMessage";
 
 function DisplayPaidExchangeGuards(props) {
   const [guardsList, setGuardsList] = useState([]);
@@ -35,7 +35,7 @@ function DisplayPaidExchangeGuards(props) {
     <div style={{ direction: "rtl", textAlign: "center" }}>
       <div>
         {displayOkExchangeMessage && (
-          <OkExchangeMessage 
+          <OkPaidExchangeMessage 
             displayRegularExchangesCallBack={props.displayRegularExchangesCallBack} 
             substituteGuard={substituteGuard} 
             selectedRow={props.selectedRow} 
@@ -70,10 +70,10 @@ function DisplayPaidExchangeGuards(props) {
                   backgroundColor: "#183670",
                   color: "white",
                   fontSize: "14px",
-                  fontWeight: "normal",
+                  fontWeight: "normal", 
                 }}
               >
-                {guard.pguard_family_id.family_name} {guard.pguard_family_id.pguard_name} {guard.name2} {guard.pguard_family_id.family_id}
+                {guard.family_id.family_name} {guard.pguard_name} {guard.pguard_id}
               </option>
             ))}
           </select>

@@ -15,7 +15,7 @@ function DisplaySetGuardingList(props) {
   const [error, setError] = useState('');
   const [saveData, setSaveData] = useState('');
   const [loading, setLoading] = useState(false);
-  const [tableVisibility, setTableVisibility] = useState(props.apiResponse.Details.map(() => true)); // Initially all tables are visible
+  const [tableVisibility, setTableVisibility] = useState(props.apiResponse.Details.map(() => true)); // all tables are visible
   const navigate = useNavigate();
 
 
@@ -41,7 +41,7 @@ function DisplaySetGuardingList(props) {
     setSaveData(data);
     setTableVisibility(prevState => {
       const newState = [...prevState];
-      newState[index] = false; // Set visibility of the clicked table to false
+      newState[index] = false; // the visibility of the clicked table to false
       return newState;
     });
   };
@@ -61,23 +61,32 @@ function DisplaySetGuardingList(props) {
         </div>
       </div>
     );
-  }
+  };
 
   if (saveResponse.status === 'error') {
     return <div className="error">Error: {saveResponse.Details}</div>;
-  }
+  };
 
   if (error) {
-    // Render error details
     return <div className="error">Error: {error.message}</div>;
-  }
+  };
 
   return (
     <div className="display_set_list_container">
+      <div style={{marginTop:"-10px"}}>
+      <BlueWiteButton 
+                name="back" 
+                value='חזור'
+                width="100px" 
+                height="20px" 
+                fontSize='12px'
+                onClick={() => handleCancelClick()} 
+                />
+      </div>
       {saveResponse.status === 'success' && (
         <div className="save_message">
           <div>
-            <span style={{ fontWeight: "normal" }}>{saveResponse.Details}</span>&nbsp;&nbsp;
+            <span style={{ fontWeight: "bold" }}>{saveResponse.Details}</span>&nbsp;&nbsp;
             <span style={{ color: "yellow", fontWeight: "normal" }}>עמדה:</span>&nbsp;
             <span style={{ fontSize: "15px", color: "rgb(0, 255, 47)", fontWeight: "normal" }}>{saveResponse.position}</span>&nbsp;&nbsp;
             <span style={{ color: "yellow", fontWeight: "normal" }}>תאריך:</span>&nbsp;
@@ -90,7 +99,10 @@ function DisplaySetGuardingList(props) {
         <div key={index} className="table_wrapper">
           {tableVisibility[index] && (
             <div>
-              <GlistDispalyTable apiResponse={detail} displayGuardingList={props.displayGuardingList} />
+              <GlistDispalyTable 
+              apiResponse={detail} 
+              displayGuardingList={props.displayGuardingList} 
+              />
               <div className="table-buttons">
                 <CancelButton 
                 value='בטל' 
@@ -116,6 +128,6 @@ function DisplaySetGuardingList(props) {
       ))}
     </div>
   );
-}
+};
 
 export default DisplaySetGuardingList;
