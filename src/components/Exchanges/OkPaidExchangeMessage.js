@@ -1,7 +1,6 @@
-import React, {useState, useEffect} from "react";
+import React, {useState} from "react";
 import OkButton from "../buttons/OkButton";
 import CancelButton from "../buttons/CancelButton";
-import axios from "axios";
 import {useNavigate} from "react-router-dom";
 import Error1 from "../errorComps/Error1";
 
@@ -13,7 +12,7 @@ function OkPaidExchangeMessage(props){
     const navigate = useNavigate();
 
     function handleOkClick(){
-        navigate('/ResponsePaidApiExchangeMessage', {
+        navigate('/ResponseApiPaidExchangeMessage', {
             state: {
                 selectedRow:props.selectedRow,
                 substituteGuard:props.substituteGuard

@@ -9,7 +9,7 @@ function ExchangesPanel(){
     
     return(
         <div>
-            <div className="gListPanel">
+            <div className="exchange-reports-panel">
                 <BlueWiteButton 
                 width="120px" 
                 fontSize="12px" 
@@ -33,6 +33,14 @@ function ExchangesPanel(){
                 value="החלפות בשכר" 
                 fontWeight="normal" 
                 onClick={() => navigate('/PaidExchanges')}
+                />  
+                <BlueWiteButton 
+                width="120px" 
+                fontSize="12px" 
+                height="20px" 
+                value="חזרה" 
+                fontWeight="normal"
+                onClick={() => navigate('/ManagePanel')} 
                 />  
             </div>
         </div>

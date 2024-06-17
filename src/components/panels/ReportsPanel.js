@@ -1,47 +1,48 @@
 import React from "react";
-import { Link, useNavigate } from "react-router-dom";
-import Button1 from "../buttons/button1";
+import {useNavigate} from "react-router-dom";
 import BlueWiteButton from "../buttons/BlueWiteButton";
 
-function ManagePanel(){
+function ReportsPanel(){
 
     const navigate = useNavigate();
 
     return(
-        <div className="gListPanel">
+        <div className="exchange-reports-panel">
             <BlueWiteButton 
             width="120px" 
             fontSize="12px" 
             height="20px" 
-            value="צור רשימת שמירה" 
+            value="דוח החלפות רגילות" 
             fontWeight="normal" 
-            onClick={() => navigate('/GetGuardingList')}
+            onClick={() => navigate('/RegularExchangeReport')}
             />  
             <BlueWiteButton 
             width="120px" 
             fontSize="12px" 
             height="20px" 
-            value="החלפות" 
+            value="דוח החלפות בהצלבה" 
             fontWeight="normal" 
-            onClick={() => navigate('/ExchangesPanel')} 
-            /> 
-            <BlueWiteButton 
-            width="120px" 
-            fontSize="12px" 
-            height="20px" 
-            value="דוחות" 
-            fontWeight="normal"
-            onClick={() => navigate('/ReportsPanel')}
+            onClick={() => navigate('/CrossExchangeReport')} 
             />  
             <BlueWiteButton 
             width="120px" 
             fontSize="12px" 
             height="20px" 
-            value="צור עמדה" 
+            value="דוח החלפות בשכר" 
             fontWeight="normal"
+            onClick={() => navigate('/PaidExchangeReport')} 
             />  
+            <BlueWiteButton 
+            width="120px" 
+            fontSize="12px" 
+            height="20px" 
+            value="חזרה" 
+            fontWeight="normal"
+            onClick={() => navigate('/ManagePanel')} 
+            />  
+             
         </div>
     );
 };
 
-export default ManagePanel;
+export default ReportsPanel;

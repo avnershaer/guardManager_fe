@@ -11,7 +11,6 @@ import Content from "./components/panels/Content";
 import ContentBar from "./components/panels/ContentBar";
 import DisplayFutuShifts from "./components/shifts/DispalyFutuShifts";
 import GListPanel from "./components/panels/gListPanel";
-import ShiftsPanel from "./components/panels/ShiftsPanel";
 import GuardProcedures from "./components/temps/GuardProcedures";
 import GateManual from "./components/temps/GateManual";
 import DisplayGuardingList from "./components/guarding/DisplayGuardingList";
@@ -25,6 +24,8 @@ import FirstGuardListTable from "./components/displayListComps/FirstGuardListTab
 import ResponseApiCrossExchangeMessage from "./components/Exchanges/ResponseApiCrossExchangeMessage";
 import PaidExchanges from "./components/Exchanges/PaidExchanges";
 import ResponseApiPaidExchangeMessage from "./components/Exchanges/ResponseApiPaidExchangeMessage";
+import ReportsPanel from "./components/panels/ReportsPanel";
+import UsersPanel from "./components/panels/UsersPanel";
 
 function App() {
   return (
@@ -36,7 +37,6 @@ function App() {
       <div className="panel2">
         <Routes>
           <Route path='gListPanel' element={<GListPanel/>}></Route>
-          <Route path='ShiftsPanel' element={<ShiftsPanel/>}></Route>
         </Routes>
       </div>
       <div className="content-wrapper">
@@ -59,6 +59,8 @@ function App() {
             <Route path="SecondGuardTableDisplay" element={<SecondGuardTableDisplay/>}/>
             <Route path="FirstGuardListTable" element={<FirstGuardListTable/>}/>
             <Route path="PaidExchanges" element={<PaidExchanges/>}/>
+            <Route path="ReportsPanel" element={<ReportsPanel/>}/>
+            <Route path="UsersPanel" element={<UsersPanel/>}/>
           </Routes>
         </div>
         <div className="content-bar">

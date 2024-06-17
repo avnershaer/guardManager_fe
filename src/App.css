@@ -469,4 +469,11 @@ table {
   align-items: right;
 }
 
+.exchange-reports-panel {
+  direction: rtl;
+  display: flex;
+  justify-content: center;
+  gap: 10px; /* gap between buttons */
+  margin-top: 2px; 
+}
 
