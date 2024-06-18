@@ -74,10 +74,10 @@ function ResponseApiPaidExchangeMessage() {
                             {apiResponse?.Details?.origin_guard_id?.family_id?.family_name}&nbsp;
                             {apiResponse?.Details?.origin_guard_id?.fguard_name}
                         </span>
-                        <span style={{ color: "white" }}>&nbsp;הוחלף עם&nbsp;</span>
+                        <span style={{ color: "white" }}>&nbsp;הוחלף בשכר עם&nbsp;</span>
                         <span style={{ color: "yellow" }}>
-                            {apiResponse?.Details?.substitute_guard_id?.family_id?.family_name}&nbsp;
-                            {apiResponse?.Details?.substitute_guard_id?.fguard_name}
+                            {apiResponse?.Details?.substitute_Pguard_id?.family_id?.family_name}&nbsp;
+                            {apiResponse?.Details?.substitute_Pguard_id?.pguard_name}
                         </span>
                         <br /><span style={{ color: "white" }}>&nbsp;ב&nbsp;</span>
                         <span style={{ color: "#46fa1e" }}>{apiResponse?.Details?.exchange_day}</span>
