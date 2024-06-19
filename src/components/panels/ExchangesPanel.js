@@ -9,7 +9,7 @@ function ExchangesPanel(){
     
     return(
         <div>
-            <div className="exchange-reports-panel">
+            <div className="exchange-panel">
                 <BlueWiteButton 
                 width="120px" 
                 fontSize="12px" 

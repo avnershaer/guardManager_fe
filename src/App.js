@@ -26,6 +26,7 @@ import PaidExchanges from "./components/Exchanges/PaidExchanges";
 import ResponseApiPaidExchangeMessage from "./components/Exchanges/ResponseApiPaidExchangeMessage";
 import ReportsPanel from "./components/panels/ReportsPanel";
 import UsersPanel from "./components/panels/UsersPanel";
+import AllExchangesReport from "./components/reports/AllExchangesReport";
 
 function App() {
   return (
@@ -61,6 +62,7 @@ function App() {
             <Route path="PaidExchanges" element={<PaidExchanges/>}/>
             <Route path="ReportsPanel" element={<ReportsPanel/>}/>
             <Route path="UsersPanel" element={<UsersPanel/>}/>
+            <Route path="AllExchangesReport" element={<AllExchangesReport/>}/>
           </Routes>
         </div>
         <div className="content-bar">

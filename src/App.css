@@ -472,8 +472,79 @@ table {
 .exchange-reports-panel {
   direction: rtl;
   display: flex;
-  justify-content: center;
-  gap: 10px; /* gap between buttons */
-  margin-top: 2px; 
+  flex-direction: column;
+  align-items: center;
+  margin-top: 2px;
 }
 
+.exchange-panel {
+  justify-content: center;
+  direction: rtl;
+  display: flex;
+  align-items: center;
+  margin-top: 2px;
+}
+
+.buttons-container {
+  display: flex;
+  justify-content: center;
+  gap: 10px; /* gap between buttons */
+  width: 100%;
+}
+
+.report-container {
+  display: flex;
+  justify-content: center;
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  width: 100%;
+  margin-top: 20px;
+}
+
+.reports-table {
+  direction: rtl;
+  font-size: 12px;
+  line-height: 1.6;
+  padding: 5px;
+  background-color: #f9f9f9;
+  border-radius: 5px;
+  max-width: 800px;
+  margin: auto;
+  color: #333;
+  text-align: right; /* Align all text to the right */
+  height: 400px; /* Set a fixed height */
+  overflow-y: auto; /* Enable vertical scrollbar if content exceeds height */
+}
+
+.reports-table td {
+  padding: 2px; 
+  padding-left: 5px;
+  padding-right: 5px;
+  text-align: center;
+}
+
+.reports-table th {
+  color:#183670;
+  text-align: center;
+}
+
+.reports-table tr {
+  border:#183670 1px solid;
+}
+
+.reports-table::-webkit-scrollbar {
+  width: 8px; /* Change width for vertical scrollbar */
+}
+
+.reports-table::-webkit-scrollbar-track {
+  background: #f1f1f1; /* Color of the scrollbar track */
+}
+
+.reports-table::-webkit-scrollbar-thumb {
+  background: #183670; /* Color of the scrollbar handle */
+  border-radius: 4px; /* Round corners of the scrollbar handle */
+}
+
+.reports-table::-webkit-scrollbar-thumb:hover {
+  background: #3f5e9b; /* Color of the scrollbar handle on hover */
+}

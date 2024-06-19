@@ -4,7 +4,7 @@ import ExReportTable from "./ExReportTable";
 import Loading from "../buttons/Loading";
 
 
-function AllExchangesReport(){
+function ExchangesReport({reportPath}){
 
     const [apiResponse, setApiResponse] = useState({ details: [] });
     const [error, setError] = useState('');
@@ -13,7 +13,7 @@ function AllExchangesReport(){
 
     useEffect(() => {
         setLoading(true);
-        axios.get('/get_all_exchanges')
+        axios.get(reportPath)
         .then (resullt => {
             setLoading(false);
             setApiResponse(resullt.data); 
@@ -23,7 +23,7 @@ function AllExchangesReport(){
             setError(err);
             setLoading(false);
         });
-    },[]);
+    },[reportPath]);
 
 
     if (loading){
@@ -35,8 +35,8 @@ function AllExchangesReport(){
     };
 
     return (
-        <ExReportTable apiResponse={apiResponse} type='all'/>
+        <ExReportTable apiResponse={apiResponse}/>
     );
 };
 
-export default AllExchangesReport;
+export default ExchangesReport;
