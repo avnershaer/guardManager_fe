@@ -1,11 +1,13 @@
-import React from "react";
-import { Link, useNavigate } from "react-router-dom";
-import Button1 from "../buttons/button1";
+import React, {useState} from "react";
+import {useNavigate} from "react-router-dom";
 import BlueWiteButton from "../buttons/BlueWiteButton";
+import CreatePosition from "../creatPosition/CreatePosition";
 
 function ManagePanel(){
 
+    const [displayCreatePosition, setDisplayCreatePosition] = useState(false);
     const navigate = useNavigate();
+
 
     return(
         <div className="gListPanel">
@@ -39,7 +41,12 @@ function ManagePanel(){
             height="20px" 
             value="צור עמדה" 
             fontWeight="normal"
-            />  
+            onClick={() =>{setDisplayCreatePosition(true)}}
+            /> 
+            <br/>``
+            <div>
+                {displayCreatePosition && <CreatePosition/>}    
+            </div> 
         </div>
     );
 };
