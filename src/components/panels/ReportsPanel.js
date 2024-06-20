@@ -29,10 +29,10 @@ function ReportsPanel(){
         <div className="exchange-reports-panel">
             <div className="buttons-container">
                 <BlueWiteButton
-                    width="120px"
+                    width="130px"
                     fontSize="12px"
                     height="20px"
-                    value="כל ההחלפות"
+                    value="דוח החלפות כללי"
                     fontWeight="normal"
                     onClick={() => HandleAllClick()}
                 />
@@ -53,7 +53,7 @@ function ReportsPanel(){
                     onClick={() => HandleCrossClick()}
                 />
                 <BlueWiteButton
-                    width="120px"
+                    width="130px"
                     fontSize="12px"
                     height="20px"
                     value="דוח החלפות בשכר"
@@ -61,7 +61,7 @@ function ReportsPanel(){
                     onClick={() => HandlePaidClick()}
                 />
                 <BlueWiteButton
-                    width="120px"
+                    width="80px"
                     fontSize="12px"
                     height="20px"
                     value="חזרה"

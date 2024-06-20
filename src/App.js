@@ -1,6 +1,6 @@
 import React from "react";
 import './App.css';
-import GetFamiliesList from './components/families/GetFamiliesList';
+import GetFamiliesList from './components/users/GetFamiliesList';
 import Panel2 from './components/panels/panel2';
 import Panel1 from './components/panels/panel1';
 import { Route, Routes } from "react-router-dom";
@@ -27,6 +27,7 @@ import ResponseApiPaidExchangeMessage from "./components/Exchanges/ResponseApiPa
 import ReportsPanel from "./components/panels/ReportsPanel";
 import UsersPanel from "./components/panels/UsersPanel";
 import AllExchangesReport from "./components/reports/AllExchangesReport";
+import GetGuardsList from "./components/users/GetGuardsList";
 
 function App() {
   return (
@@ -44,6 +45,7 @@ function App() {
         <div className="content">
           <Routes>
             <Route path="GetFamiliesList" element={<GetFamiliesList/>}/>
+            <Route path="GetGuardsList" element={<GetGuardsList/>}/>
             <Route path="DisplaySetGuardingList" element={<DisplaySetGuardingList/>}/>
             <Route path="GetGuardingList" element={<GetGuardingList/>}/>
             <Route path="DisplayGuardingList" element={<DisplayGuardingList/>}/>

@@ -43,7 +43,7 @@ function ManagePanel(){
             fontWeight="normal"
             onClick={() =>{setDisplayCreatePosition(true)}}
             /> 
-            <br/>``
+            <br/>
             <div>
                 {displayCreatePosition && <CreatePosition/>}    
             </div> 

@@ -7,14 +7,14 @@ function UsersPanel(){
     const navigate = useNavigate();
 
     return(
-      <div className="exchange-reports-panel">
+      <div className="exchange-panel">
           <BlueWiteButton 
           width="120px" 
           fontSize="12px" 
           height="20px" 
           value="רשימת משתמשים"
           fontWeight="normal" 
-          onClick={() => navigate('/RegularExchangeReport')}
+          onClick={() => navigate('/GetFamiliesList')}
           />  
           <BlueWiteButton 
           width="120px" 
@@ -22,10 +22,10 @@ function UsersPanel(){
           height="20px" 
           value="רשימת שומרים" 
           fontWeight="normal" 
-          onClick={() => navigate('/CrossExchangeReport')} 
+          onClick={() => navigate('/GetGuardsList')} 
           />  
           <BlueWiteButton 
-          width="120px" 
+          width="150px" 
           fontSize="12px" 
           height="20px" 
           value="רשימת שומרים בשכר" 
@@ -33,7 +33,7 @@ function UsersPanel(){
           onClick={() => navigate('/PaidExchangeReport')} 
           />  
           <BlueWiteButton 
-          width="120px" 
+          width="150px" 
           fontSize="12px" 
           height="20px" 
           value="הפוך משתמש ללא זמין" 
@@ -41,7 +41,7 @@ function UsersPanel(){
           onClick={() => navigate('/PaidExchangeReport')} 
           />  
           <BlueWiteButton 
-          width="120px" 
+          width="80px" 
           fontSize="12px" 
           height="20px" 
           value="חזרה" 

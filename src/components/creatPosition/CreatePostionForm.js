@@ -5,7 +5,6 @@ import Loading from "../buttons/Loading";
 
 function CreatePositionForm({apiResponseCallBack}){
 
-    const [apiResponse, setApiResponse] = useState('');
     const [positionName, setPositionName] = useState('');
     const [error, setError] = useState('');
     const [loading, setLoading] = useState(false);
@@ -15,9 +14,9 @@ function CreatePositionForm({apiResponseCallBack}){
         axios.post('/create_position',{positionName:positionName})
             .then(result => {
                 setLoading(false);
-                setApiResponse(result.data.details.position_name);
+                const posName = result.data.details.position_name;
                 console.log('create_position apiResponse:', result.data);
-                apiResponseCallBack(apiResponse);
+                apiResponseCallBack(posName);
             })
             .catch(err => {
                 setError(err);
@@ -40,7 +39,7 @@ function CreatePositionForm({apiResponseCallBack}){
         <div>
             <div>
             <input
-            style={{ width: '245px', backgroundColor:"#dce0e8", borderRadius:"10px", direction:"rtl" }}
+            style={{ width: '245px', borderRadius:"10px", direction:"rtl", marginTop:"4px", fontWeight:"bold"}}
             type="text"
             name="positionName"
             value={positionName}
@@ -48,7 +47,8 @@ function CreatePositionForm({apiResponseCallBack}){
             >
             </input>
             </div>
-            <div>
+            <div style={{marginTop:"10px", marginBottom:"5px"}}>
+            
             <BlueWiteButton 
             width="250px" 
             fontSize="12px" 

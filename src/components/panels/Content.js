@@ -1,6 +1,6 @@
 import React from "react";
 import DisplaySetGuardingList from "../guarding/DisplaySetGuardingList";
-import GetFamiliesList from "../families/GetFamiliesList";
+import GetFamiliesList from "../users/GetFamiliesList";
 
 function Content(){
 
