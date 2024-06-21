@@ -15,6 +15,7 @@ function GuardsTable({guards, type}){
                         <th>שם משפחה</th>
                         <th>שם פרטי</th>
                         <th>טלפון</th>
+                        <th>פעיל</th>
                         <th></th>
                         <th></th>
                     </thead>
@@ -23,7 +24,14 @@ function GuardsTable({guards, type}){
                         <tr>                    
                             <td style={{ width:"100px", textAlign: 'center'}}>{guard.family_id.family_name}</td>
                             <td style={{ width:"50px", textAlign: 'center', color:'blue' }}>{guard.fguard_name}</td>
-                            <td style={{ textAlign: 'center', color:'blue' }}>{guard.fguard_phone}</td>   
+                            <td style={{ textAlign: 'center', color:'blue' }}>{guard.fguard_phone}</td>  
+                            <td style={{ 
+                                textAlign: 'center', 
+                                color: guard.family_id.user.is_active ? 'green' : 'red', 
+                                fontWeight: 'bold' 
+                                }}>
+                                {guard.family_id.user.is_active ? 'כן' : 'לא'}
+                            </td>   
                             <td>
                                 <BlueWiteButton
                                     width="120px"

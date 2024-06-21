@@ -40,15 +40,7 @@ function GetFamiliesList(){
 
     return (
         <div className="families-list-container">
-            <BlueWiteButton
-                width="60px"
-                fontSize="12px"
-                height="20px"
-                value="חזור"
-                fontWeight="normal"
-                onClick={() => navigate('/UsersPanel')}
-            />
-            <div style={{ textAlign: 'center', marginTop:"-10px"}}>
+            <div style={{ textAlign: 'center',}}>
                 <h5>רשימת משתמשים (משפחות)</h5>
                 <div className="families-list">
                     <div className="reports-table">
@@ -57,6 +49,9 @@ function GetFamiliesList(){
                                 <th>שם משפחה</th>
                                 <th>מס. משפ'</th>
                                 <th>user id</th>
+                                <th>user name</th>
+                                <th>פעיל</th>
+                                <th>הערה</th>
                                 <th></th>
                                 <th></th>
                             </thead>
@@ -64,28 +59,27 @@ function GetFamiliesList(){
                             <tbody>
                                 <tr>                    
                                     <td style={{ width:"100px", textAlign: 'center'}}>{family.family_name}</td>
-                                    <td style={{ width:"50px", textAlign: 'center', color:'blue' }}>{family.family_id}</td>
-                                    <td style={{ textAlign: 'center', color:'blue' }}>{family.user}</td>   
+                                    <td style={{ width:"50px", textAlign: 'center'}}>{family.family_id}</td>
+                                    <td style={{ textAlign: 'center', color:'blue' }}>{family.user.id}</td>   
+                                    <td style={{ textAlign: 'center', color:'blue' }}>{family.user.username}</td>   
+                                    <td style={{ 
+                                            textAlign: 'center', 
+                                            color: family.user.is_active ? 'green' : 'red', 
+                                            fontWeight: 'bold' 
+                                            }}>
+                                            {family.user.is_active ? 'כן' : 'לא'}
+                                    </td>    
+                                    <td style={{ width:"100px", backgroundColor:"#ddd", textAlign: 'center', color:'darkblue', fontSize:"10px" }}>{family.user.custom_user.remark}</td>   
                                     <td>
-                                            <BlueWiteButton
-                                                width="150px"
-                                                fontSize="12px"
-                                                height="20px"
-                                                value="הפוך משתמש ללא זמין"
-                                                fontWeight="normal"
-                                                onClick={() => navigate('/CrossExchangeReport')}
-                                            />
-                                        </td>
-                                        <td>
-                                            <BlueWiteButton
-                                                width="90px"
-                                                fontSize="12px"
-                                                height="20px"
-                                                value="שנה סיסמה"
-                                                fontWeight="normal"
-                                                onClick={() => navigate('/CrossExchangeReport')}
-                                            />
-                                        </td>
+                                        <BlueWiteButton
+                                            width="90px"
+                                            fontSize="12px"
+                                            height="20px"
+                                            value="שנה סיסמה"
+                                            fontWeight="normal"
+                                            onClick={() => navigate('/CrossExchangeReport')}
+                                        />
+                                    </td>
                                 </tr>
                             </tbody>
                             ))}
