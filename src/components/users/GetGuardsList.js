@@ -1,16 +1,15 @@
 import React, { useState, useEffect } from "react";
 import axios from "../AxiosPath";
 import Loading from "../buttons/Loading";
-import BlueWiteButton from "../buttons/BlueWiteButton";
-import {useNavigate} from "react-router-dom";
 import GuardsTable from "./GuardsTable";
 
 
-function GetGuardsList(path){
+function GetGuardsList(props){
     const [guards, setGuards] = useState([]);
     const [error, setError] = useState(null);
     const [loading, setLoading] = useState(false);
-    const navigate = useNavigate();
+
+    
 
     useEffect(() => {
         setLoading(true);
@@ -23,8 +22,11 @@ function GetGuardsList(path){
             .catch(err => {
                 console.log('error:', err);
                 setError(err);
+                setLoading(false);
             });
-    }, [path]);
+    }, [props.path]);
+
+
 
     if (error) {
         return (
@@ -40,20 +42,17 @@ function GetGuardsList(path){
 
     return (
         <div className="families-list-container">
-            <BlueWiteButton
-                width="60px"
-                fontSize="12px"
-                height="20px"
-                value="חזור"
-                fontWeight="normal"
-                onClick={() => navigate('/UsersPanel')} 
-            />
-            <div style={{ textAlign: 'center', marginTop:"-10px"}}>
-                <h5>רשימת שומרים</h5>
                 <div className="guards-list">
-                    <div className="reports-table">
-                    <GuardsTable guards={guards} type='fg'/>
-                    </div>
+                    <div>
+                   
+                    <h5 style={{color:"#183670"}}>רשימת שומרים</h5>
+                    <GuardsTable 
+                    guardDataCallBack={props.guardDataCallBack}
+                    displayFguardFormCallBack={props.displayFguardFormCallBack}
+                    hideGuardListCallBack={props.hideGuardListCallBack}
+                    guards={guards} 
+                    type='fg'
+                    />
                 </div>
             </div>
         </div>

@@ -485,7 +485,7 @@ table {
   margin-top: 2px;
 }
 
-.users-panel {
+.bottuns-panel {
   direction: rtl;
   display: flex;
   flex-direction: column;
@@ -497,7 +497,8 @@ table {
 .buttons-container {
   display: flex;
   justify-content: center;
-  gap: 10px; /* gap between buttons */
+  align-items: center;
+  gap: 5px; /* gap between buttons */
   width: 100%;
 }
 
@@ -584,3 +585,43 @@ table {
   font-size: 12px;
   
 }
+
+.fguard-form {
+    width: 300px;
+    margin: 20px;
+    color: #183670;
+    border:1px solid #183670;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    font-size: 12px;
+    padding: 20px;
+}
+
+.form-group {
+    margin-bottom: 5px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 3px;
+    box-sizing: border-box;
+    border: 1px solid #183670;
+    margin-top: 5px;
+     
+}
+
+.form-group input[type="checkbox"] {
+    width: auto;
+    display: inline-block;
+}
+
+.form-group span {
+    color: red;
+    font-size: 12px;
+}
+

@@ -2,19 +2,52 @@ import React, {useState} from "react";
 import {useNavigate} from "react-router-dom";
 import BlueWiteButton from "../buttons/BlueWiteButton";
 import GetFamiliesList from "../users/GetFamiliesList";
+import GetGuardsList from "../users/GetGuardsList";
+import FguardForm from "../users/FgaurdForm";
 
 function UsersPanel(){
 
-  const [showFamiliesList, setShowFamiliesList] = useState(false);
-  const navigate = useNavigate();
+    const [showFamiliesList, setShowFamiliesList] = useState(false);
+    const [showGuardsList, setShowGuardsList] = useState(false);
+    const [displayFguardForm, setDisplayFguardForm] = useState(false);
+    const [guardData, setGuardData] = useState('');
+    const navigate = useNavigate(); 
+    
+    const guardDataCallBack = (data) => {
+        setGuardData(data);
+    }; 
+    
+    const displayFguardFormCallBack = () => {
+       setDisplayFguardForm(true);
+    }; 
 
-  const handleShowFamiliesList = () => {
-      setShowFamiliesList(true);
-  };
+    const handleShowFamiliesList = () => {
+        setShowFamiliesList(true);
+        setDisplayFguardForm(false);
+    };  
+    const handleShowGuardsList = () => {
+        setShowGuardsList(true);
+        setShowFamiliesList(false);
+        setDisplayFguardForm(false);
+    };
+
+    const hideGuardListCallBack = () => {
+        setShowGuardsList(false);
+    };
+
+
 
   return (
-    <div className="users-panel">
-        <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "center" }}>
+    <div className="bottuns-panel">
+        <div className="buttons-container">
+            <BlueWiteButton
+                width="80px"
+                fontSize="12px"
+                height="20px"
+                value="חזרה"
+                fontWeight="normal"
+                onClick={() => navigate('/ManagePanel')}
+            />
             <BlueWiteButton
                 width="120px"
                 fontSize="12px"
@@ -29,7 +62,7 @@ function UsersPanel(){
                 height="20px"
                 value="רשימת שומרים"
                 fontWeight="normal"
-                onClick={() => navigate('/GetGuardsList')}
+                onClick={handleShowGuardsList}
             />
             <BlueWiteButton
                 width="150px"
@@ -39,25 +72,17 @@ function UsersPanel(){
                 fontWeight="normal"
                 onClick={() => navigate('/PaidExchangeReport')}
             />
-            <BlueWiteButton
-                width="150px"
-                fontSize="12px"
-                height="20px"
-                value="הפוך משתמש ללא זמין"
-                fontWeight="normal"
-                onClick={() => navigate('/PaidExchangeReport')}
-            />
-            <BlueWiteButton
-                width="80px"
-                fontSize="12px"
-                height="20px"
-                value="חזרה"
-                fontWeight="normal"
-                onClick={() => navigate('/ManagePanel')}
-            />
         </div>
         <div style={{ marginTop: "1px", textAlign: "center" }}>
+            {displayFguardForm && <FguardForm guardData={guardData}/>}
             {showFamiliesList && <GetFamiliesList />}
+            {showGuardsList && 
+                <GetGuardsList 
+                hideGuardListCallBack={hideGuardListCallBack}
+                displayFguardFormCallBack={displayFguardFormCallBack}
+                guardDataCallBack={guardDataCallBack}
+                />
+            }
         </div>
     </div>
 );

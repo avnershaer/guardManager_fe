@@ -1,22 +1,14 @@
-import React, {useState} from "react";
+import React from "react";
 import BlueWiteButton from "../buttons/BlueWiteButton";
 import {useNavigate} from "react-router-dom";
 
 
-function GuardsTable(props){
+function FguardTr({guards, type}){
 
     const navigate = useNavigate();
     
-    const handleUpdateClick = (guard) => {
-        props.hideGuardListCallBack();
-        props.displayFguardFormCallBack();
-        props.guardDataCallBack(guard);
-        };
-
-    return (    
+    return (
         <div>
-            <div>
-            </div>
             <div className="reports-table">
                 <table>
                     <thead style={{fontSize:"10px"}}>
@@ -27,7 +19,7 @@ function GuardsTable(props){
                         <th></th>
                         <th></th>
                     </thead>
-                    {props.guards.map((guard, index) => (
+                    {guards.map((guard, index) => (
                     <tbody>
                         <tr>                    
                             <td style={{ width:"100px", textAlign: 'center'}}>{guard.family_id.family_name}</td>
@@ -47,7 +39,7 @@ function GuardsTable(props){
                                     height="20px"
                                     value="ערוך פרטי שומר"
                                     fontWeight="normal"
-                                    onClick={() => handleUpdateClick(guard)}
+                                    onClick={() => navigate('/CrossExchangeReport')}
                                 />
                             </td>
                             <td>
@@ -71,7 +63,7 @@ function GuardsTable(props){
                                 />
                             </td>
                         </tr>
-                    </tbody>    
+                    </tbody>
                     ))}
                 </table>
             </div>
@@ -79,4 +71,4 @@ function GuardsTable(props){
     );
 };
 
-export default GuardsTable;
+export default FguardTr;

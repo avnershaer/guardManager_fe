@@ -40,6 +40,7 @@ function BlueWiteButton(props) {
           height: props.height,
           fontSize: props.fontSize,
           fontWeight: props.fontWeight,
+          
         }}
       >
         {props.value}

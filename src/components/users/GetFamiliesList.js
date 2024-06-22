@@ -41,7 +41,7 @@ function GetFamiliesList(){
     return (
         <div className="families-list-container">
             <div style={{ textAlign: 'center',}}>
-                <h5>רשימת משתמשים (משפחות)</h5>
+                <h5 style={{color:"#183670"}}>רשימת משתמשים (משפחות)</h5>
                 <div className="families-list">
                     <div className="reports-table">
                     <table>

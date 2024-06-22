@@ -26,8 +26,16 @@ function ReportsPanel(){
     };
 
     return (
-        <div className="exchange-reports-panel">
+        <div className="bottuns-panel">
             <div className="buttons-container">
+                <BlueWiteButton
+                    width="80px"
+                    fontSize="12px"
+                    height="20px"
+                    value="חזרה"
+                    fontWeight="normal"
+                    onClick={() => navigate('/ManagePanel')}
+                />
                 <BlueWiteButton
                     width="130px"
                     fontSize="12px"
@@ -59,14 +67,6 @@ function ReportsPanel(){
                     value="דוח החלפות בשכר"
                     fontWeight="normal"
                     onClick={() => HandlePaidClick()}
-                />
-                <BlueWiteButton
-                    width="80px"
-                    fontSize="12px"
-                    height="20px"
-                    value="חזרה"
-                    fontWeight="normal"
-                    onClick={() => navigate('/ManagePanel')}
                 />
             </div>
             <div className="report-container">
