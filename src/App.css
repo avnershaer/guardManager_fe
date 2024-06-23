@@ -181,12 +181,16 @@ table {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: rgba(104, 13, 17, 0.721);
-  color: yellow;
-  padding: 10px;
+  background-color: rgba(239, 210, 211, 0.721);
+  color: red;
+  border:#183670 1px solid ;
+  border-radius: 8px;
+  padding:10px;
+  padding-bottom: 14px;
   height: 10px;
   margin-bottom:5px;
   font-weight: normal;
+  margin-top: 10px;
 }
 
 .loading-container {

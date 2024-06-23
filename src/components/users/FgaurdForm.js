@@ -1,27 +1,35 @@
 import React, { useEffect, useState } from 'react';
-import { useForm } from 'react-hook-form';
+import { set, useForm } from 'react-hook-form';
 import axios from 'axios';
 import BlueWiteButton from '../buttons/BlueWiteButton';
+import baseURL from "../../config";
+import Error1 from '../errorComps/Error1';
 
 function FguardForm({ guardData }) {
     const { register, handleSubmit, setValue, reset, formState: { errors } } = useForm();
     const [preview, setPreview] = useState('');
+    const [removePic, setRemovePic] = useState(false);
+    const [error, setError] = useState("");
+
 
     useEffect(() => {
         if (guardData) {
             reset({
+                fguard_id: guardData.fguard_id,
                 fguard_name: guardData.fguard_name,
                 fguard_phone: guardData.fguard_phone,
                 fguard_email: guardData.fguard_email,
                 armed: guardData.armed,
             });
-            setPreview(guardData.fguard_pic);
+            setPreview(`${baseURL}${guardData.fguard_pic}`);
+            setRemovePic(false);
         }
     }, [guardData, reset]);
 
     const onSubmit = async (data) => {
         try {
             const formData = new FormData();
+            formData.append('fguard_id', data.fguard_id);
             formData.append('fguard_name', data.fguard_name);
             formData.append('fguard_phone', data.fguard_phone);
             formData.append('fguard_email', data.fguard_email);
@@ -29,20 +37,34 @@ function FguardForm({ guardData }) {
             if (data.fguard_pic && data.fguard_pic[0]) {
                 formData.append('fguard_pic', data.fguard_pic[0]);
             }
+            if (removePic) {
+                formData.append('remove_pic', true);
+            }
 
-            const response = await axios.post('/api/fguard/', formData, {
+            const response = await axios.post('/update_fguard', formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data',
                 },
             });
             console.log(response.data);
         } catch (error) {
-            console.error('There was an error!', error);
+            console.log('There was an error:', error);
+            setError(error);
         }
     };
 
     const handleFileClick = () => {
         document.getElementById('fguard_pic').click();
+    };
+
+    if (error){
+        return (
+            <div>
+                <Error1
+            error={error.message}
+            />
+            </div>
+        )
     };
 
     const handleFileChange = (e) => {
@@ -51,9 +73,15 @@ function FguardForm({ guardData }) {
             const reader = new FileReader();
             reader.onloadend = () => {
                 setPreview(reader.result);
+                setRemovePic(false);
             };
             reader.readAsDataURL(file);
         }
+    };
+
+    const handleRemovePic = () => {
+        setPreview('');
+        setRemovePic(true);
     };
 
     return (
@@ -85,15 +113,33 @@ function FguardForm({ guardData }) {
             </div>
             <div className="form-group">
                 <label>תמונה</label>
-                {preview && (
-                    <div>
+                <div style={{ display: 'flex', alignItems: 'center', gap: "10px" }}>
+                    <BlueWiteButton
+                        width="100px"
+                        fontSize="12px"
+                        height="20px"
+                        value="העלה קובץ תמונה"
+                        fontWeight="normal"
+                        onClick={handleFileClick}
+                    />
+                    {preview && (
                         <img 
                             src={preview} 
                             alt="Guard Pic" 
-                            style={{ width: '150px', height: '150px', marginBottom: '10px' }} 
+                            style={{ width: '80px', height: '80px', borderRadius: "45px" }} 
                         />
-                    </div>
-                )}
+                    )}
+                    {preview && (
+                        <BlueWiteButton
+                            width="100px"
+                            fontSize="12px"
+                            height="20px"
+                            value="הסר תמונה"
+                            fontWeight="normal"
+                            onClick={handleRemovePic}
+                        />
+                    )}
+                </div>
                 <input
                     type="file"
                     id="fguard_pic"
@@ -101,20 +147,12 @@ function FguardForm({ guardData }) {
                     style={{ display: 'none' }}
                     onChange={handleFileChange}
                 />
-                <BlueWiteButton
-                    width="150px"
-                    fontSize="12px"
-                    height="20px"
-                    value="העלה קובץ תמונה"
-                    fontWeight="normal"
-                    onClick={handleFileClick}
-                />
             </div>
             <BlueWiteButton
-                width="150px"
+                width="100px"
                 fontSize="12px"
                 height="20px"
-                value="עדכן"
+                value="עדכן פרטים"
                 fontWeight="normal"
                 type="submit"
             />

@@ -29,7 +29,7 @@ function GuardsTable(props){
                     </thead>
                     {props.guards.map((guard, index) => (
                     <tbody>
-                        <tr>                    
+                        <tr style={{ borderColor:"lightGrey"}}>                  
                             <td style={{ width:"100px", textAlign: 'center'}}>{guard.family_id.family_name}</td>
                             <td style={{ width:"50px", textAlign: 'center', color:'blue' }}>{guard.fguard_name}</td>
                             <td style={{ textAlign: 'center', color:'blue' }}>{guard.fguard_phone}</td>  
