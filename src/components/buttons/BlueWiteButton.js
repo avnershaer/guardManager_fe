@@ -31,6 +31,7 @@ function BlueWiteButton(props) {
         onClick={handleButtonClick}
         onMouseOver={handleMouseOver}
         onMouseOut={handleMouseOut}
+        type={props.type} 
         style={{
           backgroundColor: color,
           borderRadius: "10px",

@@ -46,7 +46,7 @@ function UsersPanel(){
                 height="20px"
                 value="חזרה"
                 fontWeight="normal"
-                onClick={() => navigate('/ManagePanel')}
+                onClick={() => navigate('/Panel1')}
             />
             <BlueWiteButton
                 width="120px"

@@ -346,6 +346,20 @@ table {
   text-align: center;
 }
 
+.update-message {
+  width: 180px;
+  height: 15px;
+  padding: 5px;
+  padding-bottom:  7px;
+  margin-top: 15px;
+  border-radius: 35px;
+  background-color: #183670;
+  color: yellow;
+  font-size: 12px;
+  font-weight: normal;
+  text-align: center;
+}
+
 .guard_procedures {
   direction: rtl; /* This sets the text direction to RTL */
   unicode-bidi: plaintext; /* This ensures the scrollbar remains on the right side */

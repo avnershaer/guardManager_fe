@@ -52,7 +52,7 @@ function GuardListTable( {apiResponse, selectedRow1, typeOf, displayRegularExcha
   
 
   return (
-    <div style={{ direction: 'rtl'}} >
+    <div style={{ direction: 'rtl', display:"flex", alignItems:"center", justifyContent: 'center'}} >
       
        {displayApproveCrossMessage && (
         <OkCrossExchangeMessage 

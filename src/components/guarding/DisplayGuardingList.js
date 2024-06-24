@@ -40,7 +40,7 @@ function DisplayGuardingList() {
   }
 
   return (
-    <div>
+    <div style={{ direction: 'rtl', justifyContent: 'center'}}>
       {displayGlist ? (
         <GuardListTable apiResponse={apiResponse}/>
       ) : (
