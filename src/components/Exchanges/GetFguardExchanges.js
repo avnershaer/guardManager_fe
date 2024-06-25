@@ -4,8 +4,8 @@ import Loading from "../buttons/Loading";
 import GuardsTable from "./GuardsTable";
 
 
-function GetGuardsList(props){
-    const [guards, setGuards] = useState([]);
+function GetFguardExchanges(props){
+    const [fguard, setFguard] = useState([]);
     const [error, setError] = useState(null);
     const [loading, setLoading] = useState(false);
 
@@ -13,10 +13,10 @@ function GetGuardsList(props){
 
     useEffect(() => {
         setLoading(true);
-        axios.get('/fguards_list')
+        axios.get(`get_exchanges_for_fguard/${props.fguard_id}`)
             .then(result => {
                 console.log("fguards data:", result.data.details);
-                setGuards(result.data.details);
+                setFguard(result.data.details);
                 setLoading(false);
             })
             .catch(err => {
@@ -24,7 +24,7 @@ function GetGuardsList(props){
                 setError(err);
                 setLoading(false);
             });
-    }, [props.path]);
+    }, [props.fguard_id]);
 
 
 
@@ -44,20 +44,19 @@ function GetGuardsList(props){
         <div className="families-list-container">
                 <div className="guards-list">
                     <div>
-                        <GuardsTable 
-                        handleShiftsForGuardCallBack={props.handleShiftsForGuardCallBack}
-                        guardDataCallBack={props.guardDataCallBack}
-                        displayFguardFormCallBack={props.displayFguardFormCallBack}
-                        hideGuardListCallBack={props.hideGuardListCallBack}
-                        handleFguardExchangesCallBack={props.handleFguardExchangesCallBack}
-                        handleFguardDidExchangesCallBack={props.handleFguardDidExchangesCallBack}
-                        guards={guards} 
-                        type='fg'
-                        />
-                    </div>
+                   
+                    <h5 style={{color:"#183670"}}>רשימת שומרים</h5>
+                    <GuardsTable 
+                    guardDataCallBack={props.guardDataCallBack}
+                    displayFguardFormCallBack={props.displayFguardFormCallBack}
+                    hideGuardListCallBack={props.hideGuardListCallBack}
+                    guards={fguard} 
+                    type='fg'
+                    />
                 </div>
+            </div>
         </div>
     );
 };
 
-export default GetGuardsList;
+export default GetFguardExchanges;

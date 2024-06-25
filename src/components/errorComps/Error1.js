@@ -7,6 +7,8 @@ function Error1(props) {
     const HandleOnClick = () => {
         if (props.displayInput) {
             props.displayInput(false, true);
+        } else if (props.goBack) {
+            navigate(-1); // one step back
         } else {
             navigate(`/${props.navigateTo}`);
         }

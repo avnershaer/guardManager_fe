@@ -29,6 +29,7 @@ import UsersPanel from "./components/panels/UsersPanel";
 import AllExchangesReport from "./components/reports/AllExchangesReport";
 import GetGuardsList from "./components/users/GetGuardsList";
 import FguardForm from "./components/users/FgaurdForm";
+import ExchangesReport from "./components/reports/ExchangesReport";
 
 function App() {
   return (
@@ -67,6 +68,7 @@ function App() {
             <Route path="UsersPanel" element={<UsersPanel/>}/>
             <Route path="AllExchangesReport" element={<AllExchangesReport/>}/>
             <Route path="FguardForm" element={<FguardForm/>}/>
+            <Route path="ExchangesReport" element={<ExchangesReport/>}/>
           </Routes>
         </div>
         <div className="content-bar">

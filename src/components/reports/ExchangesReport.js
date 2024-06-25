@@ -2,6 +2,7 @@ import axios from "axios";
 import React, {useState, useEffect} from "react";
 import ExReportTable from "./ExReportTable";
 import Loading from "../buttons/Loading";
+import Error1 from "../errorComps/Error1";
 
 
 function ExchangesReport({reportPath}){
@@ -12,6 +13,7 @@ function ExchangesReport({reportPath}){
 
 
     useEffect(() => {
+        setApiResponse('');
         setLoading(true);
         axios.get(reportPath)
         .then (resullt => {
@@ -25,13 +27,10 @@ function ExchangesReport({reportPath}){
         });
     },[reportPath]);
 
-
-    if (loading){
-        return <Loading/>
-    };
+    if (loading){return <Loading/>};
 
     if (error) {
-        return <div className="error">Error: {error.message}</div>;
+        return <div><Error1 goBack={true} error={error.message}/></div>;
     };
 
     return (

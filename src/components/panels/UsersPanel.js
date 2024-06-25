@@ -4,13 +4,22 @@ import BlueWiteButton from "../buttons/BlueWiteButton";
 import GetFamiliesList from "../users/GetFamiliesList";
 import GetGuardsList from "../users/GetGuardsList";
 import FguardForm from "../users/FgaurdForm";
+import ExchangesReport from "../reports/ExchangesReport";
+import baseURL from "../../config";
+import GetShiftForGuard from "../users/GetShiftForGuard";
+
 
 function UsersPanel(){
 
     const [showFamiliesList, setShowFamiliesList] = useState(false);
     const [showGuardsList, setShowGuardsList] = useState(false);
     const [displayFguardForm, setDisplayFguardForm] = useState(false);
+    const [displayFguarExchanges, setDisplayFguarExchanges] = useState(false);
+    const [displayFguarDidExchanges, setDisplayFguarDidExchanges] = useState(false);
+    const [displayShiftsForFguard, setDisplayShiftsForFguard] = useState(false);
     const [guardData, setGuardData] = useState('');
+    const [fguardId, setFguardId] = useState('');
+
     const navigate = useNavigate(); 
     
     const guardDataCallBack = (data) => {
@@ -18,21 +27,41 @@ function UsersPanel(){
     }; 
     
     const displayFguardFormCallBack = () => {
-       setDisplayFguardForm(true);
+        setGuardData('');
+        setDisplayFguardForm(true);
     }; 
 
     const handleShowFamiliesList = () => {
         setShowFamiliesList(true);
         setDisplayFguardForm(false);
+        setShowGuardsList(false);
     };  
     const handleShowGuardsList = () => {
         setShowGuardsList(true);
         setShowFamiliesList(false);
         setDisplayFguardForm(false);
+        setDisplayFguarExchanges(false);
+        setDisplayFguarDidExchanges(false);
+        setDisplayShiftsForFguard(false);
     };
 
     const hideGuardListCallBack = () => {
         setShowGuardsList(false);
+    };
+    
+    const handleFguardExchangesCallBack = (fGuardId) => {
+        setDisplayFguarExchanges(true);
+        setFguardId(fGuardId)
+    };
+    
+    const handleFguardDidExchangesCallBack = (fGuardId) => {
+        setDisplayFguarDidExchanges(true);
+        setFguardId(fGuardId)
+    };
+    
+    const handleShiftsForGuardCallBack = (fGuardId) => {
+        setDisplayShiftsForFguard(true);
+        setFguardId(fGuardId)
     };
 
 
@@ -78,10 +107,28 @@ function UsersPanel(){
             {showFamiliesList && <GetFamiliesList />}
             {showGuardsList && 
                 <GetGuardsList 
+                handleShiftsForGuardCallBack={handleShiftsForGuardCallBack}
                 hideGuardListCallBack={hideGuardListCallBack}
                 displayFguardFormCallBack={displayFguardFormCallBack}
                 guardDataCallBack={guardDataCallBack}
+                handleFguardExchangesCallBack={handleFguardExchangesCallBack}
+                handleFguardDidExchangesCallBack={handleFguardDidExchangesCallBack}
                 />
+            }
+            {displayFguarExchanges && 
+            <ExchangesReport 
+            reportPath={`/get_exchanges_for_fguard/${fguardId}`}
+            />
+            }
+            {displayFguarDidExchanges && 
+            <ExchangesReport 
+            reportPath={`/get_did_exchanges_for_fguard/${fguardId}`}
+            />
+            }
+            {displayShiftsForFguard && 
+            <GetShiftForGuard 
+            path={`/get_fguard_shifts/${fguardId}`}
+            />
             }
         </div>
     </div>

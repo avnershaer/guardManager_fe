@@ -5,14 +5,17 @@ import BlueWiteButton from '../buttons/BlueWiteButton';
 import baseURL from "../../config";
 import Error1 from '../errorComps/Error1';
 import UserUpdateMessage from './UserUpdateMessage';
+import Loading from '../buttons/Loading';
 
 function FguardForm({ guardData }) {
-    const { register, handleSubmit, setValue, reset, formState: { errors } } = useForm();
+    const { register, handleSubmit, reset, formState: { errors } } = useForm();
     const [preview, setPreview] = useState('');
     const [removePic, setRemovePic] = useState(false);
     const [error, setError] = useState("");
     const [apiResponse, setApiResponse] = useState('');
     const [selectedFile, setSelectedFile] = useState(null); // Add this state
+    const [loading, setLoading] = useState(false);
+
 
     useEffect(() => {
         if (guardData) {
@@ -43,12 +46,13 @@ function FguardForm({ guardData }) {
                 formData.append('remove_pic', true);
             }
 
-
+            setLoading(true);
             const response = await axios.post('/update_fguard', formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data',
                 },
             });
+            setLoading(false);
             setApiResponse(response.data);
             console.log('response.data:', response.data);
         } catch (error) {
@@ -70,19 +74,19 @@ function FguardForm({ guardData }) {
                 setRemovePic(false);
             };
             reader.readAsDataURL(file);
-            setSelectedFile(file); // Set the selected file
+            setSelectedFile(file); // set selected file
         }
     };
 
     const handleRemovePic = () => {
         setPreview('');
         setRemovePic(true);
-        setSelectedFile(null); // Clear the selected file
+        setSelectedFile(null); // clear selected file
     };
 
-    if (error) {
-        return (<div><Error1 error={error.message} /></div>);
-    }
+    if (error) {return (<div><Error1 error={error.message} /></div>);};
+
+    if (loading) {return <Loading/>};
 
     return (
         <div>
@@ -93,17 +97,20 @@ function FguardForm({ guardData }) {
                     <div className="form-group">
                         <label>שם פרטי</label>
                         <input {...register('fguard_name', { required: true })} />
-                        {errors.fguard_name && <span>This field is required</span>}
+                        {errors.fguard_name && 
+                        <span>*שדה חובה - השאר פרטים ישנים אם אין ברצונך לעדכן</span>}
                     </div>
                     <div className="form-group">
                         <label>טלפון נייד</label>
                         <input {...register('fguard_phone', { required: true })} />
-                        {errors.fguard_phone && <span>This field is required</span>}
+                        {errors.fguard_phone && 
+                        <span>*שדה חובה - השאר פרטים ישנים אם אין ברצונך לעדכן</span>}
                     </div>
                     <div className="form-group">
                         <label>דואר אלקטרוני</label>
                         <input {...register('fguard_email', { required: true })} />
-                        {errors.fguard_email && <span>This field is required</span>}
+                        {errors.fguard_email && 
+                        <span>*שדה חובה - השאר פרטים ישנים אם אין ברצונך לעדכן</span>}
                     </div>
                     <div className="form-group">
                         <label>חמוש?</label>
