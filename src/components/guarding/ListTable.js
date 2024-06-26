@@ -33,17 +33,14 @@ function ListTable(props) {
       props.displayPaidExchangeGuardListCallBack(true);
       props.displayExchangeGuardListCallBack(false);
 
-      //props.displayApproveCrossMessageCallBack();
-      //displaySecChooseGuardMsgCallBack();
-
     } 
 
     console.log('ROW DATA:', rowData)
   };
 
   return (
-    <div style={{ display: 'flex', justifyContent: 'center', height: '100vh' }}>
-      <div className="glist-table" style={{ direction: 'rtl', maxWidth: '90vw', maxHeight: '70vh', overflowY: 'auto', textAlign: 'center' }}>
+    <div className="center-container">
+      <div style={{ direction: 'rtl', maxWidth: '90vw', maxHeight: '70vh', overflowY: 'auto', textAlign: 'center' }}> {/*style={{ direction: 'rtl', maxWidth: '90vw', maxHeight: '70vh', overflowY: 'auto', textAlign: 'center' }}*/}
         {props.apiResponse.Details.map((detail, index) => (
           <div key={index}>
             <div className="table-title" style={{ textAlign: 'center' }}>
@@ -58,27 +55,30 @@ function ListTable(props) {
                   <tbody>
                     <tr>
                       <td style={{ width: "40px" }}>&nbsp;{shift.shift_hour}&nbsp;</td>
-                      <td><BlueWiteButton
-                        width="50px"
-                        fontSize="10px"
-                        height="20px"
-                        value="החלף"
-                        onClick={() => handleRowClick({
-                          rowIndex: shiftIndex,
-                          guardIndex: 0,
-                          glistDay: detail.glist_day,
-                          glistDate: detail.glist_date,
-                          posId: detail.glist_position_id.position_id,
-                          posName: detail.glist_position_id.position_name,
-                          shiftHour: shift.shift_hour,
-                          guardId: shift.pguard_id.length > 0 ? shift.pguard_id[0].pguard_id : shift.fguard_id[0].fguard_id,
-                          guardLastName: shift.pguard_id.length > 0 ? shift.pguard_id[0].family_id.family_name : shift.fguard_id[0].family_id.family_name,
-                          guardFirstName: shift.pguard_id.length > 0 ? shift.pguard_id[0].pguard_name : shift.fguard_id[0].fguard_name,
-                          shiftId: shift.shift_id,
-                        })}
-                        fontWeight="normal"
-                      /></td>
-
+                      {props.typeOf && (
+                        <td>
+                          <BlueWiteButton
+                          width="50px"
+                          fontSize="10px"
+                          height="20px"
+                          value="החלף"
+                          onClick={() => handleRowClick({
+                            rowIndex: shiftIndex,
+                            guardIndex: 0,
+                            glistDay: detail.glist_day,
+                            glistDate: detail.glist_date,
+                            posId: detail.glist_position_id.position_id,
+                            posName: detail.glist_position_id.position_name,
+                            shiftHour: shift.shift_hour,
+                            guardId: shift.pguard_id.length > 0 ? shift.pguard_id[0].pguard_id : shift.fguard_id[0].fguard_id,
+                            guardLastName: shift.pguard_id.length > 0 ? shift.pguard_id[0].family_id.family_name : shift.fguard_id[0].family_id.family_name,
+                            guardFirstName: shift.pguard_id.length > 0 ? shift.pguard_id[0].pguard_name : shift.fguard_id[0].fguard_name,
+                            shiftId: shift.shift_id,
+                          })}
+                          fontWeight="normal"
+                          />
+                        </td>
+                      )}
                       {shift.pguard_id.length > 0 ? (
                         <React.Fragment>
                           <td style={{ width: '25px', height: '25px', borderRadius: '80%', border: '1.5px solid black', overflow: 'hidden', display: 'inline-block', marginTop: '2.5px' }}>

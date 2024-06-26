@@ -75,7 +75,7 @@ function ChooseList(props){
 
     return(
         
-        <div>
+        <div tyle={{ direction: 'rtl', display:"flex", alignItems:"center", justifyContent: 'center'}}>
             {displayChoice && (
             <div className="display_choice_container">
                 <label className="display_choices_input-label">
@@ -106,7 +106,7 @@ function ChooseList(props){
             </div>
             )}
             {apiResponse && (
-            <div>
+            <div >
                 <GuardListTable apiResponse={apiResponse} displayGuardingList={true}/>
             </div>
             )}

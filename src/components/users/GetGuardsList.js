@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "../AxiosPath";
 import Loading from "../buttons/Loading";
 import GuardsTable from "./GuardsTable";
+import PguardsTable from "./PguardsTable";
 
 
 function GetGuardsList(props){
@@ -13,9 +14,10 @@ function GetGuardsList(props){
 
     useEffect(() => {
         setLoading(true);
-        axios.get('/fguards_list')
+        const url = props.handleFguardPaidExchangesCallBack ? '/fguards_list' : '/pguards_list';
+        axios.get(url)
             .then(result => {
-                console.log("fguards data:", result.data.details);
+                console.log("guards data:", result.data.details);
                 setGuards(result.data.details);
                 setLoading(false);
             })
@@ -24,7 +26,7 @@ function GetGuardsList(props){
                 setError(err);
                 setLoading(false);
             });
-    }, [props.path]);
+    }, [props.handleFguardPaidExchangesCallBack]);
 
 
 
@@ -44,7 +46,9 @@ function GetGuardsList(props){
         <div className="families-list-container">
                 <div className="guards-list">
                     <div>
+                        {props.handleFguardPaidExchangesCallBack && (
                         <GuardsTable 
+                        handleFguardPaidExchangesCallBack={props.handleFguardPaidExchangesCallBack}
                         handleShiftsForGuardCallBack={props.handleShiftsForGuardCallBack}
                         guardDataCallBack={props.guardDataCallBack}
                         displayFguardFormCallBack={props.displayFguardFormCallBack}
@@ -54,7 +58,20 @@ function GetGuardsList(props){
                         guards={guards} 
                         type='fg'
                         />
+                        )}
                     </div>
+                    <div>
+                        {!props.handleFguardPaidExchangesCallBack && (
+                        <PguardsTable
+                        displayFguardFormCallBack={props.displayFguardFormCallBack}
+                        displayPguardFormCallBack={props.displayPguardFormCallBack}
+                        guardDataCallBack={props.guardDataCallBack}
+                        hideGuardListCallBack={props.hideGuardListCallBack}
+                        guards={guards} 
+                        type='pg'/>
+                        )}
+                    </div>
+                        
                 </div>
         </div>
     );

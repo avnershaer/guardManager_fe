@@ -21,18 +21,18 @@ function DisplaySetGuardingList(props) {
 
   useEffect(() => {
     if (saveData) {
-      setLoading(true); // Set loading to true when making the request
+      setLoading(true); 
       axios.post('/save_guard_list', saveData)
         .then(result => {
           console.log('saveData:', saveData)
           setSaveResponse(result.data);
           console.log('saveResponse:', result.data);
-          setLoading(false); // Set loading to false when response is received
+          setLoading(false); 
         })
         .catch(error => {
           console.log('axios error:', error);
           setError(error);
-          setLoading(false); // Set loading to false when response is received
+          setLoading(false); 
         });
     }
   }, [saveData]);
@@ -41,7 +41,7 @@ function DisplaySetGuardingList(props) {
     setSaveData(data);
     setTableVisibility(prevState => {
       const newState = [...prevState];
-      newState[index] = false; // the visibility of the clicked table to false
+      newState[index] = false; // visibilit clicked table to false
       return newState;
     });
   };
@@ -86,10 +86,10 @@ function DisplaySetGuardingList(props) {
       {saveResponse.status === 'success' && (
         <div className="save_message">
           <div>
-            <span style={{ fontWeight: "bold" }}>{saveResponse.Details}</span>&nbsp;&nbsp;
-            <span style={{ color: "yellow", fontWeight: "normal" }}>עמדה:</span>&nbsp;
+            <span style={{ color: "yellow", fontWeight: "normal" }}>{saveResponse.Details}</span>&nbsp;&nbsp;
+            <span >עמדה:</span>&nbsp;
             <span style={{ fontSize: "15px", color: "rgb(0, 255, 47)", fontWeight: "normal" }}>{saveResponse.position}</span>&nbsp;&nbsp;
-            <span style={{ color: "yellow", fontWeight: "normal" }}>תאריך:</span>&nbsp;
+            <span >תאריך:</span>&nbsp;
             <span style={{ color: "rgb(0, 255, 47)", fontWeight: "normal" }}>{saveResponse.date}</span>
           </div>
         </div>

@@ -5,18 +5,21 @@ import GetFamiliesList from "../users/GetFamiliesList";
 import GetGuardsList from "../users/GetGuardsList";
 import FguardForm from "../users/FgaurdForm";
 import ExchangesReport from "../reports/ExchangesReport";
-import baseURL from "../../config";
 import GetShiftForGuard from "../users/GetShiftForGuard";
+import PgaurdForm from "../users/PgaurdForm";
 
 
 function UsersPanel(){
 
     const [showFamiliesList, setShowFamiliesList] = useState(false);
     const [showGuardsList, setShowGuardsList] = useState(false);
+    const [showPguardsList, setShowPguardsList] = useState(false);
     const [displayFguardForm, setDisplayFguardForm] = useState(false);
+    const [displayPguardForm, setDisplayPguardForm] = useState(false);
     const [displayFguarExchanges, setDisplayFguarExchanges] = useState(false);
     const [displayFguarDidExchanges, setDisplayFguarDidExchanges] = useState(false);
     const [displayShiftsForFguard, setDisplayShiftsForFguard] = useState(false);
+    const [displayFguarPaidExchanges, setDisplayFguarPaidExchanges] = useState(false);
     const [guardData, setGuardData] = useState('');
     const [fguardId, setFguardId] = useState('');
 
@@ -30,10 +33,17 @@ function UsersPanel(){
         setGuardData('');
         setDisplayFguardForm(true);
     }; 
+    
+    const displayPguardFormCallBack = () => {
+        setGuardData('');
+        setDisplayPguardForm(true);
+        setShowPguardsList(false);
+    }; 
 
     const handleShowFamiliesList = () => {
         setShowFamiliesList(true);
         setDisplayFguardForm(false);
+        setShowGuardsList(false);
         setShowGuardsList(false);
     };  
     const handleShowGuardsList = () => {
@@ -43,6 +53,17 @@ function UsersPanel(){
         setDisplayFguarExchanges(false);
         setDisplayFguarDidExchanges(false);
         setDisplayShiftsForFguard(false);
+        setDisplayFguarPaidExchanges(false);
+        setShowPguardsList(false);
+        setDisplayPguardForm(false);
+    };
+    
+    const handleShowPguardsList = () => {
+        setShowGuardsList(false);
+        setShowPguardsList(true);
+        setDisplayPguardForm(false);
+        
+     
     };
 
     const hideGuardListCallBack = () => {
@@ -59,11 +80,17 @@ function UsersPanel(){
         setFguardId(fGuardId)
     };
     
+    const handleFguardPaidExchangesCallBack = (fGuardId) => {
+        setDisplayFguarPaidExchanges(true);
+        setFguardId(fGuardId)
+    };
+    
     const handleShiftsForGuardCallBack = (fGuardId) => {
         setDisplayShiftsForFguard(true);
         setFguardId(fGuardId)
     };
 
+    
 
 
   return (
@@ -99,14 +126,16 @@ function UsersPanel(){
                 height="20px"
                 value="רשימת שומרים בשכר"
                 fontWeight="normal"
-                onClick={() => navigate('/PaidExchangeReport')}
+                onClick={handleShowPguardsList}
             />
         </div>
         <div style={{ marginTop: "1px", textAlign: "center" }}>
             {displayFguardForm && <FguardForm guardData={guardData}/>}
+            {displayPguardForm && <PgaurdForm guardData={guardData}/>}
             {showFamiliesList && <GetFamiliesList />}
             {showGuardsList && 
                 <GetGuardsList 
+                handleFguardPaidExchangesCallBack={handleFguardPaidExchangesCallBack}
                 handleShiftsForGuardCallBack={handleShiftsForGuardCallBack}
                 hideGuardListCallBack={hideGuardListCallBack}
                 displayFguardFormCallBack={displayFguardFormCallBack}
@@ -115,6 +144,14 @@ function UsersPanel(){
                 handleFguardDidExchangesCallBack={handleFguardDidExchangesCallBack}
                 />
             }
+            {showPguardsList && (
+                <GetGuardsList
+                guardDataCallBack={guardDataCallBack}
+                displayguardFormCallBack={displayFguardFormCallBack}
+                hideGuardListCallBack={hideGuardListCallBack} 
+                displayPguardFormCallBack={displayPguardFormCallBack}
+                />
+            )}
             {displayFguarExchanges && 
             <ExchangesReport 
             reportPath={`/get_exchanges_for_fguard/${fguardId}`}
@@ -123,6 +160,11 @@ function UsersPanel(){
             {displayFguarDidExchanges && 
             <ExchangesReport 
             reportPath={`/get_did_exchanges_for_fguard/${fguardId}`}
+            />
+            }
+            {displayFguarPaidExchanges && 
+            <ExchangesReport 
+            reportPath={`/get_paid_exchanges_for_fguard/${fguardId}`}
             />
             }
             {displayShiftsForFguard && 

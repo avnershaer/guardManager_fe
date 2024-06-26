@@ -5,6 +5,7 @@ import Error1 from "../errorComps/Error1";
 import SecondGuardListTable from "../Exchanges/SecondGuardListTable";
 import FirstGuardListTable from "./FirstGuardListTable";
 import ChooseDatePosition from "./ChooseDatePosition";
+import Loading from "../buttons/Loading";
 
 function ListByDatePosition(props) {
     const [error, setError] = useState('');
@@ -16,6 +17,8 @@ function ListByDatePosition(props) {
     const [responseErrDetails, setResponseErrDetails] = useState(false);
     const [firstTable, setFirstTable] = useState(false);
     const [secondTable, setSecondTable] = useState(false);
+    const [loading, setLoading] = useState(false);
+
 
     function listDateCallBack(CallBackListDate) {
         setListDate(CallBackListDate);
@@ -27,11 +30,13 @@ function ListByDatePosition(props) {
 
     const handleSubmit = (listDate, positionId) => {
         if (listDate && positionId) {
+            setLoading(true);
             axios.get(`/get_list_by_date_position/${listDate}/${positionId}`)
                 .then(result => {
                     setApiResponse(result.data);
                     setDisplayTable(true);
                     setDisplayListChoice(false);
+                    setLoading(false);
                     if (props.hideListByDate) props.hideListByDate();
                     if (props.hideListBetweenDates) props.hideListBetweenDates();
                     if (props.hideChooseListCallback) props.hideChooseListCallback();
@@ -49,10 +54,10 @@ function ListByDatePosition(props) {
                     if (props.typeOf === 'paid') {
                         setFirstTable(false);
                         setDisplayTable(true);
-                        //props.displayGrdDateMsgCallBack();
                     }
                 })
                 .catch(err => {
+                    setLoading(false);
                     console.log('ERROR:', err);
                     setError(err);
                     if (err.response && err.response.data && err.response.data.status === 'none') {
@@ -76,8 +81,10 @@ function ListByDatePosition(props) {
         }
     }, [error]);
 
+    if (loading){return <Loading/>};
+
     return (
-        <div>
+        <div >
             {displayListChoice && (
                 <div>
                     <ChooseDatePosition

@@ -111,13 +111,14 @@ table {
 .save_message {
   background-color: #183670;
   color: rgba(255, 255, 255, 0.866);
-  font-weight: bold;
+  font-weight: normal;
   font-size: 13px;
-  width: 35%;
-  margin: 10px auto; /* Center the div horizontally */
+  width: 40%;
+  margin: 10px auto; /* center ofdiv horizonally */
   text-align: center;
   padding-top: 1px;
   padding-bottom: 3px;
+  border-radius: 10px;
 }
 
 .display_choices {
@@ -144,10 +145,9 @@ table {
   color:rgb(26, 26, 145);
   font-size:  12px;
   font-weight: bold;
-  display: 'flex';
-  align-items: center;
-  margin-right: 100px;
-
+  display:flex;
+  direction: rtl;
+  justify-content: center;
 }
 
 .table-title {
@@ -259,7 +259,6 @@ table {
 
 .glist-table {
   margin-top: -10px;
-  margin-right: 220px;
 
 }
 
@@ -284,13 +283,17 @@ table {
   width: 600px;
   margin-bottom: 5px;
   border-radius: 10px;
+  color:black;
 
 }
 
 .display_choice_inline {
+  margin-top: 5px;
+  font-size: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   display: inline-flex;
-  margin-top: 6px;
-  margin-right: 10px;
 }
 
 .custom-small-button {
@@ -536,7 +539,7 @@ table {
   background-color: #f9f9f9;
   border-radius: 5px;
   max-width: 800px;
-  margin: auto;
+  margin-top: 5px;
   color: #333;
   text-align: right; /* Align all text to the right */
   height: 400px; /* Set a fixed height */
@@ -643,3 +646,16 @@ table {
     font-size: 12px;
 }
 
+.center-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+.table-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

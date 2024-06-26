@@ -40,9 +40,12 @@ function DisplayGuardingList() {
   }
 
   return (
-    <div style={{ direction: 'rtl', justifyContent: 'center'}}>
+    
+    <div tyle={{ direction: 'rtl', display:"flex", alignItems:"center", justifyContent: 'center'}}>
       {displayGlist ? (
+        <div tyle={{ direction: 'rtl', display:"flex", alignItems:"center", justifyContent: 'center'}}>
         <GuardListTable apiResponse={apiResponse}/>
+        </div>
       ) : (
       displayChoices && (
         <div className="display_choices">

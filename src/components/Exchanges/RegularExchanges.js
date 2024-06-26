@@ -11,14 +11,15 @@ function RegularExchanges(){
     };
 
     return (
-        <div>
+        <div >
             {displayRegularExchanges && (
-            <div style={{textAlign:"center"}}>
+            <div style={{textAlign:"center", direction:"rtl", fontSize:"12px", color:"#183670"}}>
             להחלפת שומר הצג את רשימת השמירה ע"פ תאריך ועמדה ובחר שומר להחלפה:
                 <div 
                 style={{
+                marginTop:"5px",
                 display: "flex", 
-                justifyContent: "flex-end", 
+                justifyContent: "center", 
                 alignItems: "center", 
                 flexDirection: "column", 
                 direction: "rtl"

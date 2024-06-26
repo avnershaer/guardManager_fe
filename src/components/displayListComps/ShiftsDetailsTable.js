@@ -4,7 +4,7 @@ function ShiftsDetailsTable({ shifts }) {
     return (
         <div className="reports-table"> 
             <div className="table-container">
-            <h3 style={{textAlign:"center"}}>משמרות</h3>
+            <h3 style={{textAlign:"center",  color:"#183670"}}>משמרות</h3>
                 <table>
                     <thead style={{fontSize:"10px"}}>
                         <tr>

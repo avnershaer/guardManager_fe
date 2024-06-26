@@ -1,30 +1,16 @@
 import React from "react";
 import WiteBlueButton from "../buttons/WiteBlueButton";
 
-function GuardsTable(props){
+function PguardsTable(props){
 
 
     const handleUpdateClick = (guard) => {
         props.hideGuardListCallBack();
-        props.displayFguardFormCallBack();
+        props.displayPguardFormCallBack();
         props.guardDataCallBack(guard);
         };
     
-    const handleExchangesForGuardClick = (fguardId) => {
-        props.handleFguardExchangesCallBack(fguardId);
-        props.hideGuardListCallBack();
-        };
-    
-    const handleGuardDidExchangeClick = (fguardId) => {
-        props.handleFguardDidExchangesCallBack(fguardId);
-        props.hideGuardListCallBack();
-        };
-    
-    const handleGuardPaidExchangeClick = (fguardId) => {
-        props.handleFguardPaidExchangesCallBack(fguardId);
-        props.hideGuardListCallBack();
-        };
-    
+
     const handleShiftsForGuardClick = (fguardId) => {
         props.handleShiftsForGuardCallBack(fguardId);
         props.hideGuardListCallBack();
@@ -32,10 +18,9 @@ function GuardsTable(props){
 
     return (    
         <div>
-             <h5 style={{color:"#183670", textAlign:"center", marginTop:"10px", marginBottom:"2px"}}>רשימת שומרים</h5>
+             <h5 style={{color:"#183670", textAlign:"center", marginTop:"10px", marginBottom:"2px"}}>רשימת שומרים בשכר</h5>
             <div>
                 <div className="reports-table">
-                   
                         <table>
                             <thead style={{fontSize:"10px"}}>
                                 <th>שם משפחה</th>
@@ -45,12 +30,13 @@ function GuardsTable(props){
                                 <th></th>
                                 <th></th>
                             </thead>
+                            
                             {props.guards.map((guard, index) => (
                             <tbody>
                                 <tr style={{ borderColor:"lightGrey"}}>                  
                                     <td style={{ width:"90px", textAlign: 'center'}}>{guard.family_id.family_name}</td>
-                                    <td style={{ width:"60px", textAlign: 'center', color:'blue' }}>{guard.fguard_name}</td>
-                                    <td style={{ width:"110px", textAlign: 'center', color:'blue' }}>{guard.fguard_phone}</td>  
+                                    <td style={{ width:"60px", textAlign: 'center', color:'blue' }}>{guard.pguard_name}</td>
+                                    <td style={{ width:"110px", textAlign: 'center', color:'blue' }}>{guard.pguard_phone}</td>  
                                     <td style={{ 
                                         textAlign: 'center', 
                                         color: guard.family_id.user.is_active ? 'green' : 'red', 
@@ -78,36 +64,6 @@ function GuardsTable(props){
                                             onClick={() => handleShiftsForGuardClick(guard.fguard_id)}
                                         />
                                     </td>
-                                    <td>
-                                        <WiteBlueButton
-                                            width="100px"
-                                            fontSize="12px"
-                                            height="20px"
-                                            value="שמירות שהוחלף"
-                                            fontWeight="normal"
-                                            onClick={() => handleExchangesForGuardClick(guard.fguard_id)}
-                                        />
-                                    </td>
-                                    <td>
-                                        <WiteBlueButton
-                                            width="100px"
-                                            fontSize="12px"
-                                            height="20px"
-                                            value="שמירות שהחליף"
-                                            fontWeight="normal"
-                                            onClick={() => handleGuardDidExchangeClick(guard.fguard_id)}
-                                        />
-                                    </td>
-                                    <td>
-                                        <WiteBlueButton
-                                            width="100px"
-                                            fontSize="12px"
-                                            height="20px"
-                                            value="החלפות בתשלום"
-                                            fontWeight="normal"
-                                            onClick={() => handleGuardPaidExchangeClick(guard.fguard_id)}
-                                        />
-                                    </td>
                                 </tr>
                             </tbody>    
                             ))}
@@ -118,4 +74,4 @@ function GuardsTable(props){
     );
 };
 
-export default GuardsTable;
+export default PguardsTable;

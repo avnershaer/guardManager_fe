@@ -52,7 +52,7 @@ function ChooseDatePosition(props){
     }, [error]);
 
     return (
-        <div>
+        <div tyle={{ direction: 'rtl', display:"flex", alignItems:"center", justifyContent: 'center'}}>
             <div className="display_choice_container">
                 <label className="display_choices_input-label">
                     <div className="display_choice_inline">
@@ -76,14 +76,16 @@ function ChooseDatePosition(props){
                          ))}
                         </select>
                         &nbsp; &nbsp;
+                        <div style={{marginTop:"0px"}}>
                         <BlueWiteButton
                         width="50px"
                         fontSize="10px"
-                        height="20px"
+                        height="15px"
                         value="הצג"
                         onClick={handleOnClick}
                         fontWeight="normal"
                     />
+                    </div>
                     </div>
                     
                 </label>

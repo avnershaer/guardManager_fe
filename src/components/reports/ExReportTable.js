@@ -5,7 +5,7 @@ function ExReportTable(props){
     return (
         <div className="reports-table"> 
             <div className="table-container">
-                <table>
+            <h3 style={{textAlign:"center", color:"#183670"}}>החלפות לשומר</h3>                <table>
                     <thead style={{fontSize:"10px"}}>
                         <th>מס"ד</th>
                         <th>סוג ההחלפה</th>
