@@ -69,10 +69,11 @@ function ListBetweenDates(props) {
         <div>
         {displayChoice && (
         <div className="display_choice_container">
-            <label className="display_choices_input-label">
+            <label>
                 <div className="display_choice_inline">
                     הצג רשימות שמירה מתאריך&nbsp;&nbsp;
                     <input 
+                    className="custom-input"
                     type="date"
                     name="date1"
                     value={date1}
@@ -80,6 +81,7 @@ function ListBetweenDates(props) {
                     /> &nbsp; &nbsp;
                     עד לתאריך&nbsp;&nbsp;
                     <input 
+                      className="custom-input"
                       type="date"
                       name="date2"
                       value={date2}
@@ -88,7 +90,7 @@ function ListBetweenDates(props) {
                     <BlueWiteButton
                       width="50px"
                       fontSize="10px"
-                      height="20px"
+                      height="15px"
                       value="הצג"
                       onClick={HandleOnClick}
                       fontWeight="normal"

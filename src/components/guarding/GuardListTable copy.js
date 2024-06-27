@@ -51,7 +51,7 @@ function GuardListTable( {apiResponse, selectedRow1, typeOf, displayRegularExcha
   
 
   return (
-    <div style={{ direction: 'rtl', maxWidth: '90vw', maxHeight: '70vh', overflowY: 'auto', textAlign: 'center'}} >
+    <div style={{ direction: 'rtl', maxWidth: '90vw', maxHeight: '70vh', overflowY: 'auto', textAlign: 'center' }} >
       <div>
        {displayApproveCrossMessage && (
         <OkCrossExchangeMessage 

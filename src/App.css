@@ -76,8 +76,8 @@
 
 .input-label{
   color:rgb(26, 26, 145);
-  font-size:  12px;
-  font-weight: bold;
+  font-size:  10px;
+  font-weight: normal;
   padding-bottom: 4px;
 
 }
@@ -122,17 +122,15 @@ table {
 }
 
 .display_choices {
-  position: absolute;
-  right: 0;
   color: black;
-  margin-right: 50px;
   text-align: right;
   direction: rtl;
   margin-top: 10px;
-  color:  #183670;
-  font-size:  12px;
+  color: #183670;
+  font-size: 12px;
   font-weight: bold;
-
+  margin-right: auto;
+  margin-left: auto;
 }
 
 .display_bottun {
@@ -212,7 +210,7 @@ table {
   font-size: 13px;
   width: 25%;
   text-align: center;
-  padding: 1px 7px 3px 7px; /* Combined padding for top, right, bottom, and left */
+  padding: 1px 7px 3px 7px; /* cmbined padding for top, right, bottom, and left */
 }
 
 .marquee {
@@ -278,22 +276,25 @@ table {
 }
 
 .display_choice_container {
-  background-color: #e8e8e8f7;
-  height: 30px;
-  width: 600px;
-  margin-bottom: 5px;
+  background-color: #e8e8e8fe;
+  height: 22px;
+  width: 500px;
+  margin-bottom: 2px;
   border-radius: 10px;
-  color:black;
+  color:#183670;
 
 }
 
 .display_choice_inline {
-  margin-top: 5px;
-  font-size: 12px;
+  margin-right: 15px;
+  margin-top: 2px;
+  font-size: 11px;
+  font-weight: normal;
   display: flex;
   justify-content: center;
   align-items: center;
   display: inline-flex;
+
 }
 
 .custom-small-button {
@@ -541,8 +542,8 @@ table {
   max-width: 800px;
   margin-top: 5px;
   color: #333;
-  text-align: right; /* Align all text to the right */
-  height: 400px; /* Set a fixed height */
+  text-align: right; 
+  height: 400px; 
   overflow-y: auto; /* Enable vertical scrollbar if content exceeds height */
 }
 
@@ -658,4 +659,14 @@ table {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.custom-input {
+  height: 18px;
+  font-size: 11px;
+  border-radius: 5px;
+  border: #183670 1px solid;
+  color: #183670;
+  padding: 2px;
+  box-sizing: border-box;
 }

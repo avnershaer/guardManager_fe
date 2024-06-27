@@ -6,7 +6,6 @@ import ListByDatePosition from "../displayListComps/ListByDatePosition";
 import ChooseList from "../displayListComps/ChooseList";
 import DisplayFutuLists from "../displayListComps/DisplayFutuLists";
 
-
 function DisplayGuardingList() {
 
   const [hideListBetweenDates, setHideListBetweenDates] = useState(false); 
@@ -15,9 +14,9 @@ function DisplayGuardingList() {
   const [hideChooseList, setHideChooseList] = useState(false); 
   const [hideDisplayFutuLists, setHideDisplayFutuLists] = useState(false);
   
-  const apiResponse = ('')
-  const displayGlist = false
-  const displayChoices = true
+  const apiResponse = '';
+  const displayGlist = false;
+  const displayChoices = true;
 
   function hideListBetweenDatesCallback() {
     setHideListBetweenDates(true);
@@ -40,24 +39,24 @@ function DisplayGuardingList() {
   }
 
   return (
-    
-    <div tyle={{ direction: 'rtl', display:"flex", alignItems:"center", justifyContent: 'center'}}>
+    <div style={{ direction: 'rtl', display: "flex", alignItems: "center", justifyContent: 'center' }}>
       {displayGlist ? (
-        <div tyle={{ direction: 'rtl', display:"flex", alignItems:"center", justifyContent: 'center'}}>
-        <GuardListTable apiResponse={apiResponse}/>
+        <div style={{ direction: 'rtl', display: "flex", alignItems: "center", justifyContent: 'center' }}>
+          <GuardListTable apiResponse={apiResponse} />
         </div>
       ) : (
-      displayChoices && (
-        <div className="display_choices">
-          <div>
-            {!hideListBetweenDates && <ListBetweenDates hideDisplayFutuLists={hideDisplayFutuListsCallback} hideListByDate={hideListByDateCallback} hidePosDateListCallback={hidePosDateListCallback} hideChooseListCallback={hideChooseListCallback}/>}
-            {!hidePosDateList && <ListByDatePosition hideListByDate={hideListByDateCallback} hideListBetweenDates={hideListBetweenDatesCallback} hideChooseListCallback={hideChooseListCallback} hideDisplayFutuLists={hideDisplayFutuListsCallback} />}
-            {!hideListByDate && <ListByDate hideDisplayFutuLists={hideDisplayFutuListsCallback} hideListBetweenDates={hideListBetweenDatesCallback} hidePosDateListCallback={hidePosDateListCallback} hideChooseListCallback={hideChooseListCallback}/>}
-            {!hideChooseList && <ChooseList hideDisplayFutuLists={hideDisplayFutuListsCallback} hideListBetweenDates={hideListBetweenDatesCallback} hideListByDate={hideListByDateCallback} hidePosDateListCallback={hidePosDateListCallback}/>}
-            {!hideDisplayFutuLists && <DisplayFutuLists hideListByDate={hideListByDateCallback} hideListBetweenDates={hideListBetweenDatesCallback} hideChooseListCallback={hideChooseListCallback} hidePosDateListCallback={hidePosDateListCallback}/>}
+        displayChoices && (
+          <div className="display_choices">
+            <div>
+              {!hideListBetweenDates && <ListBetweenDates hideDisplayFutuLists={hideDisplayFutuListsCallback} hideListByDate={hideListByDateCallback} hidePosDateListCallback={hidePosDateListCallback} hideChooseListCallback={hideChooseListCallback} />}
+              {!hidePosDateList && <ListByDatePosition hideListByDate={hideListByDateCallback} hideListBetweenDates={hideListBetweenDatesCallback} hideChooseListCallback={hideChooseListCallback} hideDisplayFutuLists={hideDisplayFutuListsCallback} />}
+              {!hideListByDate && <ListByDate hideDisplayFutuLists={hideDisplayFutuListsCallback} hideListBetweenDates={hideListBetweenDatesCallback} hidePosDateListCallback={hidePosDateListCallback} hideChooseListCallback={hideChooseListCallback} />}
+              {!hideDisplayFutuLists && <DisplayFutuLists hideListByDate={hideListByDateCallback} hideListBetweenDates={hideListBetweenDatesCallback} hideChooseListCallback={hideChooseListCallback} hidePosDateListCallback={hidePosDateListCallback} />}
+              {!hideChooseList && <ChooseList hideDisplayFutuLists={hideDisplayFutuListsCallback} hideListBetweenDates={hideListBetweenDatesCallback} hideListByDate={hideListByDateCallback} hidePosDateListCallback={hidePosDateListCallback} />}
+            </div>
           </div>
-        </div>
-      ))}
+        )
+      )}
     </div>
   );
 }

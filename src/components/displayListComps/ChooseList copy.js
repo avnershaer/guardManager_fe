@@ -3,7 +3,6 @@ import React, {useState, useEffect} from "react";
 import BlueWiteButton from "../buttons/BlueWiteButton";
 import GuardListTable from "../guarding/GuardListTable";
 import Error1 from "../errorComps/Error1";
-import Loading from "../buttons/Loading";
 
 
 
@@ -16,7 +15,6 @@ function ChooseList(props){
     const [displayTable, setDisplayTable] = useState(false);
     const [displayChoice, setDisplayListChoice] = useState(true);
     const [responseErrDetails, setResponnseErrDetails] = useState(false);
-    const [loading, setLoading] = useState(false);
 
 
     const HandleOnChange = (event) => {
@@ -28,7 +26,6 @@ function ChooseList(props){
 
     const HandleOnClick = () => {
         if (listId) {
-            setLoading(true);
             axios.get(`/get_glist_by_id/${listId}`)
                 .then(result => {
                     setApiResponse(result.data); 
@@ -39,11 +36,8 @@ function ChooseList(props){
                     props.hideListBetweenDates();
                     props.hidePosDateListCallback();
                     props.hideDisplayFutuLists();
-                    setLoading(false);
-
                 })
                 .catch(err => {
-                    setLoading(false);
                     console.log('ERROR:', err);
                     setError(err);
                     if (err.response && err.response.data && err.response.data.status === 'none') {
@@ -60,17 +54,14 @@ function ChooseList(props){
     };
 
     useEffect(() => {
-        setLoading(true);
         axios.get("/guarding_list")
         .then(result =>{
           setGlists(result.data.Details);
           console.log('GLIST:', result.data.Details)
-          setLoading(false);
         })
         .catch(err =>{
           console.log('error:', err)
           setError(err)  
-          setLoading(false);
         })
     },[])
 
@@ -81,7 +72,6 @@ function ChooseList(props){
       }
     }, [error]);
 
-    if (loading){return <Loading/>};
 
     return(
         
@@ -92,7 +82,6 @@ function ChooseList(props){
                     <div className="display_choice_inline">
                     בחר רשימה להצגה&nbsp;
                     <select
-                      className="custom-input"
                       value={listId}
                       name="listId"
                       onChange={HandleOnChange}
@@ -107,7 +96,7 @@ function ChooseList(props){
                     <BlueWiteButton
                       width="50px"
                       fontSize="10px"
-                      height="15px"
+                      height="20px"
                       value="הצג"
                       onClick={HandleOnClick}
                       fontWeight="normal"

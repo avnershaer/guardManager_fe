@@ -58,12 +58,14 @@ function ChooseDatePosition(props){
                     <div className="display_choice_inline">
                         הצג רשימה על פי תאריך&nbsp;&nbsp;
                         <input 
+                          className="custom-input"
                           type="date"
                           name="listDate"
                           value={listDate}
                           onChange={HandleOnChange}
                         /> &nbsp;&nbsp;&nbsp;ועמדה&nbsp;&nbsp;
                         <select
+                            className="custom-input"
                             name="position"
                             value={positionId}
                             onChange={HandlePosOnChange}

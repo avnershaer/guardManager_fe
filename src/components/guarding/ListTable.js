@@ -39,8 +39,8 @@ function ListTable(props) {
   };
 
   return (
-    <div className="center-container">
-      <div style={{ direction: 'rtl', maxWidth: '90vw', maxHeight: '70vh', overflowY: 'auto', textAlign: 'center' }}> {/*style={{ direction: 'rtl', maxWidth: '90vw', maxHeight: '70vh', overflowY: 'auto', textAlign: 'center' }}*/}
+    <div>
+      <div style={{ direction: 'rtl', maxWidth: '90vw', maxHeight: '70vh', overflowY: 'auto', textAlign: 'center' }}>
         {props.apiResponse.Details.map((detail, index) => (
           <div key={index}>
             <div className="table-title" style={{ textAlign: 'center' }}>
@@ -51,7 +51,17 @@ function ListTable(props) {
             </div>
             <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
               {detail.shifts.map((shift, shiftIndex) => (
-                <table key={shiftIndex} style={{ borderRadius: '10px', border: '1px solid', borderColor: "white", backgroundColor: 'rgb(225,225,225)', direction: 'rtl',  }}>
+                <table 
+                key={shiftIndex} 
+                style={{ 
+                  fontSize:"10px",
+                  fontWeight:"normal",
+                  borderRadius: '10px', 
+                  border: '1px solid', 
+                  borderColor: "white", 
+                  backgroundColor: '#e8e8e8fe', 
+                  direction: 'rtl',  
+                  }}>
                   <tbody>
                     <tr>
                       <td style={{ width: "40px" }}>&nbsp;{shift.shift_hour}&nbsp;</td>
@@ -188,7 +198,7 @@ function ListTable(props) {
                             >
                               {shift.fguard_id[0].fguard_phone}
                             </td>
-                            <td className={shift.fguard_id[0].armed ? "armed" : "not-armed"} style={{ width: '30px', paddingLeft: "50px" }}>
+                            <td className={shift.fguard_id[0].armed ? "armed" : "not-armed"} style={{ fontWeight:"normal", width: '50px', paddingLeft: "5px" }}>
                               {shift.fguard_id[0].armed ? "חמוש" : "לא חמוש"}&nbsp;&nbsp;
                             </td>
                           </React.Fragment>

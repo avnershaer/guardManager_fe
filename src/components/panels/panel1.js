@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Button1 from "../buttons/button1";
 
 function Panel1() {
     const linkStyle = {

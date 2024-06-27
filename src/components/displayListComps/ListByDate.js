@@ -72,6 +72,7 @@ function ListByDate (props){
                 <div className="display_choice_inline">
                   הצג רשימות שמירה לתאריך&nbsp;   
                   <input 
+                    className="custom-input"
                     type="date"
                     name="listDate"
                     value={listDate}
@@ -81,7 +82,7 @@ function ListByDate (props){
                     <BlueWiteButton
                     width="50px"
                     fontSize="10px"
-                    height="20px"
+                    height="15px"
                     value="הצג"
                     onClick={HandleOnClick}
                     fontWeight="normal"
