@@ -670,3 +670,20 @@ table {
   padding: 2px;
   box-sizing: border-box;
 }
+
+.list-table::-webkit-scrollbar {
+  width: 8px; /* Change width for vertical scrollbar */
+}
+
+.list-table::-webkit-scrollbar-track {
+  background: #f1f1f1; /* Color of the scrollbar track */
+}
+
+.list-table::-webkit-scrollbar-thumb {
+  background: #183670; /* Color of the scrollbar handle */
+  border-radius: 4px; /* Round corners of the scrollbar handle */
+}
+
+.list-table::-webkit-scrollbar-thumb:hover {
+  background: #3f5e9b; /* Color of the scrollbar handle on hover */
+}
