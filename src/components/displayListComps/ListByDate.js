@@ -3,6 +3,7 @@ import BlueWiteButton from "../buttons/BlueWiteButton";
 import axios from "axios";
 import GuardListTable from "../guarding/GuardListTable";
 import Error1 from "../errorComps/Error1";
+import Loading from "../buttons/Loading";
 
 
 function ListByDate (props){
@@ -14,6 +15,7 @@ function ListByDate (props){
     const [error, setError] = useState('');
     const [responseErrDetails, setResponnseErrDetails] = useState(false)
     const [displayError, setDisplayError] = useState(false);
+    const [loading, setLoading] = useState(false);
 
 
     const HandleOnChange = (event) => {
@@ -26,18 +28,21 @@ function ListByDate (props){
     }
 
     const HandleOnClick = () => {
+      setLoading(true);
         if (listDate) {
             axios.get(`/get_glist_by_date/${listDate}`)
                 .then(result => {
                     console.log('LIST BY DATE:', result.data);
                     setApiResponse(result.data);  
                     setDisplayTables(true);
+                    props.DisplayBackButtonCallback();
                     setDisplayListChoice(false);
                     props.hideListBetweenDates();
                     props.hidePosDateListCallback();
                     props.hideChooseListCallback();
                     props.hideDisplayFutuLists();
                     setError('');
+                    setLoading(false);
                 })
                 .catch(err => {
                     console.log('ERROR:', err);
@@ -63,6 +68,8 @@ function ListByDate (props){
             setListDate('')
         }
     }, [error]);
+
+    if (loading){return <Loading/>};
 
     return (
         <div>

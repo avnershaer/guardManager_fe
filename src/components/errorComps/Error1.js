@@ -9,11 +9,17 @@ function Error1(props) {
             props.displayInput(false, true);
         } else if (props.goBack) {
             navigate(-1); // one step back
-        } else {
+        } else if (props.handleShowGuardsList) {
+            props.handleShowGuardsList();
+        }
+         else if (props.navigateTo) {
             navigate(`/${props.navigateTo}`);
+        } else {
+            navigate('/'); // default route if navigateTo is not provided
         }
     };
 
+    
     return (
         <div className="error">
             {props.error}&nbsp;&nbsp;&nbsp;&nbsp;

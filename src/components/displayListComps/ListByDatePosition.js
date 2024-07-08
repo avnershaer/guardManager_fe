@@ -35,6 +35,7 @@ function ListByDatePosition(props) {
                 .then(result => {
                     setApiResponse(result.data);
                     setDisplayTable(true);
+                    props.DisplayBackButtonCallback();
                     setDisplayListChoice(false);
                     setLoading(false);
                     if (props.hideListByDate) props.hideListByDate();
@@ -69,6 +70,7 @@ function ListByDatePosition(props) {
         }
     };
 
+    
     function displayInput(errState, inputState) {
         setDisplayListChoice(inputState);
     }

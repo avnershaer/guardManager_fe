@@ -155,6 +155,7 @@ function UsersPanel(){
             {displayFguarExchanges && 
             <ExchangesReport 
             reportPath={`/get_exchanges_for_fguard/${fguardId}`}
+            handleShowGuardsList={handleShowGuardsList}
             />
             }
             {displayFguarDidExchanges && 

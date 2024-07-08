@@ -5,7 +5,7 @@ import Loading from "../buttons/Loading";
 import Error1 from "../errorComps/Error1";
 
 
-function ExchangesReport({reportPath}){
+function ExchangesReport(props){
 
     const [apiResponse, setApiResponse] = useState({ details: [] });
     const [error, setError] = useState('');
@@ -15,7 +15,7 @@ function ExchangesReport({reportPath}){
     useEffect(() => {
         setApiResponse('');
         setLoading(true);
-        axios.get(reportPath)
+        axios.get(props.reportPath)
             .then(result => {
                 setLoading(false);
                 setApiResponse(result.data); 
@@ -30,12 +30,12 @@ function ExchangesReport({reportPath}){
                 }
                 console.log('error', err.response.data.error);
             });
-    }, [reportPath]);
+    }, [props.reportPath]);
 
     if (loading){return <Loading/>};
 
     if (error) {
-        return <div><Error1 goBack={true} error={error}/></div>;
+        return <div><Error1 handleShowGuardsList={props.handleShowGuardsList} error={error}/></div>;
     };
 
     return (

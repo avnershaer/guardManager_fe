@@ -3,6 +3,7 @@ import BlueWiteButton from "../buttons/BlueWiteButton";
 import axios from "axios";
 import Error1 from "../errorComps/Error1";
 import GuardListTable from "../guarding/GuardListTable";
+import Loading from "../buttons/Loading";
 
 function ListBetweenDates(props) {
 
@@ -14,6 +15,8 @@ function ListBetweenDates(props) {
     const [displayError, setDisplayError] = useState(false);
     const [responseErrDetails, setResponnseErrDetails] = useState(false)
     const [displayTables, setDisplayTables] = useState(false)
+    const [loading, setLoading] = useState(false);
+
 
     const HandleOnChange = (event) => {
         const {name, value} = event.target;
@@ -27,17 +30,21 @@ function ListBetweenDates(props) {
     };
 
     const HandleOnClick = () => {
+        setLoading(true);
         if (date1 && date2) {
             axios.get(`/get_lists_by_dates/${date1}/${date2}`)
                 .then(result => {
                     console.log('LISTS BY DATES:', result.data);
                     setApiResponse(result.data);  
                     setDisplayTables(true);
+                    props.DisplayBackButtonCallback();
                     setDisplayListChoice(false);
                     props.hidePosDateListCallback();
                     props.hideListByDate();
                     props.hideChooseListCallback();
                     props.hideDisplayFutuLists();
+                    setLoading(false);
+
                 })
                 .catch(err => {
                     console.log('ERROR:', err);
@@ -64,6 +71,8 @@ function ListBetweenDates(props) {
             setDate2('')
         }
     }, [error]);
+
+    if (loading){return <Loading/>};
 
     return (
         <div>

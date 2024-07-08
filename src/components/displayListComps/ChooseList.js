@@ -34,6 +34,7 @@ function ChooseList(props){
                     setApiResponse(result.data); 
                     console.log('APIRESPONSE:', result.data) 
                     setDisplayTable(true);
+                    props.DisplayBackButtonCallback();
                     setDisplayListChoice(false);
                     props.hideListByDate();
                     props.hideListBetweenDates();

@@ -3,6 +3,7 @@ import BlueWiteButton from "../buttons/BlueWiteButton";
 import axios from "axios";
 import GuardListTable from "../guarding/GuardListTable";
 import Error1 from "../errorComps/Error1";
+import Loading from "../buttons/Loading";
 
 
 function DisplayFutuLists(props){
@@ -12,18 +13,22 @@ function DisplayFutuLists(props){
     const [displayListChoice, setDisplayListChoice] = useState(true);
     const [error, setError] = useState('');
     const [responseErrDetails, setResponnseErrDetails] = useState(false);
-    
+    const [loading, setLoading] = useState(false);
+
 
     const HandleOnClick = () => {
+        setLoading(true);
         axios.get('/future_gurading_lists')
                 .then(result => {
                     setApiResponse(result.data);  
                     setDisplayTable(true);
+                    props.DisplayBackButtonCallback();
                     setDisplayListChoice(false);
                     props.hideListByDate();
                     props.hideListBetweenDates();
                     props.hideChooseListCallback();
                     props.hidePosDateListCallback();
+                    setLoading(false);
                 })
                 .catch(err => {
                     console.log('ERROR:', err);
@@ -47,7 +52,7 @@ function DisplayFutuLists(props){
       setDisplayListChoice(inputState);
     };
 
-
+    if (loading){return <Loading/>};
 
     return (
         <div>

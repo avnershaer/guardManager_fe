@@ -30,6 +30,8 @@ import AllExchangesReport from "./components/reports/AllExchangesReport";
 import GetGuardsList from "./components/users/GetGuardsList";
 import FguardForm from "./components/users/FgaurdForm";
 import ExchangesReport from "./components/reports/ExchangesReport";
+import DisplayListContainer from "./components/displayListComps/DisplayListContainer";
+import UserDetailsPanel from "./components/panels/UserDetailsPanel";
 
 function App() {
   return (
@@ -69,6 +71,8 @@ function App() {
             <Route path="AllExchangesReport" element={<AllExchangesReport/>}/>
             <Route path="FguardForm" element={<FguardForm/>}/>
             <Route path="ExchangesReport" element={<ExchangesReport/>}/>
+            <Route path="DisplayListContainer" element={<DisplayListContainer/>}/>
+            <Route path="UserDetailsPanel" element={<UserDetailsPanel/>}/>
           </Routes>
         </div>
         <div className="content-bar">
